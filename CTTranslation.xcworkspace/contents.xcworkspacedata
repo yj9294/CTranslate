@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:CTTranslation/HistoryEntity+CoreDataProperties.h">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation/HistoryEntity+CoreDataClass.h">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation/HistoryEntity+CoreDataClass.m">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation/HistoryEntity+CoreDataProperties.m">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation/TranslationEntity+CoreDataProperties.h">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation/TranslationEntity+CoreDataClass.h">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation/TranslationEntity+CoreDataClass.m">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation/TranslationEntity+CoreDataProperties.m">
+   </FileRef>
+   <FileRef
+      location = "group:CTTranslation.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

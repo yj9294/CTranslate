@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>adconfig</key>
+  <string>[{"name":"launch","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/5575463023","level":"2","type":"1"},{"aid":"ca-app-pub-3940256099942544/4411468910","level":"1","type":"0"}]},{"name":"selectLang","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/4411468910","level":"1","type":"0"}]},{"name":"click","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/4411468910","level":"1","type":"0"}]},{"name":"back","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/4411468910","level":"1","type":"0"}]},{"name":"translate","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/4411468910","level":"1","type":"0"}]},{"name":"useful","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/4411468910","level":"1","type":"0"}]},{"name":"substitute","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/4411468910","level":"1","type":"0"}]},{"name":"selectLangNative","msw":"100","mck":"10","advertList":[{"aid":"ca-app-pub-3940256099942544/3986624511","level":"1","type":"2"}]},{"name":"translateNative","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/3986624511","level":"1","type":"2"}]},{"name":"setNative","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/3986624511","level":"1","type":"2"}]},{"name":"translateBanner","msw":"10","mck":"5","advertList":[{"aid":"ca-app-pub-3940256099942544/8388050270","level":"1","type":"3"}]}]</string>
+  <key>guid</key>
+  <string>1</string>
+  <key>yong</key>
+  <string>j</string>
+  <key>recommend</key>
+  <string>["one-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","two-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","three-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","four-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","five-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","sex-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage."]</string>
+</dict>
+</plist>

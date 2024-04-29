@@ -1,0 +1,1014 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		74B02ADF015B07E498524C3D /* Pods_CTTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8036C8157BA6672CC09F5AAD /* Pods_CTTranslation.framework */; };
+		BA365EEE2BA1AAE20088B23A /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = BA365EED2BA1AAE20088B23A /* FacebookAEM */; };
+		BA365EF02BA1AAE20088B23A /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = BA365EEF2BA1AAE20088B23A /* FacebookBasics */; };
+		BA365EF22BA1AAE20088B23A /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = BA365EF12BA1AAE20088B23A /* FacebookCore */; };
+		BA365EF52BA1B6E30088B23A /* CTDialogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365EF42BA1B6E30088B23A /* CTDialogueViewController.m */; };
+		BA365EF82BA1B7440088B23A /* CTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365EF72BA1B7440088B23A /* CTCameraViewController.m */; };
+		BA365EFB2BA1B7780088B23A /* CTUserfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365EFA2BA1B7780088B23A /* CTUserfulViewController.m */; };
+		BA365EFE2BA1B7EE0088B23A /* CTRecommandInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365EFD2BA1B7EE0088B23A /* CTRecommandInfoViewController.m */; };
+		BA365F012BA1B8100088B23A /* CTFeedbacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365F002BA1B8100088B23A /* CTFeedbacksViewController.m */; };
+		BA365F042BA1B8CA0088B23A /* CTUserfulInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365F032BA1B8CA0088B23A /* CTUserfulInfoViewController.m */; };
+		BA365F072BA28D180088B23A /* CTChooseLanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365F062BA28D180088B23A /* CTChooseLanguageViewController.m */; };
+		BA365F0A2BA28E6F0088B23A /* CTChangeLangugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365F092BA28E6F0088B23A /* CTChangeLangugeView.m */; };
+		BA503A422B95A29E00D81AED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A412B95A29E00D81AED /* AppDelegate.m */; };
+		BA503A452B95A29E00D81AED /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A442B95A29E00D81AED /* SceneDelegate.m */; };
+		BA503A4D2B95A2A000D81AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA503A4C2B95A2A000D81AED /* Assets.xcassets */; };
+		BA503A502B95A2A000D81AED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA503A4E2B95A2A000D81AED /* LaunchScreen.storyboard */; };
+		BA503A532B95A2A000D81AED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A522B95A2A000D81AED /* main.m */; };
+		BA503A722B95A58900D81AED /* PDBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A612B95A58900D81AED /* PDBaseCell.m */; };
+		BA503A732B95A58900D81AED /* PDUITools.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A622B95A58900D81AED /* PDUITools.m */; };
+		BA503A742B95A58900D81AED /* PDLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A632B95A58900D81AED /* PDLogManager.m */; };
+		BA503A752B95A58900D81AED /* PDDebugAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A642B95A58900D81AED /* PDDebugAssistant.m */; };
+		BA503A762B95A58900D81AED /* PluginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A682B95A58900D81AED /* PluginEntry.m */; };
+		BA503A772B95A58900D81AED /* PDURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A6C2B95A58900D81AED /* PDURLProtocol.m */; };
+		BA503A782B95A58900D81AED /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = BA503A6E2B95A58900D81AED /* fishhook.c */; };
+		BA503A792B95A58900D81AED /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A702B95A58900D81AED /* Aspects.m */; };
+		BA503A8E2B95A5D300D81AED /* CTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A8D2B95A5D300D81AED /* CTTools.m */; };
+		BA503A9A2B95A5EE00D81AED /* CTBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503A982B95A5EE00D81AED /* CTBaseNavigationController.m */; };
+		BA503AA52B95A61400D81AED /* NSString+CT.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503AA02B95A61400D81AED /* NSString+CT.m */; };
+		BA503AA62B95A61400D81AED /* NSObject+CT.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503AA22B95A61400D81AED /* NSObject+CT.m */; };
+		BA503AAD2B95AAE200D81AED /* CTTranslation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA503AAB2B95AAE200D81AED /* CTTranslation.xcdatamodeld */; };
+		BA503AB02B95AC5000D81AED /* LottieTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA503AAF2B95AC5000D81AED /* LottieTools.swift */; };
+		BA503AB32B95AC9100D81AED /* CTLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503AB12B95AC9100D81AED /* CTLaunchViewController.m */; };
+		BA503AB62B95AC9C00D81AED /* CTPop.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503AB42B95AC9C00D81AED /* CTPop.m */; };
+		BA5BF79F2B9EDA7C00A57C2A /* CTFbHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7972B9EDA7C00A57C2A /* CTFbHandle.m */; };
+		BA5BF7A02B9EDA7C00A57C2A /* CTPosterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7982B9EDA7C00A57C2A /* CTPosterManager.m */; };
+		BA5BF7A12B9EDA7C00A57C2A /* CTAdInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF79A2B9EDA7C00A57C2A /* CTAdInfoModel.m */; };
+		BA5BF7A22B9EDA7C00A57C2A /* CTPosterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF79B2B9EDA7C00A57C2A /* CTPosterModel.m */; };
+		BA5BF7A32B9EDA7C00A57C2A /* CTStatisticAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF79C2B9EDA7C00A57C2A /* CTStatisticAnalysis.m */; };
+		BA5BF7A82B9EDAA300A57C2A /* CTDbAdvertHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7A42B9EDAA200A57C2A /* CTDbAdvertHandle.m */; };
+		BA5BF7A92B9EDAA300A57C2A /* CTPoolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7A52B9EDAA200A57C2A /* CTPoolManager.m */; };
+		BA5BF7AC2B9EDC3000A57C2A /* CTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7AA2B9EDC2F00A57C2A /* CTNavigationView.m */; };
+		BA5BF7AF2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7AE2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m */; };
+		BA5BF7B22B9EDC7700A57C2A /* SVLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B12B9EDC7700A57C2A /* SVLaunchManager.m */; };
+		BA5BF7B52B9EDCB700A57C2A /* CTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B32B9EDCB600A57C2A /* CTBaseViewController.m */; };
+		BA5BF7BA2B9EDCF100A57C2A /* UIView+CT.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B62B9EDCF100A57C2A /* UIView+CT.m */; };
+		BA5BF7BB2B9EDCF100A57C2A /* UIButton+CTL.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B72B9EDCF100A57C2A /* UIButton+CTL.m */; };
+		BA5BF7BE2B9EDD0E00A57C2A /* CTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7BD2B9EDD0E00A57C2A /* CTTextField.m */; };
+		BA5BF7C12B9EDD4F00A57C2A /* NativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5BF7C02B9EDD4F00A57C2A /* NativeAdView.xib */; };
+		BA5BF7C42B9EE0ED00A57C2A /* CTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7C32B9EE0ED00A57C2A /* CTMainViewController.m */; };
+		BA5BF7C72B9EE24A00A57C2A /* CTUITools.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7C62B9EE24A00A57C2A /* CTUITools.m */; };
+		BA5BF7CA2B9EF8A300A57C2A /* CTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7C92B9EF8A300A57C2A /* CTHomeViewController.m */; };
+		BA5BF7CD2B9EF8AF00A57C2A /* CTSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7CC2B9EF8AF00A57C2A /* CTSettingViewController.m */; };
+		BA5BF7D02B9EFF7E00A57C2A /* CTHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7CF2B9EFF7E00A57C2A /* CTHomeTableViewCell.m */; };
+		BA5BF7D32B9EFF9600A57C2A /* CTHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7D22B9EFF9600A57C2A /* CTHomeHeaderView.m */; };
+		BA5BF7D62B9F145300A57C2A /* CTHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7D52B9F145300A57C2A /* CTHistoryViewController.m */; };
+		BA5BF7D92B9F14FF00A57C2A /* CTTranslateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7D82B9F14FF00A57C2A /* CTTranslateViewController.m */; };
+		BA5BF7DC2B9F16F500A57C2A /* CTRecommedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7DB2B9F16F500A57C2A /* CTRecommedViewController.m */; };
+		BAA64D2F2BAC37CB00D8150D /* right_voice.json in Resources */ = {isa = PBXBuildFile; fileRef = BAA64D2E2BAC37CB00D8150D /* right_voice.json */; };
+		BAA64D322BAC37FA00D8150D /* right_img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = BAA64D302BAC37FA00D8150D /* right_img_0.png */; };
+		BAA64D332BAC37FA00D8150D /* right_img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BAA64D312BAC37FA00D8150D /* right_img_1.png */; };
+		BAA64D362BAC469A00D8150D /* CTTextPop.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA64D352BAC469A00D8150D /* CTTextPop.m */; };
+		BAA64D392BAC46BD00D8150D /* CTVoicePop.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA64D382BAC46BD00D8150D /* CTVoicePop.m */; };
+		BAA64D3C2BAC46CB00D8150D /* CTCameraPop.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA64D3B2BAC46CB00D8150D /* CTCameraPop.m */; };
+		BAA64D3E2BAD50D200D8150D /* NativeAdSmallView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA64D3D2BAD50D200D8150D /* NativeAdSmallView.xib */; };
+		BAA64D402BAD589B00D8150D /* remote_config_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAA64D3F2BAD589B00D8150D /* remote_config_defaults.plist */; };
+		BAB0B11E2B97295D00FAB4EE /* CTWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB0B11C2B97295D00FAB4EE /* CTWebVC.m */; };
+		BAB0B1222B9800CE00FAB4EE /* CTTranslateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB0B1212B9800CE00FAB4EE /* CTTranslateModel.m */; };
+		BAB0B1252B9800E200FAB4EE /* CTTranslateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB0B1242B9800E200FAB4EE /* CTTranslateManager.m */; };
+		BABC6DC82BA2D3E600DD9D48 /* CTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC6DC72BA2D3E600DD9D48 /* CTTextView.m */; };
+		BABC6DCA2BA3F82900DD9D48 /* left_voice.json in Resources */ = {isa = PBXBuildFile; fileRef = BABC6DC92BA3F82900DD9D48 /* left_voice.json */; };
+		BABC6DCD2BA4482A00DD9D48 /* CTDialogueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC6DCC2BA4482A00DD9D48 /* CTDialogueModel.m */; };
+		BABC6DD02BA4492D00DD9D48 /* CTDialogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC6DCF2BA4492D00DD9D48 /* CTDialogueCell.m */; };
+		BABC6DD32BA851E900DD9D48 /* CTHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC6DD22BA851E900DD9D48 /* CTHistoryCell.m */; };
+		BABC6DD62BA8529500DD9D48 /* CTHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC6DD52BA8529500DD9D48 /* CTHistoryModel.m */; };
+		BABC6DD92BA933DB00DD9D48 /* CTHistoryPop.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC6DD82BA933DB00DD9D48 /* CTHistoryPop.m */; };
+		BABC6DDC2BA93D8F00DD9D48 /* CTDbHistoryHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = BABC6DDB2BA93D8F00DD9D48 /* CTDbHistoryHandle.m */; };
+		BABC6DE02BA9699700DD9D48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABC6DDF2BA9699700DD9D48 /* GoogleService-Info.plist */; };
+		BAD0E5972BAC027B00BBEFE0 /* left_img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0E5952BAC027B00BBEFE0 /* left_img_0.png */; };
+		BAD0E5982BAC027B00BBEFE0 /* left_img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0E5962BAC027B00BBEFE0 /* left_img_1.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		62D083A5FC0657684A332287 /* Pods-CTTranslation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTTranslation.debug.xcconfig"; path = "Target Support Files/Pods-CTTranslation/Pods-CTTranslation.debug.xcconfig"; sourceTree = "<group>"; };
+		8036C8157BA6672CC09F5AAD /* Pods_CTTranslation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CTTranslation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D2066978B9AECB644607C25 /* Pods-CTTranslation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTTranslation.release.xcconfig"; path = "Target Support Files/Pods-CTTranslation/Pods-CTTranslation.release.xcconfig"; sourceTree = "<group>"; };
+		BA365EF32BA1B6E30088B23A /* CTDialogueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTDialogueViewController.h; sourceTree = "<group>"; };
+		BA365EF42BA1B6E30088B23A /* CTDialogueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTDialogueViewController.m; sourceTree = "<group>"; };
+		BA365EF62BA1B7440088B23A /* CTCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTCameraViewController.h; sourceTree = "<group>"; };
+		BA365EF72BA1B7440088B23A /* CTCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTCameraViewController.m; sourceTree = "<group>"; };
+		BA365EF92BA1B7780088B23A /* CTUserfulViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTUserfulViewController.h; sourceTree = "<group>"; };
+		BA365EFA2BA1B7780088B23A /* CTUserfulViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTUserfulViewController.m; sourceTree = "<group>"; };
+		BA365EFC2BA1B7EE0088B23A /* CTRecommandInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRecommandInfoViewController.h; sourceTree = "<group>"; };
+		BA365EFD2BA1B7EE0088B23A /* CTRecommandInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRecommandInfoViewController.m; sourceTree = "<group>"; };
+		BA365EFF2BA1B8100088B23A /* CTFeedbacksViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFeedbacksViewController.h; sourceTree = "<group>"; };
+		BA365F002BA1B8100088B23A /* CTFeedbacksViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTFeedbacksViewController.m; sourceTree = "<group>"; };
+		BA365F022BA1B8CA0088B23A /* CTUserfulInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTUserfulInfoViewController.h; sourceTree = "<group>"; };
+		BA365F032BA1B8CA0088B23A /* CTUserfulInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTUserfulInfoViewController.m; sourceTree = "<group>"; };
+		BA365F052BA28D180088B23A /* CTChooseLanguageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTChooseLanguageViewController.h; sourceTree = "<group>"; };
+		BA365F062BA28D180088B23A /* CTChooseLanguageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTChooseLanguageViewController.m; sourceTree = "<group>"; };
+		BA365F082BA28E6F0088B23A /* CTChangeLangugeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTChangeLangugeView.h; sourceTree = "<group>"; };
+		BA365F092BA28E6F0088B23A /* CTChangeLangugeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTChangeLangugeView.m; sourceTree = "<group>"; };
+		BA503A3D2B95A29E00D81AED /* CTTranslation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTTranslation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA503A402B95A29E00D81AED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BA503A412B95A29E00D81AED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BA503A432B95A29E00D81AED /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		BA503A442B95A29E00D81AED /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		BA503A4C2B95A2A000D81AED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA503A4F2B95A2A000D81AED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA503A512B95A2A000D81AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA503A522B95A2A000D81AED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BA503A602B95A58900D81AED /* DebugConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugConstant.h; sourceTree = "<group>"; };
+		BA503A612B95A58900D81AED /* PDBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBaseCell.m; sourceTree = "<group>"; };
+		BA503A622B95A58900D81AED /* PDUITools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDUITools.m; sourceTree = "<group>"; };
+		BA503A632B95A58900D81AED /* PDLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDLogManager.m; sourceTree = "<group>"; };
+		BA503A642B95A58900D81AED /* PDDebugAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDebugAssistant.m; sourceTree = "<group>"; };
+		BA503A652B95A58900D81AED /* PluginEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginEntry.h; sourceTree = "<group>"; };
+		BA503A662B95A58900D81AED /* PDURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDURLProtocol.h; sourceTree = "<group>"; };
+		BA503A672B95A58900D81AED /* PDBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBaseCell.h; sourceTree = "<group>"; };
+		BA503A682B95A58900D81AED /* PluginEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginEntry.m; sourceTree = "<group>"; };
+		BA503A692B95A58900D81AED /* PDDebugAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDebugAssistant.h; sourceTree = "<group>"; };
+		BA503A6A2B95A58900D81AED /* PDUITools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDUITools.h; sourceTree = "<group>"; };
+		BA503A6B2B95A58900D81AED /* PDLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDLogManager.h; sourceTree = "<group>"; };
+		BA503A6C2B95A58900D81AED /* PDURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDURLProtocol.m; sourceTree = "<group>"; };
+		BA503A6E2B95A58900D81AED /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		BA503A6F2B95A58900D81AED /* Aspects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		BA503A702B95A58900D81AED /* Aspects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		BA503A712B95A58900D81AED /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		BA503A8C2B95A5D300D81AED /* CTTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTools.h; sourceTree = "<group>"; };
+		BA503A8D2B95A5D300D81AED /* CTTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTools.m; sourceTree = "<group>"; };
+		BA503A972B95A5EE00D81AED /* CTBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBaseNavigationController.h; sourceTree = "<group>"; };
+		BA503A982B95A5EE00D81AED /* CTBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBaseNavigationController.m; sourceTree = "<group>"; };
+		BA503A9C2B95A61400D81AED /* NSString+CT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CT.h"; sourceTree = "<group>"; };
+		BA503A9D2B95A61400D81AED /* NSObject+CT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CT.h"; sourceTree = "<group>"; };
+		BA503AA02B95A61400D81AED /* NSString+CT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CT.m"; sourceTree = "<group>"; };
+		BA503AA22B95A61400D81AED /* NSObject+CT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CT.m"; sourceTree = "<group>"; };
+		BA503AAC2B95AAE200D81AED /* CTTranslation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CTTranslation.xcdatamodel; sourceTree = "<group>"; };
+		BA503AAE2B95AC4F00D81AED /* CTTranslation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CTTranslation-Bridging-Header.h"; sourceTree = "<group>"; };
+		BA503AAF2B95AC5000D81AED /* LottieTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieTools.swift; sourceTree = "<group>"; };
+		BA503AB12B95AC9100D81AED /* CTLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLaunchViewController.m; sourceTree = "<group>"; };
+		BA503AB22B95AC9100D81AED /* CTLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLaunchViewController.h; sourceTree = "<group>"; };
+		BA503AB42B95AC9C00D81AED /* CTPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPop.m; sourceTree = "<group>"; };
+		BA503AB52B95AC9C00D81AED /* CTPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPop.h; sourceTree = "<group>"; };
+		BA503AB72B95AE9E00D81AED /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		BA5BF7942B9EDA7C00A57C2A /* CTPosterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPosterManager.h; sourceTree = "<group>"; };
+		BA5BF7952B9EDA7C00A57C2A /* CTStatisticAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStatisticAnalysis.h; sourceTree = "<group>"; };
+		BA5BF7962B9EDA7C00A57C2A /* SVAdAllType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAdAllType.h; sourceTree = "<group>"; };
+		BA5BF7972B9EDA7C00A57C2A /* CTFbHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFbHandle.m; sourceTree = "<group>"; };
+		BA5BF7982B9EDA7C00A57C2A /* CTPosterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPosterManager.m; sourceTree = "<group>"; };
+		BA5BF7992B9EDA7C00A57C2A /* CTAdInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAdInfoModel.h; sourceTree = "<group>"; };
+		BA5BF79A2B9EDA7C00A57C2A /* CTAdInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAdInfoModel.m; sourceTree = "<group>"; };
+		BA5BF79B2B9EDA7C00A57C2A /* CTPosterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPosterModel.m; sourceTree = "<group>"; };
+		BA5BF79C2B9EDA7C00A57C2A /* CTStatisticAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStatisticAnalysis.m; sourceTree = "<group>"; };
+		BA5BF79D2B9EDA7C00A57C2A /* CTPosterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPosterModel.h; sourceTree = "<group>"; };
+		BA5BF79E2B9EDA7C00A57C2A /* CTFbHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFbHandle.h; sourceTree = "<group>"; };
+		BA5BF7A42B9EDAA200A57C2A /* CTDbAdvertHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDbAdvertHandle.m; sourceTree = "<group>"; };
+		BA5BF7A52B9EDAA200A57C2A /* CTPoolManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPoolManager.m; sourceTree = "<group>"; };
+		BA5BF7A62B9EDAA200A57C2A /* CTDbAdvertHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDbAdvertHandle.h; sourceTree = "<group>"; };
+		BA5BF7A72B9EDAA200A57C2A /* CTPoolManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPoolManager.h; sourceTree = "<group>"; };
+		BA5BF7AA2B9EDC2F00A57C2A /* CTNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNavigationView.m; sourceTree = "<group>"; };
+		BA5BF7AB2B9EDC3000A57C2A /* CTNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNavigationView.h; sourceTree = "<group>"; };
+		BA5BF7AD2B9EDC4000A57C2A /* CTTanslatePrivacyPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTanslatePrivacyPop.h; sourceTree = "<group>"; };
+		BA5BF7AE2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTanslatePrivacyPop.m; sourceTree = "<group>"; };
+		BA5BF7B02B9EDC7700A57C2A /* SVLaunchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVLaunchManager.h; sourceTree = "<group>"; };
+		BA5BF7B12B9EDC7700A57C2A /* SVLaunchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLaunchManager.m; sourceTree = "<group>"; };
+		BA5BF7B32B9EDCB600A57C2A /* CTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBaseViewController.m; sourceTree = "<group>"; };
+		BA5BF7B42B9EDCB700A57C2A /* CTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBaseViewController.h; sourceTree = "<group>"; };
+		BA5BF7B62B9EDCF100A57C2A /* UIView+CT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CT.m"; sourceTree = "<group>"; };
+		BA5BF7B72B9EDCF100A57C2A /* UIButton+CTL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CTL.m"; sourceTree = "<group>"; };
+		BA5BF7B82B9EDCF100A57C2A /* UIView+CT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CT.h"; sourceTree = "<group>"; };
+		BA5BF7B92B9EDCF100A57C2A /* UIButton+CTL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CTL.h"; sourceTree = "<group>"; };
+		BA5BF7BC2B9EDD0E00A57C2A /* CTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTextField.h; sourceTree = "<group>"; };
+		BA5BF7BD2B9EDD0E00A57C2A /* CTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTextField.m; sourceTree = "<group>"; };
+		BA5BF7BF2B9EDD4E00A57C2A /* GADNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADNativeAd.h; sourceTree = "<group>"; };
+		BA5BF7C02B9EDD4F00A57C2A /* NativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeAdView.xib; sourceTree = "<group>"; };
+		BA5BF7C22B9EE0ED00A57C2A /* CTMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTMainViewController.h; sourceTree = "<group>"; };
+		BA5BF7C32B9EE0ED00A57C2A /* CTMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTMainViewController.m; sourceTree = "<group>"; };
+		BA5BF7C52B9EE24A00A57C2A /* CTUITools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTUITools.h; sourceTree = "<group>"; };
+		BA5BF7C62B9EE24A00A57C2A /* CTUITools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTUITools.m; sourceTree = "<group>"; };
+		BA5BF7C82B9EF8A300A57C2A /* CTHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHomeViewController.h; sourceTree = "<group>"; };
+		BA5BF7C92B9EF8A300A57C2A /* CTHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTHomeViewController.m; sourceTree = "<group>"; };
+		BA5BF7CB2B9EF8AF00A57C2A /* CTSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTSettingViewController.h; sourceTree = "<group>"; };
+		BA5BF7CC2B9EF8AF00A57C2A /* CTSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTSettingViewController.m; sourceTree = "<group>"; };
+		BA5BF7CE2B9EFF7E00A57C2A /* CTHomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHomeTableViewCell.h; sourceTree = "<group>"; };
+		BA5BF7CF2B9EFF7E00A57C2A /* CTHomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTHomeTableViewCell.m; sourceTree = "<group>"; };
+		BA5BF7D12B9EFF9600A57C2A /* CTHomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHomeHeaderView.h; sourceTree = "<group>"; };
+		BA5BF7D22B9EFF9600A57C2A /* CTHomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTHomeHeaderView.m; sourceTree = "<group>"; };
+		BA5BF7D42B9F145300A57C2A /* CTHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHistoryViewController.h; sourceTree = "<group>"; };
+		BA5BF7D52B9F145300A57C2A /* CTHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTHistoryViewController.m; sourceTree = "<group>"; };
+		BA5BF7D72B9F14FF00A57C2A /* CTTranslateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTTranslateViewController.h; sourceTree = "<group>"; };
+		BA5BF7D82B9F14FF00A57C2A /* CTTranslateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTTranslateViewController.m; sourceTree = "<group>"; };
+		BA5BF7DA2B9F16F500A57C2A /* CTRecommedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRecommedViewController.h; sourceTree = "<group>"; };
+		BA5BF7DB2B9F16F500A57C2A /* CTRecommedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRecommedViewController.m; sourceTree = "<group>"; };
+		BAA64D2E2BAC37CB00D8150D /* right_voice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = right_voice.json; sourceTree = "<group>"; };
+		BAA64D302BAC37FA00D8150D /* right_img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_img_0.png; sourceTree = "<group>"; };
+		BAA64D312BAC37FA00D8150D /* right_img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_img_1.png; sourceTree = "<group>"; };
+		BAA64D342BAC469A00D8150D /* CTTextPop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTTextPop.h; sourceTree = "<group>"; };
+		BAA64D352BAC469A00D8150D /* CTTextPop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTTextPop.m; sourceTree = "<group>"; };
+		BAA64D372BAC46BD00D8150D /* CTVoicePop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTVoicePop.h; sourceTree = "<group>"; };
+		BAA64D382BAC46BD00D8150D /* CTVoicePop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTVoicePop.m; sourceTree = "<group>"; };
+		BAA64D3A2BAC46CB00D8150D /* CTCameraPop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTCameraPop.h; sourceTree = "<group>"; };
+		BAA64D3B2BAC46CB00D8150D /* CTCameraPop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTCameraPop.m; sourceTree = "<group>"; };
+		BAA64D3D2BAD50D200D8150D /* NativeAdSmallView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NativeAdSmallView.xib; sourceTree = "<group>"; };
+		BAA64D3F2BAD589B00D8150D /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
+		BAB0B11C2B97295D00FAB4EE /* CTWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTWebVC.m; sourceTree = "<group>"; };
+		BAB0B11D2B97295D00FAB4EE /* CTWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTWebVC.h; sourceTree = "<group>"; };
+		BAB0B1202B9800CE00FAB4EE /* CTTranslateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTTranslateModel.h; sourceTree = "<group>"; };
+		BAB0B1212B9800CE00FAB4EE /* CTTranslateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTTranslateModel.m; sourceTree = "<group>"; };
+		BAB0B1232B9800E200FAB4EE /* CTTranslateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTTranslateManager.h; sourceTree = "<group>"; };
+		BAB0B1242B9800E200FAB4EE /* CTTranslateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTTranslateManager.m; sourceTree = "<group>"; };
+		BABC6DC62BA2D3E600DD9D48 /* CTTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTTextView.h; sourceTree = "<group>"; };
+		BABC6DC72BA2D3E600DD9D48 /* CTTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTTextView.m; sourceTree = "<group>"; };
+		BABC6DC92BA3F82900DD9D48 /* left_voice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = left_voice.json; sourceTree = "<group>"; };
+		BABC6DCB2BA4482A00DD9D48 /* CTDialogueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTDialogueModel.h; sourceTree = "<group>"; };
+		BABC6DCC2BA4482A00DD9D48 /* CTDialogueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTDialogueModel.m; sourceTree = "<group>"; };
+		BABC6DCE2BA4492D00DD9D48 /* CTDialogueCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTDialogueCell.h; sourceTree = "<group>"; };
+		BABC6DCF2BA4492D00DD9D48 /* CTDialogueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTDialogueCell.m; sourceTree = "<group>"; };
+		BABC6DD12BA851E900DD9D48 /* CTHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHistoryCell.h; sourceTree = "<group>"; };
+		BABC6DD22BA851E900DD9D48 /* CTHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTHistoryCell.m; sourceTree = "<group>"; };
+		BABC6DD42BA8529500DD9D48 /* CTHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHistoryModel.h; sourceTree = "<group>"; };
+		BABC6DD52BA8529500DD9D48 /* CTHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTHistoryModel.m; sourceTree = "<group>"; };
+		BABC6DD72BA933DB00DD9D48 /* CTHistoryPop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHistoryPop.h; sourceTree = "<group>"; };
+		BABC6DD82BA933DB00DD9D48 /* CTHistoryPop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTHistoryPop.m; sourceTree = "<group>"; };
+		BABC6DDA2BA93D8F00DD9D48 /* CTDbHistoryHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTDbHistoryHandle.h; sourceTree = "<group>"; };
+		BABC6DDB2BA93D8F00DD9D48 /* CTDbHistoryHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTDbHistoryHandle.m; sourceTree = "<group>"; };
+		BABC6DDF2BA9699700DD9D48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BAD0E5952BAC027B00BBEFE0 /* left_img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_img_0.png; sourceTree = "<group>"; };
+		BAD0E5962BAC027B00BBEFE0 /* left_img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_img_1.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA503A3A2B95A29E00D81AED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA365EF02BA1AAE20088B23A /* FacebookBasics in Frameworks */,
+				BA365EEE2BA1AAE20088B23A /* FacebookAEM in Frameworks */,
+				74B02ADF015B07E498524C3D /* Pods_CTTranslation.framework in Frameworks */,
+				BA365EF22BA1AAE20088B23A /* FacebookCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1ED88192CE5063C2D5BF1883 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62D083A5FC0657684A332287 /* Pods-CTTranslation.debug.xcconfig */,
+				8D2066978B9AECB644607C25 /* Pods-CTTranslation.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		96DFF1AE06D5E3A54C65A36A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8036C8157BA6672CC09F5AAD /* Pods_CTTranslation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA503A342B95A29E00D81AED = {
+			isa = PBXGroup;
+			children = (
+				BA503A3F2B95A29E00D81AED /* CTTranslation */,
+				BA503A3E2B95A29E00D81AED /* Products */,
+				1ED88192CE5063C2D5BF1883 /* Pods */,
+				96DFF1AE06D5E3A54C65A36A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BA503A3E2B95A29E00D81AED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA503A3D2B95A29E00D81AED /* CTTranslation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA503A3F2B95A29E00D81AED /* CTTranslation */ = {
+			isa = PBXGroup;
+			children = (
+				BABC6DDF2BA9699700DD9D48 /* GoogleService-Info.plist */,
+				BAA64D3F2BAD589B00D8150D /* remote_config_defaults.plist */,
+				BA503A402B95A29E00D81AED /* AppDelegate.h */,
+				BA503A412B95A29E00D81AED /* AppDelegate.m */,
+				BA503A432B95A29E00D81AED /* SceneDelegate.h */,
+				BA503A442B95A29E00D81AED /* SceneDelegate.m */,
+				BA5BF7B02B9EDC7700A57C2A /* SVLaunchManager.h */,
+				BA5BF7B12B9EDC7700A57C2A /* SVLaunchManager.m */,
+				BA503A5F2B95A58900D81AED /* DebugPlugin */,
+				BA503A5E2B95A56800D81AED /* Model */,
+				BA503A5D2B95A56400D81AED /* View */,
+				BA503A5C2B95A55C00D81AED /* ViewController */,
+				BA503A5B2B95A54700D81AED /* db */,
+				BA503A5A2B95A4F500D81AED /* utilities */,
+				BA503A592B95A4EC00D81AED /* ad */,
+				BAB0B11F2B98006E00FAB4EE /* translate */,
+				BA503A4C2B95A2A000D81AED /* Assets.xcassets */,
+				BABC6DC92BA3F82900DD9D48 /* left_voice.json */,
+				BAA64D2E2BAC37CB00D8150D /* right_voice.json */,
+				BAD0E5952BAC027B00BBEFE0 /* left_img_0.png */,
+				BAD0E5962BAC027B00BBEFE0 /* left_img_1.png */,
+				BAA64D302BAC37FA00D8150D /* right_img_0.png */,
+				BAA64D312BAC37FA00D8150D /* right_img_1.png */,
+				BA503AB72B95AE9E00D81AED /* PrefixHeader.pch */,
+				BA503A4E2B95A2A000D81AED /* LaunchScreen.storyboard */,
+				BA503A512B95A2A000D81AED /* Info.plist */,
+				BA503A522B95A2A000D81AED /* main.m */,
+				BA503AAB2B95AAE200D81AED /* CTTranslation.xcdatamodeld */,
+			);
+			path = CTTranslation;
+			sourceTree = "<group>";
+		};
+		BA503A592B95A4EC00D81AED /* ad */ = {
+			isa = PBXGroup;
+			children = (
+				BA5BF7962B9EDA7C00A57C2A /* SVAdAllType.h */,
+				BA5BF7992B9EDA7C00A57C2A /* CTAdInfoModel.h */,
+				BA5BF79A2B9EDA7C00A57C2A /* CTAdInfoModel.m */,
+				BA5BF79E2B9EDA7C00A57C2A /* CTFbHandle.h */,
+				BA5BF7972B9EDA7C00A57C2A /* CTFbHandle.m */,
+				BA5BF7942B9EDA7C00A57C2A /* CTPosterManager.h */,
+				BA5BF7982B9EDA7C00A57C2A /* CTPosterManager.m */,
+				BA5BF79D2B9EDA7C00A57C2A /* CTPosterModel.h */,
+				BA5BF79B2B9EDA7C00A57C2A /* CTPosterModel.m */,
+				BA5BF7952B9EDA7C00A57C2A /* CTStatisticAnalysis.h */,
+				BA5BF79C2B9EDA7C00A57C2A /* CTStatisticAnalysis.m */,
+			);
+			path = ad;
+			sourceTree = "<group>";
+		};
+		BA503A5A2B95A4F500D81AED /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BA5BF7B92B9EDCF100A57C2A /* UIButton+CTL.h */,
+				BA5BF7B72B9EDCF100A57C2A /* UIButton+CTL.m */,
+				BA5BF7B82B9EDCF100A57C2A /* UIView+CT.h */,
+				BA5BF7B62B9EDCF100A57C2A /* UIView+CT.m */,
+				BA5BF7C52B9EE24A00A57C2A /* CTUITools.h */,
+				BA5BF7C62B9EE24A00A57C2A /* CTUITools.m */,
+				BA503A9D2B95A61400D81AED /* NSObject+CT.h */,
+				BA503AA22B95A61400D81AED /* NSObject+CT.m */,
+				BA503A9C2B95A61400D81AED /* NSString+CT.h */,
+				BA503AA02B95A61400D81AED /* NSString+CT.m */,
+				BA5BF7BC2B9EDD0E00A57C2A /* CTTextField.h */,
+				BA5BF7BD2B9EDD0E00A57C2A /* CTTextField.m */,
+				BABC6DC62BA2D3E600DD9D48 /* CTTextView.h */,
+				BABC6DC72BA2D3E600DD9D48 /* CTTextView.m */,
+				BA5BF7BF2B9EDD4E00A57C2A /* GADNativeAd.h */,
+				BA5BF7C02B9EDD4F00A57C2A /* NativeAdView.xib */,
+				BAA64D3D2BAD50D200D8150D /* NativeAdSmallView.xib */,
+				BA503A8C2B95A5D300D81AED /* CTTools.h */,
+				BA503A8D2B95A5D300D81AED /* CTTools.m */,
+				BA503AAF2B95AC5000D81AED /* LottieTools.swift */,
+				BA503AAE2B95AC4F00D81AED /* CTTranslation-Bridging-Header.h */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
+		BA503A5B2B95A54700D81AED /* db */ = {
+			isa = PBXGroup;
+			children = (
+				BA5BF7A62B9EDAA200A57C2A /* CTDbAdvertHandle.h */,
+				BA5BF7A42B9EDAA200A57C2A /* CTDbAdvertHandle.m */,
+				BA5BF7A72B9EDAA200A57C2A /* CTPoolManager.h */,
+				BA5BF7A52B9EDAA200A57C2A /* CTPoolManager.m */,
+				BABC6DDA2BA93D8F00DD9D48 /* CTDbHistoryHandle.h */,
+				BABC6DDB2BA93D8F00DD9D48 /* CTDbHistoryHandle.m */,
+			);
+			path = db;
+			sourceTree = "<group>";
+		};
+		BA503A5C2B95A55C00D81AED /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BAB0B11D2B97295D00FAB4EE /* CTWebVC.h */,
+				BAB0B11C2B97295D00FAB4EE /* CTWebVC.m */,
+				BA503AB22B95AC9100D81AED /* CTLaunchViewController.h */,
+				BA503AB12B95AC9100D81AED /* CTLaunchViewController.m */,
+				BA503A972B95A5EE00D81AED /* CTBaseNavigationController.h */,
+				BA503A982B95A5EE00D81AED /* CTBaseNavigationController.m */,
+				BA5BF7B42B9EDCB700A57C2A /* CTBaseViewController.h */,
+				BA5BF7B32B9EDCB600A57C2A /* CTBaseViewController.m */,
+				BA5BF7C22B9EE0ED00A57C2A /* CTMainViewController.h */,
+				BA5BF7C32B9EE0ED00A57C2A /* CTMainViewController.m */,
+				BA5BF7C82B9EF8A300A57C2A /* CTHomeViewController.h */,
+				BA5BF7C92B9EF8A300A57C2A /* CTHomeViewController.m */,
+				BA5BF7CB2B9EF8AF00A57C2A /* CTSettingViewController.h */,
+				BA5BF7CC2B9EF8AF00A57C2A /* CTSettingViewController.m */,
+				BA5BF7D42B9F145300A57C2A /* CTHistoryViewController.h */,
+				BA5BF7D52B9F145300A57C2A /* CTHistoryViewController.m */,
+				BA5BF7D72B9F14FF00A57C2A /* CTTranslateViewController.h */,
+				BA5BF7D82B9F14FF00A57C2A /* CTTranslateViewController.m */,
+				BA365EF32BA1B6E30088B23A /* CTDialogueViewController.h */,
+				BA365EF42BA1B6E30088B23A /* CTDialogueViewController.m */,
+				BA365EF62BA1B7440088B23A /* CTCameraViewController.h */,
+				BA365EF72BA1B7440088B23A /* CTCameraViewController.m */,
+				BA5BF7DA2B9F16F500A57C2A /* CTRecommedViewController.h */,
+				BA5BF7DB2B9F16F500A57C2A /* CTRecommedViewController.m */,
+				BA365EFC2BA1B7EE0088B23A /* CTRecommandInfoViewController.h */,
+				BA365EFD2BA1B7EE0088B23A /* CTRecommandInfoViewController.m */,
+				BA365EF92BA1B7780088B23A /* CTUserfulViewController.h */,
+				BA365EFA2BA1B7780088B23A /* CTUserfulViewController.m */,
+				BA365F022BA1B8CA0088B23A /* CTUserfulInfoViewController.h */,
+				BA365F032BA1B8CA0088B23A /* CTUserfulInfoViewController.m */,
+				BA365EFF2BA1B8100088B23A /* CTFeedbacksViewController.h */,
+				BA365F002BA1B8100088B23A /* CTFeedbacksViewController.m */,
+				BA365F052BA28D180088B23A /* CTChooseLanguageViewController.h */,
+				BA365F062BA28D180088B23A /* CTChooseLanguageViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BA503A5D2B95A56400D81AED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA503AB52B95AC9C00D81AED /* CTPop.h */,
+				BA503AB42B95AC9C00D81AED /* CTPop.m */,
+				BAA64D342BAC469A00D8150D /* CTTextPop.h */,
+				BAA64D352BAC469A00D8150D /* CTTextPop.m */,
+				BAA64D372BAC46BD00D8150D /* CTVoicePop.h */,
+				BAA64D382BAC46BD00D8150D /* CTVoicePop.m */,
+				BAA64D3A2BAC46CB00D8150D /* CTCameraPop.h */,
+				BAA64D3B2BAC46CB00D8150D /* CTCameraPop.m */,
+				BA5BF7AB2B9EDC3000A57C2A /* CTNavigationView.h */,
+				BA5BF7AA2B9EDC2F00A57C2A /* CTNavigationView.m */,
+				BA5BF7AD2B9EDC4000A57C2A /* CTTanslatePrivacyPop.h */,
+				BA5BF7AE2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m */,
+				BABC6DD72BA933DB00DD9D48 /* CTHistoryPop.h */,
+				BABC6DD82BA933DB00DD9D48 /* CTHistoryPop.m */,
+				BA5BF7CE2B9EFF7E00A57C2A /* CTHomeTableViewCell.h */,
+				BA5BF7CF2B9EFF7E00A57C2A /* CTHomeTableViewCell.m */,
+				BA5BF7D12B9EFF9600A57C2A /* CTHomeHeaderView.h */,
+				BA5BF7D22B9EFF9600A57C2A /* CTHomeHeaderView.m */,
+				BA365F082BA28E6F0088B23A /* CTChangeLangugeView.h */,
+				BA365F092BA28E6F0088B23A /* CTChangeLangugeView.m */,
+				BABC6DCE2BA4492D00DD9D48 /* CTDialogueCell.h */,
+				BABC6DCF2BA4492D00DD9D48 /* CTDialogueCell.m */,
+				BABC6DD12BA851E900DD9D48 /* CTHistoryCell.h */,
+				BABC6DD22BA851E900DD9D48 /* CTHistoryCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BA503A5E2B95A56800D81AED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BABC6DCB2BA4482A00DD9D48 /* CTDialogueModel.h */,
+				BABC6DCC2BA4482A00DD9D48 /* CTDialogueModel.m */,
+				BABC6DD42BA8529500DD9D48 /* CTHistoryModel.h */,
+				BABC6DD52BA8529500DD9D48 /* CTHistoryModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BA503A5F2B95A58900D81AED /* DebugPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				BA503A602B95A58900D81AED /* DebugConstant.h */,
+				BA503A612B95A58900D81AED /* PDBaseCell.m */,
+				BA503A622B95A58900D81AED /* PDUITools.m */,
+				BA503A632B95A58900D81AED /* PDLogManager.m */,
+				BA503A642B95A58900D81AED /* PDDebugAssistant.m */,
+				BA503A652B95A58900D81AED /* PluginEntry.h */,
+				BA503A662B95A58900D81AED /* PDURLProtocol.h */,
+				BA503A672B95A58900D81AED /* PDBaseCell.h */,
+				BA503A682B95A58900D81AED /* PluginEntry.m */,
+				BA503A692B95A58900D81AED /* PDDebugAssistant.h */,
+				BA503A6A2B95A58900D81AED /* PDUITools.h */,
+				BA503A6B2B95A58900D81AED /* PDLogManager.h */,
+				BA503A6C2B95A58900D81AED /* PDURLProtocol.m */,
+				BA503A6D2B95A58900D81AED /* Vender */,
+			);
+			path = DebugPlugin;
+			sourceTree = "<group>";
+		};
+		BA503A6D2B95A58900D81AED /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				BA503A6E2B95A58900D81AED /* fishhook.c */,
+				BA503A6F2B95A58900D81AED /* Aspects.h */,
+				BA503A702B95A58900D81AED /* Aspects.m */,
+				BA503A712B95A58900D81AED /* fishhook.h */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		BAB0B11F2B98006E00FAB4EE /* translate */ = {
+			isa = PBXGroup;
+			children = (
+				BAB0B1202B9800CE00FAB4EE /* CTTranslateModel.h */,
+				BAB0B1212B9800CE00FAB4EE /* CTTranslateModel.m */,
+				BAB0B1232B9800E200FAB4EE /* CTTranslateManager.h */,
+				BAB0B1242B9800E200FAB4EE /* CTTranslateManager.m */,
+			);
+			path = translate;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA503A3C2B95A29E00D81AED /* CTTranslation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA503A562B95A2A000D81AED /* Build configuration list for PBXNativeTarget "CTTranslation" */;
+			buildPhases = (
+				4910402C1AE677DE593F9748 /* [CP] Check Pods Manifest.lock */,
+				BA503A392B95A29E00D81AED /* Sources */,
+				BA503A3A2B95A29E00D81AED /* Frameworks */,
+				BA503A3B2B95A29E00D81AED /* Resources */,
+				1CE4996A6BF96CA134D8CB90 /* [CP] Embed Pods Frameworks */,
+				DEF1DF4A826C688D80BABC86 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CTTranslation;
+			packageProductDependencies = (
+				BA365EED2BA1AAE20088B23A /* FacebookAEM */,
+				BA365EEF2BA1AAE20088B23A /* FacebookBasics */,
+				BA365EF12BA1AAE20088B23A /* FacebookCore */,
+			);
+			productName = CTTranslation;
+			productReference = BA503A3D2B95A29E00D81AED /* CTTranslation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA503A352B95A29E00D81AED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					BA503A3C2B95A29E00D81AED = {
+						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
+					};
+				};
+			};
+			buildConfigurationList = BA503A382B95A29E00D81AED /* Build configuration list for PBXProject "CTTranslation" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA503A342B95A29E00D81AED;
+			packageReferences = (
+				BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
+			productRefGroup = BA503A3E2B95A29E00D81AED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA503A3C2B95A29E00D81AED /* CTTranslation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA503A3B2B95A29E00D81AED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAA64D322BAC37FA00D8150D /* right_img_0.png in Resources */,
+				BAA64D332BAC37FA00D8150D /* right_img_1.png in Resources */,
+				BA503A502B95A2A000D81AED /* LaunchScreen.storyboard in Resources */,
+				BAD0E5982BAC027B00BBEFE0 /* left_img_1.png in Resources */,
+				BA5BF7C12B9EDD4F00A57C2A /* NativeAdView.xib in Resources */,
+				BAA64D3E2BAD50D200D8150D /* NativeAdSmallView.xib in Resources */,
+				BAD0E5972BAC027B00BBEFE0 /* left_img_0.png in Resources */,
+				BA503A4D2B95A2A000D81AED /* Assets.xcassets in Resources */,
+				BAA64D402BAD589B00D8150D /* remote_config_defaults.plist in Resources */,
+				BABC6DE02BA9699700DD9D48 /* GoogleService-Info.plist in Resources */,
+				BABC6DCA2BA3F82900DD9D48 /* left_voice.json in Resources */,
+				BAA64D2F2BAC37CB00D8150D /* right_voice.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CE4996A6BF96CA134D8CB90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CTTranslation/Pods-CTTranslation-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CTTranslation/Pods-CTTranslation-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CTTranslation/Pods-CTTranslation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4910402C1AE677DE593F9748 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CTTranslation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEF1DF4A826C688D80BABC86 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CTTranslation/Pods-CTTranslation-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CTTranslation/Pods-CTTranslation-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CTTranslation/Pods-CTTranslation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA503A392B95A29E00D81AED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BABC6DD32BA851E900DD9D48 /* CTHistoryCell.m in Sources */,
+				BA5BF7C72B9EE24A00A57C2A /* CTUITools.m in Sources */,
+				BAB0B1252B9800E200FAB4EE /* CTTranslateManager.m in Sources */,
+				BA503AB32B95AC9100D81AED /* CTLaunchViewController.m in Sources */,
+				BA5BF7DC2B9F16F500A57C2A /* CTRecommedViewController.m in Sources */,
+				BABC6DC82BA2D3E600DD9D48 /* CTTextView.m in Sources */,
+				BA5BF7C42B9EE0ED00A57C2A /* CTMainViewController.m in Sources */,
+				BA5BF79F2B9EDA7C00A57C2A /* CTFbHandle.m in Sources */,
+				BA503A762B95A58900D81AED /* PluginEntry.m in Sources */,
+				BAA64D362BAC469A00D8150D /* CTTextPop.m in Sources */,
+				BA5BF7D62B9F145300A57C2A /* CTHistoryViewController.m in Sources */,
+				BAB0B11E2B97295D00FAB4EE /* CTWebVC.m in Sources */,
+				BA5BF7D32B9EFF9600A57C2A /* CTHomeHeaderView.m in Sources */,
+				BA503AA52B95A61400D81AED /* NSString+CT.m in Sources */,
+				BA503A722B95A58900D81AED /* PDBaseCell.m in Sources */,
+				BA5BF7A22B9EDA7C00A57C2A /* CTPosterModel.m in Sources */,
+				BA503A752B95A58900D81AED /* PDDebugAssistant.m in Sources */,
+				BA5BF7A92B9EDAA300A57C2A /* CTPoolManager.m in Sources */,
+				BA503AA62B95A61400D81AED /* NSObject+CT.m in Sources */,
+				BA503AAD2B95AAE200D81AED /* CTTranslation.xcdatamodeld in Sources */,
+				BA5BF7BA2B9EDCF100A57C2A /* UIView+CT.m in Sources */,
+				BA503A782B95A58900D81AED /* fishhook.c in Sources */,
+				BA365EFE2BA1B7EE0088B23A /* CTRecommandInfoViewController.m in Sources */,
+				BAA64D392BAC46BD00D8150D /* CTVoicePop.m in Sources */,
+				BA503AB02B95AC5000D81AED /* LottieTools.swift in Sources */,
+				BA5BF7D92B9F14FF00A57C2A /* CTTranslateViewController.m in Sources */,
+				BA503A8E2B95A5D300D81AED /* CTTools.m in Sources */,
+				BABC6DDC2BA93D8F00DD9D48 /* CTDbHistoryHandle.m in Sources */,
+				BA5BF7BE2B9EDD0E00A57C2A /* CTTextField.m in Sources */,
+				BA503A422B95A29E00D81AED /* AppDelegate.m in Sources */,
+				BA5BF7AF2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m in Sources */,
+				BA5BF7B22B9EDC7700A57C2A /* SVLaunchManager.m in Sources */,
+				BA503A532B95A2A000D81AED /* main.m in Sources */,
+				BAB0B1222B9800CE00FAB4EE /* CTTranslateModel.m in Sources */,
+				BA5BF7A02B9EDA7C00A57C2A /* CTPosterManager.m in Sources */,
+				BA5BF7A12B9EDA7C00A57C2A /* CTAdInfoModel.m in Sources */,
+				BA5BF7D02B9EFF7E00A57C2A /* CTHomeTableViewCell.m in Sources */,
+				BAA64D3C2BAC46CB00D8150D /* CTCameraPop.m in Sources */,
+				BA365EF52BA1B6E30088B23A /* CTDialogueViewController.m in Sources */,
+				BABC6DD62BA8529500DD9D48 /* CTHistoryModel.m in Sources */,
+				BA365EFB2BA1B7780088B23A /* CTUserfulViewController.m in Sources */,
+				BA503A742B95A58900D81AED /* PDLogManager.m in Sources */,
+				BA365F042BA1B8CA0088B23A /* CTUserfulInfoViewController.m in Sources */,
+				BA365F072BA28D180088B23A /* CTChooseLanguageViewController.m in Sources */,
+				BA503A9A2B95A5EE00D81AED /* CTBaseNavigationController.m in Sources */,
+				BA365EF82BA1B7440088B23A /* CTCameraViewController.m in Sources */,
+				BA5BF7AC2B9EDC3000A57C2A /* CTNavigationView.m in Sources */,
+				BA5BF7CA2B9EF8A300A57C2A /* CTHomeViewController.m in Sources */,
+				BABC6DCD2BA4482A00DD9D48 /* CTDialogueModel.m in Sources */,
+				BA5BF7BB2B9EDCF100A57C2A /* UIButton+CTL.m in Sources */,
+				BABC6DD02BA4492D00DD9D48 /* CTDialogueCell.m in Sources */,
+				BA5BF7B52B9EDCB700A57C2A /* CTBaseViewController.m in Sources */,
+				BA5BF7CD2B9EF8AF00A57C2A /* CTSettingViewController.m in Sources */,
+				BA365F012BA1B8100088B23A /* CTFeedbacksViewController.m in Sources */,
+				BA503A772B95A58900D81AED /* PDURLProtocol.m in Sources */,
+				BA365F0A2BA28E6F0088B23A /* CTChangeLangugeView.m in Sources */,
+				BA5BF7A32B9EDA7C00A57C2A /* CTStatisticAnalysis.m in Sources */,
+				BA503A452B95A29E00D81AED /* SceneDelegate.m in Sources */,
+				BABC6DD92BA933DB00DD9D48 /* CTHistoryPop.m in Sources */,
+				BA503A732B95A58900D81AED /* PDUITools.m in Sources */,
+				BA503AB62B95AC9C00D81AED /* CTPop.m in Sources */,
+				BA503A792B95A58900D81AED /* Aspects.m in Sources */,
+				BA5BF7A82B9EDAA300A57C2A /* CTDbAdvertHandle.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BA503A4E2B95A2A000D81AED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA503A4F2B95A2A000D81AED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA503A542B95A2A000D81AED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BA503A552B95A2A000D81AED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA503A572B95A2A000D81AED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62D083A5FC0657684A332287 /* Pods-CTTranslation.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CTTranslation/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CTTranslation/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Co Translation";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow \" Co Translation \" to use your  device's camera?\nCo Translation requires access to your device's camera to enable photo translation functionality";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow \" Co Translation \" to use your microphone?\nCo Translation requires microphone access to enable voice input for translation purposes";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow \" Co Translation \" to use your photo library?\nCo Translation utilizes photo library access to facilitate seamless image translation";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow \" Co Translation \" to use your speech recognition?\nCo Translation utilizes speech recognition access to enable accurate voice-to-text translation functionality.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Allow \" Co Translation \" to use your photo idfa?\nCo Translation may request access to your IDFA for the purpose of delivering personalized advertisements and analytics.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.words.cc.tt.translation.CTTranslation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CTTranslation/utilities/CTTranslation-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		BA503A582B95A2A000D81AED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D2066978B9AECB644607C25 /* Pods-CTTranslation.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CTTranslation/PrefixHeader.pch";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CTTranslation/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Co Translation";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow \" Co Translation \" to use your  device's camera?\nCo Translation requires access to your device's camera to enable photo translation functionality";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow \" Co Translation \" to use your microphone?\nCo Translation requires microphone access to enable voice input for translation purposes";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow \" Co Translation \" to use your photo library?\nCo Translation utilizes photo library access to facilitate seamless image translation";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow \" Co Translation \" to use your speech recognition?\nCo Translation utilizes speech recognition access to enable accurate voice-to-text translation functionality.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Allow \" Co Translation \" to use your photo idfa?\nCo Translation may request access to your IDFA for the purpose of delivering personalized advertisements and analytics.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.words.cc.tt.translation.CTTranslation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CTTranslation/utilities/CTTranslation-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA503A382B95A29E00D81AED /* Build configuration list for PBXProject "CTTranslation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA503A542B95A2A000D81AED /* Debug */,
+				BA503A552B95A2A000D81AED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA503A562B95A2A000D81AED /* Build configuration list for PBXNativeTarget "CTTranslation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA503A572B95A2A000D81AED /* Debug */,
+				BA503A582B95A2A000D81AED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA365EED2BA1AAE20088B23A /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		BA365EEF2BA1AAE20088B23A /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		BA365EF12BA1AAE20088B23A /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		BA503AAB2B95AAE200D81AED /* CTTranslation.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA503AAC2B95AAE200D81AED /* CTTranslation.xcdatamodel */,
+			);
+			currentVersion = BA503AAC2B95AAE200D81AED /* CTTranslation.xcdatamodel */;
+			path = CTTranslation.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BA503A352B95A29E00D81AED /* Project object */;
+}
