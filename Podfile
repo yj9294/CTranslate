@@ -7,12 +7,12 @@ target 'CTTranslation' do
   pod 'FirebaseRemoteConfig'
   pod 'Google-Mobile-Ads-SDK'
 
-  pod 'GoogleMobileAdsMediationFacebook'
-  pod 'GoogleMobileAdsMediationPangle'
-  pod 'GoogleMobileAdsMediationUnity'
-  pod 'GoogleMobileAdsMediationAppLovin'
-  pod 'GoogleMobileAdsMediationMintegral'
-  pod 'GoogleMobileAdsMediationVungle'
+  #pod 'GoogleMobileAdsMediationFacebook'
+  #pod 'GoogleMobileAdsMediationPangle'
+  #pod 'GoogleMobileAdsMediationUnity'
+  #pod 'GoogleMobileAdsMediationAppLovin'
+  #pod 'GoogleMobileAdsMediationMintegral'
+  #pod 'GoogleMobileAdsMediationVungle'
   
   pod 'GoogleMLKit/Translate'
   #拉丁文
@@ -32,6 +32,7 @@ target 'CTTranslation' do
   pod 'MBProgressHUD'
   pod 'IQKeyboardManager'
   pod 'lottie-ios'
+  pod "FBSDKCoreKit"
 end
 
 post_install do |installer|

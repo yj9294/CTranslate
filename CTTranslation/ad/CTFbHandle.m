@@ -10,15 +10,15 @@
 #import <FirebaseCore/FirebaseCore.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "CTPosterManager.h"
-#import <FBAudienceNetwork/FBAdSettings.h>
+//#import <FBAudienceNetwork/FBAdSettings.h>
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "CTStatisticAnalysis.h"
-#import <AppLovinSDK/AppLovinSDK.h>
-#import <VungleAdsSDK/VungleAdsSDK.h>
-#import <MTGSDK/MTGSDK.h>
-#import <UnityAds/UnityAds.h>
-#import <FBAudienceNetwork/FBAdSettings.h>
+//#import <AppLovinSDK/AppLovinSDK.h>
+//#import <VungleAdsSDK/VungleAdsSDK.h>
+//#import <MTGSDK/MTGSDK.h>
+//#import <UnityAds/UnityAds.h>
+//#import <FBAudienceNetwork/FBAdSettings.h>
 
 @interface CTFbHandle ()
 
@@ -66,17 +66,17 @@
     self.isAdConfig = YES;
     
     //AppLovin
-    [ALPrivacySettings setHasUserConsent:YES];
-    [ALPrivacySettings setDoNotSell:YES];
+//    [ALPrivacySettings setHasUserConsent:YES];
+//    [ALPrivacySettings setDoNotSell:YES];
     
     //ironSource
 //    [IronSource setConsent:YES];
 //    [IronSource setMetaDataWithKey:@"do_not_sell" value:@"YES"];
     
     //Liftoff
-    [VunglePrivacySettings setGDPRStatus:YES];
-    [VunglePrivacySettings setGDPRMessageVersion:@"v1.0.0"];
-    [VunglePrivacySettings setCCPAStatus:YES];
+//    [VunglePrivacySettings setGDPRStatus:YES];
+//    [VunglePrivacySettings setGDPRMessageVersion:@"v1.0.0"];
+//    [VunglePrivacySettings setCCPAStatus:YES];
     
     //ad
     if (@available(iOS 14, *)) {
@@ -90,25 +90,25 @@
     }
     
     //Mintegral
-    [[MTGSDK sharedInstance] setConsentStatus:YES];
-    [[MTGSDK sharedInstance] setDoNotTrackStatus:NO];
+//    [[MTGSDK sharedInstance] setConsentStatus:YES];
+//    [[MTGSDK sharedInstance] setDoNotTrackStatus:NO];
     
     //Pangle 不需要设置
     
     //Unity
-    UADSMetaData *gdprMetaData = [[UADSMetaData alloc] init];
-    [gdprMetaData set:@"gdpr.consent" value:@YES];
-    [gdprMetaData commit];
-    UADSMetaData *ccpaMetaData = [[UADSMetaData alloc] init];
-    [ccpaMetaData set:@"privacy.consent" value:@YES];
-    [ccpaMetaData commit];
+//    UADSMetaData *gdprMetaData = [[UADSMetaData alloc] init];
+//    [gdprMetaData set:@"gdpr.consent" value:@YES];
+//    [gdprMetaData commit];
+//    UADSMetaData *ccpaMetaData = [[UADSMetaData alloc] init];
+//    [ccpaMetaData set:@"privacy.consent" value:@YES];
+//    [ccpaMetaData commit];
     
     [self startAdmob];
 }
 
 - (void)setTrackingWithEnabled:(BOOL)enabled {
     [FBSDKSettings sharedSettings].isAdvertiserTrackingEnabled = enabled;
-    [FBAdSettings setAdvertiserTrackingEnabled:enabled];
+//    [FBAdSettings setAdvertiserTrackingEnabled:enabled];
 }
 
 - (void)startAdmob {

@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		74B02ADF015B07E498524C3D /* Pods_CTTranslation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8036C8157BA6672CC09F5AAD /* Pods_CTTranslation.framework */; };
-		BA365EEE2BA1AAE20088B23A /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = BA365EED2BA1AAE20088B23A /* FacebookAEM */; };
-		BA365EF02BA1AAE20088B23A /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = BA365EEF2BA1AAE20088B23A /* FacebookBasics */; };
-		BA365EF22BA1AAE20088B23A /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = BA365EF12BA1AAE20088B23A /* FacebookCore */; };
 		BA365EF52BA1B6E30088B23A /* CTDialogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365EF42BA1B6E30088B23A /* CTDialogueViewController.m */; };
 		BA365EF82BA1B7440088B23A /* CTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365EF72BA1B7440088B23A /* CTCameraViewController.m */; };
 		BA365EFB2BA1B7780088B23A /* CTUserfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA365EFA2BA1B7780088B23A /* CTUserfulViewController.m */; };
@@ -86,6 +83,11 @@
 		BABC6DE02BA9699700DD9D48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BABC6DDF2BA9699700DD9D48 /* GoogleService-Info.plist */; };
 		BAD0E5972BAC027B00BBEFE0 /* left_img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0E5952BAC027B00BBEFE0 /* left_img_0.png */; };
 		BAD0E5982BAC027B00BBEFE0 /* left_img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0E5962BAC027B00BBEFE0 /* left_img_1.png */; };
+		C72B5BFC2BF799F900F6A121 /* GADConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C72B5BFB2BF799F900F6A121 /* GADConfig.json */; };
+		C72B5BFE2BF79A0500F6A121 /* GADConfig_debug.json in Resources */ = {isa = PBXBuildFile; fileRef = C72B5BFD2BF79A0500F6A121 /* GADConfig_debug.json */; };
+		C72B5C002BF79A1A00F6A121 /* GADUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B5BFF2BF79A1A00F6A121 /* GADUtil.swift */; };
+		C72B5C022BF7AB7900F6A121 /* RemoteUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B5C012BF7AB7900F6A121 /* RemoteUtil.swift */; };
+		C72B5C042BF7ABAA00F6A121 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B5C032BF7ABAA00F6A121 /* AppManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -234,6 +236,11 @@
 		BABC6DDF2BA9699700DD9D48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BAD0E5952BAC027B00BBEFE0 /* left_img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_img_0.png; sourceTree = "<group>"; };
 		BAD0E5962BAC027B00BBEFE0 /* left_img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_img_1.png; sourceTree = "<group>"; };
+		C72B5BFB2BF799F900F6A121 /* GADConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GADConfig.json; sourceTree = "<group>"; };
+		C72B5BFD2BF79A0500F6A121 /* GADConfig_debug.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GADConfig_debug.json; sourceTree = "<group>"; };
+		C72B5BFF2BF79A1A00F6A121 /* GADUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GADUtil.swift; sourceTree = "<group>"; };
+		C72B5C012BF7AB7900F6A121 /* RemoteUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteUtil.swift; sourceTree = "<group>"; };
+		C72B5C032BF7ABAA00F6A121 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,10 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA365EF02BA1AAE20088B23A /* FacebookBasics in Frameworks */,
-				BA365EEE2BA1AAE20088B23A /* FacebookAEM in Frameworks */,
 				74B02ADF015B07E498524C3D /* Pods_CTTranslation.framework in Frameworks */,
-				BA365EF22BA1AAE20088B23A /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,12 +301,14 @@
 				BA503A442B95A29E00D81AED /* SceneDelegate.m */,
 				BA5BF7B02B9EDC7700A57C2A /* SVLaunchManager.h */,
 				BA5BF7B12B9EDC7700A57C2A /* SVLaunchManager.m */,
+				C72B5C032BF7ABAA00F6A121 /* AppManager.swift */,
 				BA503A5F2B95A58900D81AED /* DebugPlugin */,
 				BA503A5E2B95A56800D81AED /* Model */,
 				BA503A5D2B95A56400D81AED /* View */,
 				BA503A5C2B95A55C00D81AED /* ViewController */,
 				BA503A5B2B95A54700D81AED /* db */,
 				BA503A5A2B95A4F500D81AED /* utilities */,
+				C72B5BFA2BF799B700F6A121 /* gad */,
 				BA503A592B95A4EC00D81AED /* ad */,
 				BAB0B11F2B98006E00FAB4EE /* translate */,
 				BA503A4C2B95A2A000D81AED /* Assets.xcassets */,
@@ -506,6 +512,17 @@
 			path = translate;
 			sourceTree = "<group>";
 		};
+		C72B5BFA2BF799B700F6A121 /* gad */ = {
+			isa = PBXGroup;
+			children = (
+				C72B5BFF2BF79A1A00F6A121 /* GADUtil.swift */,
+				C72B5C012BF7AB7900F6A121 /* RemoteUtil.swift */,
+				C72B5BFD2BF79A0500F6A121 /* GADConfig_debug.json */,
+				C72B5BFB2BF799F900F6A121 /* GADConfig.json */,
+			);
+			path = gad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -526,9 +543,6 @@
 			);
 			name = CTTranslation;
 			packageProductDependencies = (
-				BA365EED2BA1AAE20088B23A /* FacebookAEM */,
-				BA365EEF2BA1AAE20088B23A /* FacebookBasics */,
-				BA365EF12BA1AAE20088B23A /* FacebookCore */,
 			);
 			productName = CTTranslation;
 			productReference = BA503A3D2B95A29E00D81AED /* CTTranslation.app */;
@@ -559,7 +573,6 @@
 			);
 			mainGroup = BA503A342B95A29E00D81AED;
 			packageReferences = (
-				BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = BA503A3E2B95A29E00D81AED /* Products */;
 			projectDirPath = "";
@@ -581,12 +594,14 @@
 				BAD0E5982BAC027B00BBEFE0 /* left_img_1.png in Resources */,
 				BA5BF7C12B9EDD4F00A57C2A /* NativeAdView.xib in Resources */,
 				BAA64D3E2BAD50D200D8150D /* NativeAdSmallView.xib in Resources */,
+				C72B5BFE2BF79A0500F6A121 /* GADConfig_debug.json in Resources */,
 				BAD0E5972BAC027B00BBEFE0 /* left_img_0.png in Resources */,
 				BA503A4D2B95A2A000D81AED /* Assets.xcassets in Resources */,
 				BAA64D402BAD589B00D8150D /* remote_config_defaults.plist in Resources */,
 				BABC6DE02BA9699700DD9D48 /* GoogleService-Info.plist in Resources */,
 				BABC6DCA2BA3F82900DD9D48 /* left_voice.json in Resources */,
 				BAA64D2F2BAC37CB00D8150D /* right_voice.json in Resources */,
+				C72B5BFC2BF799F900F6A121 /* GADConfig.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +689,7 @@
 				BA5BF7A22B9EDA7C00A57C2A /* CTPosterModel.m in Sources */,
 				BA503A752B95A58900D81AED /* PDDebugAssistant.m in Sources */,
 				BA5BF7A92B9EDAA300A57C2A /* CTPoolManager.m in Sources */,
+				C72B5C002BF79A1A00F6A121 /* GADUtil.swift in Sources */,
 				BA503AA62B95A61400D81AED /* NSObject+CT.m in Sources */,
 				BA503AAD2B95AAE200D81AED /* CTTranslation.xcdatamodeld in Sources */,
 				BA5BF7BA2B9EDCF100A57C2A /* UIView+CT.m in Sources */,
@@ -696,6 +712,7 @@
 				BAA64D3C2BAC46CB00D8150D /* CTCameraPop.m in Sources */,
 				BA365EF52BA1B6E30088B23A /* CTDialogueViewController.m in Sources */,
 				BABC6DD62BA8529500DD9D48 /* CTHistoryModel.m in Sources */,
+				C72B5C022BF7AB7900F6A121 /* RemoteUtil.swift in Sources */,
 				BA365EFB2BA1B7780088B23A /* CTUserfulViewController.m in Sources */,
 				BA503A742B95A58900D81AED /* PDLogManager.m in Sources */,
 				BA365F042BA1B8CA0088B23A /* CTUserfulInfoViewController.m in Sources */,
@@ -705,6 +722,7 @@
 				BA5BF7AC2B9EDC3000A57C2A /* CTNavigationView.m in Sources */,
 				BA5BF7CA2B9EF8A300A57C2A /* CTHomeViewController.m in Sources */,
 				BABC6DCD2BA4482A00DD9D48 /* CTDialogueModel.m in Sources */,
+				C72B5C042BF7ABAA00F6A121 /* AppManager.swift in Sources */,
 				BA5BF7BB2B9EDCF100A57C2A /* UIButton+CTL.m in Sources */,
 				BABC6DD02BA4492D00DD9D48 /* CTDialogueCell.m in Sources */,
 				BA5BF7B52B9EDCB700A57C2A /* CTBaseViewController.m in Sources */,
@@ -859,9 +877,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7HH5ZUB44G;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CTTranslation/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -906,9 +925,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7HH5ZUB44G;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CTTranslation/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -967,35 +987,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 16.3.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		BA365EED2BA1AAE20088B23A /* FacebookAEM */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookAEM;
-		};
-		BA365EEF2BA1AAE20088B23A /* FacebookBasics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookBasics;
-		};
-		BA365EF12BA1AAE20088B23A /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BA365EEC2BA1AAE20088B23A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BA503AAB2B95AAE200D81AED /* CTTranslation.xcdatamodeld */ = {

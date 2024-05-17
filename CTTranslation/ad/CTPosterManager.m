@@ -676,7 +676,7 @@
     }
     
     __weak typeof(self) weakSelf = self;
-    [GADAppOpenAd loadWithAdUnitID:adid request:[GADRequest request] orientation:UIInterfaceOrientationPortrait completionHandler:^(GADAppOpenAd *_Nullable appOpenAd, NSError *_Nullable error) {
+    [GADAppOpenAd loadWithAdUnitID:adid request:[GADRequest request] completionHandler:^(GADAppOpenAd *_Nullable appOpenAd, NSError *_Nullable error) {
         if (error) {
             [weakSelf printWithModel:model metaModel:ad logType:CTPrintTypeLoadFail extra:[NSString stringWithFormat:@"reason => %@", [error localizedDescription]]];
             if (complete) complete(nil);

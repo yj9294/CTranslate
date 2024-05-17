@@ -1,12 +1,4 @@
 PODS:
-  - Ads-Global (5.7.0.6):
-    - Ads-Global/BUAdSDK (= 5.7.0.6)
-  - Ads-Global/BUAdSDK (5.7.0.6):
-    - Ads-Global/BURelyAdSDK
-    - Ads-Global/Dep_Accurate
-  - Ads-Global/BURelyAdSDK (5.7.0.6)
-  - Ads-Global/Dep_Accurate (5.7.0.6):
-    - BURelyFoundation_Global/Pangle (= 0.2.1.3)
   - AFNetworking (4.0.1):
     - AFNetworking/NSURLSession (= 4.0.1)
     - AFNetworking/Reachability (= 4.0.1)
@@ -22,158 +14,119 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AppLovinSDK (12.1.0)
-  - BURelyFoundation_Global/AFNetworking (0.2.1.3)
-  - BURelyFoundation_Global/APM (0.2.1.3)
-  - BURelyFoundation_Global/Foundation (0.2.1.3):
-    - BURelyFoundation_Global/NETWork
-  - BURelyFoundation_Global/Gecko (0.2.1.3):
-    - BURelyFoundation_Global/Foundation
-  - BURelyFoundation_Global/Header (0.2.1.3)
-  - BURelyFoundation_Global/NETWork (0.2.1.3):
-    - BURelyFoundation_Global/AFNetworking
-  - BURelyFoundation_Global/Pangle (0.2.1.3):
-    - BURelyFoundation_Global/AFNetworking
-    - BURelyFoundation_Global/APM
-    - BURelyFoundation_Global/Foundation
-    - BURelyFoundation_Global/Gecko
-    - BURelyFoundation_Global/Header
-    - BURelyFoundation_Global/NETWork
-    - BURelyFoundation_Global/SDWebImage
-    - BURelyFoundation_Global/YYModel
-    - BURelyFoundation_Global/ZFPlayer
-    - BURelyFoundation_Global/Zip
-  - BURelyFoundation_Global/SDWebImage (0.2.1.3):
-    - BURelyFoundation_Global/Foundation
-  - BURelyFoundation_Global/YYModel (0.2.1.3)
-  - BURelyFoundation_Global/ZFPlayer (0.2.1.3):
-    - BURelyFoundation_Global/Foundation
-    - BURelyFoundation_Global/Zip
-  - BURelyFoundation_Global/Zip (0.2.1.3):
-    - BURelyFoundation_Global/Foundation
-  - FBAudienceNetwork (6.14.0)
-  - FirebaseABTesting (10.19.0):
+  - FBAEMKit (17.0.1):
+    - FBSDKCoreKit_Basics (= 17.0.1)
+  - FBSDKCoreKit (17.0.1):
+    - FBAEMKit (= 17.0.1)
+    - FBSDKCoreKit_Basics (= 17.0.1)
+  - FBSDKCoreKit_Basics (17.0.1)
+  - FirebaseABTesting (10.25.0):
     - FirebaseCore (~> 10.0)
-  - FirebaseAnalytics (10.19.0):
-    - FirebaseAnalytics/AdIdSupport (= 10.19.0)
+  - FirebaseAnalytics (10.25.0):
+    - FirebaseAnalytics/AdIdSupport (= 10.25.0)
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (10.19.0):
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+  - FirebaseAnalytics/AdIdSupport (10.25.0):
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
-    - GoogleAppMeasurement (= 10.19.0)
+    - GoogleAppMeasurement (= 10.25.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseCore (10.19.0):
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+  - FirebaseCore (10.25.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
     - GoogleUtilities/Logger (~> 7.12)
-  - FirebaseCoreExtension (10.19.0):
+  - FirebaseCoreExtension (10.25.0):
     - FirebaseCore (~> 10.0)
-  - FirebaseCoreInternal (10.19.0):
+  - FirebaseCoreInternal (10.25.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseCrashlytics (10.19.0):
+  - FirebaseCrashlytics (10.25.0):
     - FirebaseCore (~> 10.5)
     - FirebaseInstallations (~> 10.0)
+    - FirebaseRemoteConfigInterop (~> 10.23)
     - FirebaseSessions (~> 10.5)
     - GoogleDataTransport (~> 9.2)
     - GoogleUtilities/Environment (~> 7.8)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (~> 2.1)
-  - FirebaseInstallations (10.19.0):
+  - FirebaseInstallations (10.25.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseRemoteConfig (10.19.0):
+  - FirebaseRemoteConfig (10.25.0):
     - FirebaseABTesting (~> 10.0)
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
+    - FirebaseRemoteConfigInterop (~> 10.23)
     - FirebaseSharedSwift (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseSessions (10.19.0):
+  - FirebaseRemoteConfigInterop (10.25.0)
+  - FirebaseSessions (10.25.0):
     - FirebaseCore (~> 10.5)
     - FirebaseCoreExtension (~> 10.0)
     - FirebaseInstallations (~> 10.0)
     - GoogleDataTransport (~> 9.2)
-    - GoogleUtilities/Environment (~> 7.10)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
+    - GoogleUtilities/Environment (~> 7.13)
+    - GoogleUtilities/UserDefaults (~> 7.13)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesSwift (~> 2.1)
-  - FirebaseSharedSwift (10.19.0)
-  - Google-Mobile-Ads-SDK (10.14.0):
-    - GoogleAppMeasurement (< 11.0, >= 7.0)
+  - FirebaseSharedSwift (10.25.0)
+  - Google-Mobile-Ads-SDK (11.4.0):
     - GoogleUserMessagingPlatform (>= 1.1)
-  - GoogleAppMeasurement (10.19.0):
-    - GoogleAppMeasurement/AdIdSupport (= 10.19.0)
+  - GoogleAppMeasurement (10.25.0):
+    - GoogleAppMeasurement/AdIdSupport (= 10.25.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (10.19.0):
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 10.19.0)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+  - GoogleAppMeasurement/AdIdSupport (10.25.0):
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 10.25.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleAppMeasurement/WithoutAdIdSupport (10.19.0):
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+  - GoogleAppMeasurement/WithoutAdIdSupport (10.25.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
-    - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GoogleDataTransport (9.3.0):
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+  - GoogleDataTransport (9.4.1):
     - GoogleUtilities/Environment (~> 7.7)
-    - nanopb (< 2.30910.0, >= 2.30908.0)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMLKit/MLKitCore (4.0.0):
-    - MLKitCommon (~> 9.0.0)
-  - GoogleMLKit/TextRecognition (4.0.0):
+  - GoogleMLKit/MLKitCore (5.0.0):
+    - MLKitCommon (~> 10.0.0)
+  - GoogleMLKit/TextRecognition (5.0.0):
     - GoogleMLKit/MLKitCore
-    - MLKitTextRecognition (~> 2.0.0)
-  - GoogleMLKit/TextRecognitionChinese (4.0.0):
+    - MLKitTextRecognition (~> 3.0.0)
+  - GoogleMLKit/TextRecognitionChinese (5.0.0):
     - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionChinese (~> 1.0.0)
-  - GoogleMLKit/TextRecognitionDevanagari (4.0.0):
+    - MLKitTextRecognitionChinese (~> 2.0.0)
+  - GoogleMLKit/TextRecognitionDevanagari (5.0.0):
     - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionDevanagari (~> 1.0.0)
-  - GoogleMLKit/TextRecognitionJapanese (4.0.0):
+    - MLKitTextRecognitionDevanagari (~> 2.0.0)
+  - GoogleMLKit/TextRecognitionJapanese (5.0.0):
     - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionJapanese (~> 1.0.0)
-  - GoogleMLKit/TextRecognitionKorean (4.0.0):
+    - MLKitTextRecognitionJapanese (~> 2.0.0)
+  - GoogleMLKit/TextRecognitionKorean (5.0.0):
     - GoogleMLKit/MLKitCore
-    - MLKitTextRecognitionKorean (~> 1.0.0)
-  - GoogleMLKit/Translate (4.0.0):
+    - MLKitTextRecognitionKorean (~> 2.0.0)
+  - GoogleMLKit/Translate (5.0.0):
     - GoogleMLKit/MLKitCore
-    - MLKitTranslate (~> 3.0.0)
-  - GoogleMobileAdsMediationAppLovin (12.1.0.0):
-    - AppLovinSDK (= 12.1.0)
-    - Google-Mobile-Ads-SDK (~> 10.4)
-  - GoogleMobileAdsMediationFacebook (6.14.0.0):
-    - FBAudienceNetwork (= 6.14.0)
-    - Google-Mobile-Ads-SDK (~> 10.4)
-  - GoogleMobileAdsMediationMintegral (7.5.3.0):
-    - Google-Mobile-Ads-SDK (~> 10.4)
-    - MintegralAdSDK/All (= 7.5.3)
-  - GoogleMobileAdsMediationPangle (5.7.0.6.0):
-    - Ads-Global (= 5.7.0.6)
-    - Google-Mobile-Ads-SDK (~> 10.4)
-  - GoogleMobileAdsMediationUnity (4.9.2.0):
-    - Google-Mobile-Ads-SDK (~> 10.4)
-    - UnityAds (= 4.9.2)
-  - GoogleMobileAdsMediationVungle (7.2.0.0):
-    - Google-Mobile-Ads-SDK (~> 10.4)
-    - VungleAds (= 7.2.0)
+    - MLKitTranslate (~> 4.0.0)
   - GoogleToolboxForMac/DebugUtils (2.3.2):
     - GoogleToolboxForMac/Defines (= 2.3.2)
   - GoogleToolboxForMac/Defines (2.3.2)
@@ -188,121 +141,104 @@ PODS:
   - "GoogleToolboxForMac/NSString+URLArguments (2.3.2)"
   - GoogleToolboxForMac/StringEncoding (2.3.2):
     - GoogleToolboxForMac/Defines (= 2.3.2)
-  - GoogleUserMessagingPlatform (2.1.0)
-  - GoogleUtilities/AppDelegateSwizzler (7.12.0):
+  - GoogleUserMessagingPlatform (2.4.0)
+  - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.12.0):
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Environment (7.13.3):
+    - GoogleUtilities/Privacy
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.12.0):
+  - GoogleUtilities/Logger (7.13.3):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.12.0):
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/MethodSwizzler (7.13.3):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.12.0):
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Network (7.13.3):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Privacy
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.12.0)"
-  - GoogleUtilities/Reachability (7.12.0):
+  - "GoogleUtilities/NSData+zlib (7.13.3)":
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Privacy (7.13.3)
+  - GoogleUtilities/Reachability (7.13.3):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.12.0):
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/UserDefaults (7.13.3):
     - GoogleUtilities/Logger
+    - GoogleUtilities/Privacy
   - GoogleUtilitiesComponents (1.1.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (2.3.0)
-  - IQKeyboardManager (6.5.16)
-  - lottie-ios (4.3.4)
+  - GTMSessionFetcher/Core (3.4.1)
+  - IQKeyboardManager (6.5.19)
+  - lottie-ios (4.4.3)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
-  - MintegralAdSDK/All (7.5.3):
-    - MintegralAdSDK/BannerAd
-    - MintegralAdSDK/BidNativeAd
-    - MintegralAdSDK/InterstitialVideoAd
-    - MintegralAdSDK/NativeAd
-    - MintegralAdSDK/NativeAdvancedAd
-    - MintegralAdSDK/NewInterstitialAd
-    - MintegralAdSDK/RewardVideoAd
-    - MintegralAdSDK/SplashAd
-  - MintegralAdSDK/BannerAd (7.5.3):
-    - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/BidNativeAd (7.5.3):
-    - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/InterstitialVideoAd (7.5.3):
-    - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/NativeAd (7.5.3)
-  - MintegralAdSDK/NativeAdvancedAd (7.5.3):
-    - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/NewInterstitialAd (7.5.3):
-    - MintegralAdSDK/InterstitialVideoAd
-    - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/RewardVideoAd (7.5.3):
-    - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/SplashAd (7.5.3):
-    - MintegralAdSDK/NativeAd
-  - MLImage (1.0.0-beta4)
-  - MLKitCommon (9.0.0):
+  - MLImage (1.0.0-beta5)
+  - MLKitCommon (10.0.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
     - GoogleUtilities/UserDefaults (~> 7.0)
     - GoogleUtilitiesComponents (~> 1.0)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.1)
-  - MLKitNaturalLanguage (5.0.0):
+    - GTMSessionFetcher/Core (< 4.0, >= 1.1)
+  - MLKitNaturalLanguage (6.0.0):
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
     - GoogleToolboxForMac/StringEncoding (~> 2.1)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.1)
-    - MLKitCommon (~> 9.0)
-  - MLKitTextRecognition (2.0.0):
-    - MLKitCommon (~> 9.0)
-    - MLKitTextRecognitionCommon (= 1.0.0)
-    - MLKitVision (~> 5.0)
-  - MLKitTextRecognitionChinese (1.0.0):
-    - MLKitCommon (~> 9.0)
-    - MLKitTextRecognitionCommon (= 1.0.0)
-    - MLKitVision (~> 5.0)
-  - MLKitTextRecognitionCommon (1.0.0):
-    - MLKitCommon (~> 9.0)
-    - MLKitVision (~> 5.0)
-  - MLKitTextRecognitionDevanagari (1.0.0):
-    - MLKitCommon (~> 9.0)
-    - MLKitTextRecognitionCommon (= 1.0.0)
-    - MLKitVision (~> 5.0)
-  - MLKitTextRecognitionJapanese (1.0.0):
-    - MLKitCommon (~> 9.0)
-    - MLKitTextRecognitionCommon (= 1.0.0)
-    - MLKitVision (~> 5.0)
-  - MLKitTextRecognitionKorean (1.0.0):
-    - MLKitCommon (~> 9.0)
-    - MLKitTextRecognitionCommon (= 1.0.0)
-    - MLKitVision (~> 5.0)
-  - MLKitTranslate (3.0.0):
-    - MLKitNaturalLanguage (~> 5.0)
-    - SSZipArchive (< 2.2, >= 2.1)
-  - MLKitVision (5.0.0):
+    - GTMSessionFetcher/Core (< 4.0, >= 1.1)
+    - MLKitCommon (~> 10.0)
+  - MLKitTextRecognition (3.0.0):
+    - MLKitCommon (~> 10.0)
+    - MLKitTextRecognitionCommon (= 2.0.0)
+    - MLKitVision (~> 6.0)
+  - MLKitTextRecognitionChinese (2.0.0):
+    - MLKitCommon (~> 10.0)
+    - MLKitTextRecognitionCommon (= 2.0.0)
+    - MLKitVision (~> 6.0)
+  - MLKitTextRecognitionCommon (2.0.0):
+    - MLKitCommon (~> 10.0)
+    - MLKitVision (~> 6.0)
+  - MLKitTextRecognitionDevanagari (2.0.0):
+    - MLKitCommon (~> 10.0)
+    - MLKitTextRecognitionCommon (= 2.0.0)
+    - MLKitVision (~> 6.0)
+  - MLKitTextRecognitionJapanese (2.0.0):
+    - MLKitCommon (~> 10.0)
+    - MLKitTextRecognitionCommon (= 2.0.0)
+    - MLKitVision (~> 6.0)
+  - MLKitTextRecognitionKorean (2.0.0):
+    - MLKitCommon (~> 10.0)
+    - MLKitTextRecognitionCommon (= 2.0.0)
+    - MLKitVision (~> 6.0)
+  - MLKitTranslate (4.0.0):
+    - MLKitNaturalLanguage (~> 6.0)
+    - SSZipArchive (< 3.0, >= 2.2.3)
+  - MLKitVision (6.0.0):
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - GTMSessionFetcher/Core (< 3.0, >= 1.1)
-    - MLImage (= 1.0.0-beta4)
-    - MLKitCommon (~> 9.0)
-  - nanopb (2.30909.1):
-    - nanopb/decode (= 2.30909.1)
-    - nanopb/encode (= 2.30909.1)
-  - nanopb/decode (2.30909.1)
-  - nanopb/encode (2.30909.1)
-  - PromisesObjC (2.3.1)
-  - PromisesSwift (2.3.1):
-    - PromisesObjC (= 2.3.1)
-  - SSZipArchive (2.1.5)
-  - UnityAds (4.9.2)
-  - VungleAds (7.2.0)
+    - GTMSessionFetcher/Core (< 4.0, >= 1.1)
+    - MLImage (= 1.0.0-beta5)
+    - MLKitCommon (~> 10.0)
+  - nanopb (2.30910.0):
+    - nanopb/decode (= 2.30910.0)
+    - nanopb/encode (= 2.30910.0)
+  - nanopb/decode (2.30910.0)
+  - nanopb/encode (2.30910.0)
+  - PromisesObjC (2.4.0)
+  - PromisesSwift (2.4.0):
+    - PromisesObjC (= 2.4.0)
+  - SSZipArchive (2.4.3)
   - YYText (1.0.7)
 
 DEPENDENCIES:
   - AFNetworking
+  - FBSDKCoreKit
   - FirebaseAnalytics
   - FirebaseCrashlytics
   - FirebaseRemoteConfig
@@ -313,12 +249,6 @@ DEPENDENCIES:
   - GoogleMLKit/TextRecognitionJapanese
   - GoogleMLKit/TextRecognitionKorean
   - GoogleMLKit/Translate
-  - GoogleMobileAdsMediationAppLovin
-  - GoogleMobileAdsMediationFacebook
-  - GoogleMobileAdsMediationMintegral
-  - GoogleMobileAdsMediationPangle
-  - GoogleMobileAdsMediationUnity
-  - GoogleMobileAdsMediationVungle
   - IQKeyboardManager
   - lottie-ios
   - Masonry
@@ -327,11 +257,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Ads-Global
     - AFNetworking
-    - AppLovinSDK
-    - BURelyFoundation_Global
-    - FBAudienceNetwork
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
     - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseCore
@@ -340,18 +269,13 @@ SPEC REPOS:
     - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseRemoteConfig
+    - FirebaseRemoteConfigInterop
     - FirebaseSessions
     - FirebaseSharedSwift
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleMLKit
-    - GoogleMobileAdsMediationAppLovin
-    - GoogleMobileAdsMediationFacebook
-    - GoogleMobileAdsMediationMintegral
-    - GoogleMobileAdsMediationPangle
-    - GoogleMobileAdsMediationUnity
-    - GoogleMobileAdsMediationVungle
     - GoogleToolboxForMac
     - GoogleUserMessagingPlatform
     - GoogleUtilities
@@ -361,7 +285,6 @@ SPEC REPOS:
     - lottie-ios
     - Masonry
     - MBProgressHUD
-    - MintegralAdSDK
     - MLImage
     - MLKitCommon
     - MLKitNaturalLanguage
@@ -377,65 +300,54 @@ SPEC REPOS:
     - PromisesObjC
     - PromisesSwift
     - SSZipArchive
-    - UnityAds
-    - VungleAds
     - YYText
 
 SPEC CHECKSUMS:
-  Ads-Global: 8693a09a00bd9278aaf28a85fcea9f193d9520bf
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
-  AppLovinSDK: 179d509c258e01a3a77eb8416f0ba843a12ed322
-  BURelyFoundation_Global: 932804aa7bac8c2c482b609371bbb6a079cc207b
-  FBAudienceNetwork: 4d6223a9a88a22e9dca8c9e6c1829a8745b86228
-  FirebaseABTesting: bfa3b384b68cee10a89183649c64cd7998a37a12
-  FirebaseAnalytics: 87513010b13b7c8610164d3602ea10571f76afc1
-  FirebaseCore: dc5c7badf99d47613c52b2e3a57a64cd187f8554
-  FirebaseCoreExtension: c08d14c7b22e07994e876d837e6f58642f340087
-  FirebaseCoreInternal: b444828ea7cfd594fca83046b95db98a2be4f290
-  FirebaseCrashlytics: a4d2ad12f5c07ec8ee0ebc89133a45498a293ba6
-  FirebaseInstallations: 033d199474164db20c8350736842a94fe717b960
-  FirebaseRemoteConfig: a7fcc7a5941faa7e09248e91c8797340aa4c85f6
-  FirebaseSessions: e5f4caa188dc8bc6142abc974355be75b042215e
-  FirebaseSharedSwift: f34eeb7d3ea87a34497629b6ca41657beadef76a
-  Google-Mobile-Ads-SDK: 8f67a72f88d057335b1ac3f501e2b68ad054116e
-  GoogleAppMeasurement: 68afe759316673c6554dac35a0c7ae8f5d6cb4ed
-  GoogleDataTransport: 57c22343ab29bc686febbf7cbb13bad167c2d8fe
-  GoogleMLKit: 2bd0dc6253c4d4f227aad460f69215a504b2980e
-  GoogleMobileAdsMediationAppLovin: a447d0b92d376455a6e66c89dcdbffbcd8346ad6
-  GoogleMobileAdsMediationFacebook: 13b1e1b86cca4f186fdfa0ba50467479b842c342
-  GoogleMobileAdsMediationMintegral: 5a7dabdb6982b7f2ab927e1155b9bda4ab212293
-  GoogleMobileAdsMediationPangle: 359298f36045278128a16b29acd014c2d124cb46
-  GoogleMobileAdsMediationUnity: b27046b3d4e7a703121c00975ed906afc5c1cdbb
-  GoogleMobileAdsMediationVungle: cd10e7b8caa8fa091707273ac363f9d5d22e7f72
+  FBAEMKit: 97eaf41451b49691447df831f7f425229ae64b66
+  FBSDKCoreKit: e34084567d11cfdd4787ace2b1a0255bedf34ade
+  FBSDKCoreKit_Basics: 3d78e5fe00504e5c1aed1c48de0654c3a1565d15
+  FirebaseABTesting: e6e3c3e0e35813874f571d1b7bdae2aab319dd38
+  FirebaseAnalytics: ec00fe8b93b41dc6fe4a28784b8e51da0647a248
+  FirebaseCore: 7ec4d0484817f12c3373955bc87762d96842d483
+  FirebaseCoreExtension: 8a47811d0b155501559ef05d089518152a0a1677
+  FirebaseCoreInternal: 910a81992c33715fec9263ca7381d59ab3a750b7
+  FirebaseCrashlytics: 4b96efb0ce73b38b2a85e8b8bd1bd8f63f09d015
+  FirebaseInstallations: 91950fe859846fff0fbd296180909dd273103b09
+  FirebaseRemoteConfig: 9f3935cefecd85d5b312192117f444957de24a75
+  FirebaseRemoteConfigInterop: b25018791b204c0d78a90e394d6c62d9b1f22da8
+  FirebaseSessions: c0939656253a1fa0e94ecc266ccf770cc8b33732
+  FirebaseSharedSwift: 0274086954b1b2d5fd7e829eccc587044d72a4ba
+  Google-Mobile-Ads-SDK: d097dca17b9344135dcf592e79df0c7fbd89947b
+  GoogleAppMeasurement: 9abf64b682732fed36da827aa2a68f0221fd2356
+  GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
+  GoogleMLKit: 90ba06e028795a50261f29500d238d6061538711
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
-  GoogleUserMessagingPlatform: dce302b8f1b84d6e945812ee7a15c3f65a102cbf
-  GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
+  GoogleUserMessagingPlatform: f131fa7978d2ba88d7426702b057c2cc318e6595
+  GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
-  GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
-  IQKeyboardManager: 024b54d7dcb765c5bc99882cb4d5ea24a8cb7c3c
-  lottie-ios: 3d98679b41fa6fd6aff2352b3953dbd3df8a397e
+  GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
+  IQKeyboardManager: c8665b3396bd0b79402b4c573eac345a31c7d485
+  lottie-ios: fcb5e73e17ba4c983140b7d21095c834b3087418
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MintegralAdSDK: 8a50d604e6d6f7c2842a24645a7a260ec3805d15
-  MLImage: 7bb7c4264164ade9bf64f679b40fb29c8f33ee9b
-  MLKitCommon: c1b791c3e667091918d91bda4bba69a91011e390
-  MLKitNaturalLanguage: cf9de96911516fc83297429b7d7b6b33bfa56a93
-  MLKitTextRecognition: 9ff0c843f2723d31d4bdd0c0d17a0a18382ed23e
-  MLKitTextRecognitionChinese: 1c2d90260b0ee2b5541bb6ce3b60fa5fed66a2a5
-  MLKitTextRecognitionCommon: 0d48930fee25cce9d52d0ba217490d4797061aa2
-  MLKitTextRecognitionDevanagari: ed581ba85fccbbcf3e15629ec8be6d6abb02d2d1
-  MLKitTextRecognitionJapanese: bbcaa15796ca9a1f42e3191e57468beb51b1035e
-  MLKitTextRecognitionKorean: 8de40a4e5081242a7a83187583a3a7b57b5a703b
-  MLKitTranslate: e805e2873e0fbb211547c714b40c22c08cb8d7cb
-  MLKitVision: 8baa5f46ee3352614169b85250574fde38c36f49
-  nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
-  PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
-  PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
-  SSZipArchive: cefe1364104a0231268a5deb8495bdf2861f52f0
-  UnityAds: 358547edbd4c923cd03462289b8813d0ef91999e
-  VungleAds: 85eb3468e8a6dfcf86f2b2e7891181df426c0433
+  MLImage: 1824212150da33ef225fbd3dc49f184cf611046c
+  MLKitCommon: afcd11b6c0735066a0dde8b4bf2331f6197cbca2
+  MLKitNaturalLanguage: b9a77b1811edf35bfba52ec1ce2c25a463aa45e0
+  MLKitTextRecognition: 91706574e4db9b48cd2e66cbbcc6b58956156b0a
+  MLKitTextRecognitionChinese: 19d3a70799f17cf2115b6381964b87e874d96dcd
+  MLKitTextRecognitionCommon: 3bd8375160d21dc9f9cc512d1fab2530ecc43dde
+  MLKitTextRecognitionDevanagari: 9c689b259f6654fdaa1004a769dcec55b257a02a
+  MLKitTextRecognitionJapanese: 9afa94ad6d622a69c2043def562fffa9be8d269d
+  MLKitTextRecognitionKorean: 4b37d1a034af61bf9699d791ae8bcf04cb1e97b7
+  MLKitTranslate: 52e52e7c4800e853c274711c9034306b80abba88
+  MLKitVision: 90922bca854014a856f8b649d1f1f04f63fd9c79
+  nanopb: 438bc412db1928dac798aa6fd75726007be04262
+  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 43fa6f4d30ffd08c44d22e82ba06240e738419ca
+PODFILE CHECKSUM: 8bc7c6dd71cdc6641d1c115d5d0c85e44b626e2f
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2

@@ -1,0 +1,126 @@
+{
+    "reportPrice": -1,
+    "isUserGo": false,
+    "showGuide": true,
+    "recommand": ["one-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","two-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","three-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","four-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","five-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","sex-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage."],
+    "positionConfig": [
+        {
+            "position": "open",
+            "cached": 2,
+            "pid": "ca-app-pub-3940256099942544/5575463023"
+        },
+        {
+            "position": "native",
+            "cached": 2,
+            "pid": "ca-app-pub-3940256099942544/3986624511"
+        },
+        {
+            "position": "interstital",
+            "cached": 2,
+            "pid": "ca-app-pub-3940256099942544/4411468910"
+        },
+        {
+            "position": "banner",
+            "cached": 2,
+            "pid": "ca-app-pub-3940256099942544/8388050270"
+        }
+    ],
+    "sceneConfig": [
+        {
+            "scene": "launOpen",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "launNative",
+            "userGo": true,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "selectLanNative",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "downloadInter",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "homeEnterInter",
+            "userGo": true,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "homeBanner",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "backHomeInter",
+            "userGo": true,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "ocrInter",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "resultInter",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "pharseInter",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "backPharse",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "chatBanner",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "chatNative",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "textBanner",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "ocrBanner",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        },
+        {
+            "scene": "quotesBanner",
+            "userGo": false,
+            "showTimes": 30,
+            "clickTimes": 3
+        }
+    ]
+}

@@ -24,7 +24,9 @@
     [self.window setBackgroundColor:[UIColor hexColor:@"#202329"]];
     UIWindowScene *windowScene = (UIWindowScene *)scene;
     [self.window setWindowScene:windowScene];
+    [AppManager shared].window = self.window;
     [[SVLaunchManager shared] launch];
+    [RemoteUtil.shared requestGADConfig];
 }
 
 #pragma mark - cycle
