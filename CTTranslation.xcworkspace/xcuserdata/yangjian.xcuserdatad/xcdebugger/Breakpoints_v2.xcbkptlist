@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2E442EF7-33EF-4E33-8F37-34526384AFC9"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD74E8D5-BA4A-4255-9319-4FB2806C0F36"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CTTranslation/SVLaunchManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-showHome"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BD74E8D5-BA4A-4255-9319-4FB2806C0F36 - 80188b15ef50687"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SVLaunchManager displayLaunchView]"
+                  moduleName = "CTTranslation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangjian/Documents/CoTransalte/CTTranslation/SVLaunchManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "BD74E8D5-BA4A-4255-9319-4FB2806C0F36 - b30681680db8a365"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SVLaunchManager showHome]"
+                  moduleName = "CTTranslation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangjian/Documents/CoTransalte/CTTranslation/SVLaunchManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "BD74E8D5-BA4A-4255-9319-4FB2806C0F36 - 3060d40b89313325"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__27-[SVLaunchManager showHome]_block_invoke"
+                  moduleName = "CTTranslation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangjian/Documents/CoTransalte/CTTranslation/SVLaunchManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

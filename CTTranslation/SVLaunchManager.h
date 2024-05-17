@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (SVLaunchManager *)shared;
 - (void)launch;
-- (void)displayLaunchView;
-- (void)gotoUpstage;
 @end
 
 NS_ASSUME_NONNULL_END

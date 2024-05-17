@@ -7,8 +7,22 @@
 
 #import "CTLaunchViewController.h"
 #import "Masonry/Masonry.h"
-//#import "CTTranslation-Swift.h"
 #import "UIView+CT.h"
+#import "AFNetworking/AFNetworking.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import "CTMainViewController.h"
+#import "UIView+CT.h"
+#import "CTLaunchViewController.h"
+#import "CTDbAdvertHandle.h"
+#import "CTFbHandle.h"
+#import "NSObject+CT.h"
+#import "CTTanslatePrivacyPop.h"
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "CTTranslateManager.h"
+#import "CTChooseLanguageViewController.h"
+#import "CTStatisticAnalysis.h"
+#import "CTChangeLangugeView.h"
 
 @implementation CTLaunchView
 
@@ -53,25 +67,8 @@
             make.centerX.mas_equalTo(0);
         }];
         
-        [self progressManager];
     }
     return self;
-}
-
-- (void)progressManager {
-    __weak typeof(self) weakSelf = self;
-    [NSTimer scheduledTimerWithTimeInterval:0.03 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        if (weakSelf.progressView.progress > 1) {
-            [timer invalidate];
-        } else {
-            weakSelf.progressView.progress += 0.0015;
-        }
-    }];
-}
-
-- (void)stop {
-    [self.progressView setProgress:1.0 animated:YES];
-    self.progressView.hidden = YES;
 }
 
 - (UIProgressView *)progressView {
@@ -88,6 +85,9 @@
 @end
 
 @interface CTLaunchViewController ()
+@property (nonatomic, strong) CTMainViewController *home;
+@property (nonatomic, strong) CTLaunchView *launchView;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation CTLaunchViewController
@@ -99,8 +99,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor hexColor:@"#12263A"];
-    CTLaunchView *launchView = [[CTLaunchView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:launchView];
+    self.launchView = [[CTLaunchView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.launchView];
 }
 
+- (void)launch {
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    [self progressManager];
+}
+
+- (void)showHome {
+    AppManager.shared.window.rootViewController = [[CTMainViewController alloc] init];
+}
+
+- (void)showAdvert {
+    [self showHome];
+}
+
+- (void)progressManager {
+    __weak typeof(self) weakSelf = self;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (weakSelf.launchView.progressView.progress >= 1.0) {
+            [timer invalidate];
+            [weakSelf showHome];
+        } else {
+            weakSelf.launchView.progressView.progress += (0.01 / 2.5);
+        }
+    }];
+}
 @end

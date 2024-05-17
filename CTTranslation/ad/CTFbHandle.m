@@ -44,7 +44,7 @@
     self = [super init];
     if (self) {
         self.isAdConfig = NO;
-        [FIRApp configure];
+//        [FIRApp configure];
     }
     return self;
 }

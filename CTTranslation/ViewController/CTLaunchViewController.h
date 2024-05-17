@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface CTLaunchViewController : UIViewController
+- (void)launch;
 @end
 
 NS_ASSUME_NONNULL_END

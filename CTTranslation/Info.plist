@@ -24,7 +24,7 @@
 	<key>FacebookDisplayName</key>
 	<string>Secure VPN</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3842783438185634~8658182334</string>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<key>GADNativeAdValidatorEnabled</key>
 	<false/>
 	<key>NSAppTransportSecurity</key>

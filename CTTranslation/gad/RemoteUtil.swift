@@ -18,12 +18,8 @@ class RemoteUtil: NSObject {
         remoteConfig.configSettings = settings
         return remoteConfig
     }()
-    private var gadConfig: GADConfig?
     
-    override init() {
-        super.init()
-        FirebaseApp.configure()
-    }
+    private var gadConfig: GADConfig? = nil
     
     @objc func requestGADConfig() {
         remoteConfig.fetch { status, error in
@@ -44,7 +40,7 @@ class RemoteUtil: NSObject {
                             if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) {
                                 let decoder = JSONDecoder()
                                 let adConfig = try decoder.decode(GADConfig.self, from: jsonData)
-                                GADUtil.share.updateConfig(adConfig)
+                                GADUtil.shared.updateConfig(adConfig)
                             }
                         } catch {
                             NSLog("[Config] Error parsing JSON: \(error.localizedDescription)")
@@ -55,16 +51,32 @@ class RemoteUtil: NSObject {
                 NSLog("[Config] Error fetching Remote Config: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
-        if GADUtil.share.getConfig.isDefaul() {
+        if GADUtil.shared.getConfig.isDefaul() {
             let path = Bundle.main.path(forResource: AppManager.shared.isDebug ? "GADConfig_debug" : "GADConfig", ofType: "json")
             let url = URL(fileURLWithPath: path!)
             do {
                 let data = try Data(contentsOf: url)
-                GADUtil.share.updateConfig(try JSONDecoder().decode(GADConfig.self, from: data))
+                GADUtil.shared.updateConfig(try JSONDecoder().decode(GADConfig.self, from: data))
                 NSLog("[Config] Read local ad config success.")
             } catch let error {
                 NSLog("[Config] Read local ad config fail.\(error.localizedDescription)")
             }
         }
+    }
+}
+
+extension DispatchQueue {
+    private static var _onceTracker = [String]()
+    
+    public class func once(token: String, block: () -> Void) {
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+        
+        if _onceTracker.contains(token) {
+            return
+        }
+        
+        _onceTracker.append(token)
+        block()
     }
 }

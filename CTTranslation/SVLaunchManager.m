@@ -82,7 +82,6 @@
                 weakSelf.isTimeout = NO;
                 ctdispatch_async_main_safe(^ {
                     [weakSelf idfaCheckWithComplete:^{
-                        [CTFirebase configureAdvert];
                         [weakSelf configureData];
                     }];
                 });
@@ -166,30 +165,7 @@
     return window;
 }
 
-- (void)displayLaunchView {
-    if (self.isShowLaunch) return;
-    self.isShowLaunch = YES;
-    [RemoteUtil.shared requestGADConfig];
-    
-    UIWindow *window = [self getHomeWindow];
-    CTLaunchView *launchView = [[CTLaunchView alloc] initWithFrame:window.bounds];
-    launchView.tag = 200;
-    [window addSubview:launchView];
-    __weak typeof(self) weakSelf = self;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf showAdvert];
-    });
-}
-
-- (void)hiddenLaunchView {
-    UIWindow *window = [self getHomeWindow];
-    UIView *view = [window viewWithTag:200];
-    [view removeFromSuperview];
-    if (view) {
-        view = nil;
-    }
-}
 
 - (void)showHome {
     __weak typeof(self) weakSelf = self;
@@ -200,7 +176,6 @@
                 weakSelf.home = [[CTMainViewController alloc] init];
             }
             if ([window.rootViewController isKindOfClass:[CTMainViewController class]]) {
-                [weakSelf hiddenLaunchView];
             } else {
                 [window setRootViewController:weakSelf.home];
                 [window makeKeyAndVisible];
@@ -212,7 +187,8 @@
 
 - (void)configureData {
     [self languageConfigure];
-    [CTFirebase configureAdvert];
+    [[RemoteUtil shared] requestGADConfig];
+//    [CTFirebase configureAdvert];
 }
 
 - (void)showAdvert {

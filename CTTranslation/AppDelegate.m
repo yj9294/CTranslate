@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "CTFbHandle.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FirebaseCore/FirebaseCore.h>
 #import "CTTools.h"
 #import "CTPoolManager.h"
 #import "CTFbHandle.h"
@@ -20,7 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[CTFbHandle shared] configreRemoteInfo];
+    [FIRApp configure];
     [FBSDKSettings sharedSettings].isAdvertiserIDCollectionEnabled = YES;
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     return YES;

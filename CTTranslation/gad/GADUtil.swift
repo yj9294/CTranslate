@@ -10,7 +10,7 @@ import Combine
 import GoogleMobileAds
 
 public class GADUtil: NSObject {
-    @objc public static let share = GADUtil()
+    @objc public static let shared = GADUtil()
     public var rootVC: UIViewController? = nil
     override init() {
         super.init()
@@ -425,7 +425,7 @@ class GADLoadModel: NSObject {
     // 是否需要预加载
     var isNeedPreloaded: Bool {
         // 当前加载成功数量小于配置的档期广告位置需要缓存个数
-        let con = GADUtil.share.getConfig.positionConfig.filter({$0.position == position}).first?.cached ?? 2
+        let con = GADUtil.shared.getConfig.positionConfig.filter({$0.position == position}).first?.cached ?? 2
         if loadedArray.count + loadingArray.count < con {
             return true
         }
@@ -433,7 +433,7 @@ class GADLoadModel: NSObject {
     }
     // 当前广告位置有缓存
     var isLoadedCached: Bool {
-        let con = GADUtil.share.getConfig.positionConfig.filter({$0.position == position}).first?.cached ?? 2
+        let con = GADUtil.shared.getConfig.positionConfig.filter({$0.position == position}).first?.cached ?? 2
         return loadedArray.count >= con
     }
     // 是否加载完成 不管成功还是失败
@@ -467,16 +467,16 @@ extension GADLoadModel {
         NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 开始预加载 --------------------")
         if isNeedPreloaded {
             NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count)")
-            if GADUtil.share.isLoaded(.banner), position == .banner {
+            if GADUtil.shared.isLoaded(.banner), position == .banner {
                 NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 已经有可取缓存。可进行展示")
                 callback?(true)
             }
-            if GADUtil.share.isLoaded(.native), position == .native {
+            if GADUtil.shared.isLoaded(.native), position == .native {
                 NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 已经有可取缓存。可进行展示")
                 callback?(true)
             }
             
-            let array: [GADPostionModel] = GADUtil.share.getConfig.positionConfig.filter({$0.position == position})
+            let array: [GADPostionModel] = GADUtil.shared.getConfig.positionConfig.filter({$0.position == position})
             if !array.isEmpty {
                 NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 开始加载")
                 prepareLoadAd(array: array) { [weak self] isSuccess in
@@ -509,7 +509,7 @@ extension GADLoadModel {
             callback?(false)
             return
         }
-        if GADUtil.share.isGADLimited(p) {
+        if GADUtil.shared.isGADLimited(p) {
             NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 当前超限。")
             callback?(false)
             return
@@ -798,7 +798,7 @@ extension GADBannerModel {
         loadedDate = nil
         loadedHandler = completion
         let adaptiveSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width - 20)
-        if let bannerView = GADUtil.share.bannerView {
+        if let bannerView = GADUtil.shared.bannerView {
             self.bannerView = bannerView
         } else {
             bannerView = GADBannerView(adSize: adaptiveSize)
