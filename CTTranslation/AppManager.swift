@@ -16,4 +16,14 @@ public class AppManager: NSObject {
     
     @objc var isDebug: Bool = true
     
+    @objc var isDismissFullAd = false
+    
+    @UserDefault(key: "show.choose.vc")
+    var needChooseVC: Bool?
+    @objc var getNeedChooseVC: Bool {
+        return needChooseVC ?? true
+    }
+    @objc func updateNeedChooseVC() {
+        needChooseVC = false   
+    }
 }

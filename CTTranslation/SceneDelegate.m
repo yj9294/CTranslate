@@ -56,11 +56,11 @@
 - (void)sceneWillEnterForeground:(UIScene *)scene {
     UIViewController *vc = [self getCurrentTopVC];
     if ([vc isKindOfClass:[NSClassFromString(@"GADFullScreenAdViewController") class]]) {
+        AppManager.shared.isDismissFullAd = YES;
         [vc dismissViewControllerAnimated:YES completion:nil];
-        return;
     }
     __weak typeof(self) weakSelf = self;
-    [weakSelf privacyCheckWithComplete:^{
+    [self privacyCheckWithComplete:^{
         [weakSelf idfaCheckWithComplete:^{
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf.launchVC launch];
@@ -72,6 +72,7 @@
 - (void)sceneDidEnterBackground:(UIScene *)scene {
     UIViewController *vc = [self getCurrentTopVC];
     if ([vc isKindOfClass:[NSClassFromString(@"GADFullScreenAdViewController") class]]) {
+        AppManager.shared.isDismissFullAd = YES;
         [vc dismissViewControllerAnimated:YES completion:nil];
         return;
     }
@@ -107,7 +108,7 @@
 }
 
 - (void)privacyCheckWithComplete:(void(^)(void))complete {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSString *flag = [[NSUserDefaults standardUserDefaults] objectForKey:@"isAgreePrivacy"];
         if (flag.length > 0) {
             if (complete) complete();

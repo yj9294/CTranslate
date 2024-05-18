@@ -30,7 +30,7 @@ public class GADUtil: NSObject {
     }
     
     public var getConfig: GADConfig {
-        config ?? .init(positionConfig: [], sceneConfig: [], isUserGo: false, reportPrice: -1)
+        config ?? .init(positionConfig: [], sceneConfig: [], isUserGo: false, showGuide: false, reportPrice: -1, recommand: [])
     }
     
     // 本地记录 限制次数
@@ -40,7 +40,7 @@ public class GADUtil: NSObject {
     /// 是否超限
     public func isGADLimited(_ scene: GADScene) -> Bool {
         if limit?.date.isToday == true {
-            if let li = limit?.scenes.filter({ $0.scene == scene }).first, let con = config?.sceneConfig.filter({$0.scene == scene.rawValue}).first {
+            if let li = limit?.scenes.filter({ $0.scene == scene }).first, let con = config?.sceneConfig.filter({$0.scene == scene.title}).first {
                 if li.showTimes >= con.showTimes || li.clickTimes >= con.clickTimes {
                     return true
                 }
@@ -58,13 +58,13 @@ public class GADUtil: NSObject {
 extension GADUtil {
     
     // 如果使用 async 请求广告 则这个值可能会是错误的。
-    public func isLoaded(_ position: GADPosition) -> Bool {
+    @objc public func isLoaded(_ position: GADPosition) -> Bool {
         return self.ads.filter {
             $0.position.rawValue == position.rawValue
         }.first?.isLoadCompletion == true
     }
     
-    public func isDidLoaded(_ position: GADPosition) -> Bool {
+    @objc public func isDidLoaded(_ position: GADPosition) -> Bool {
         return (self.ads.filter {
             $0.position.rawValue == position.rawValue
         }.first?.loadedArray.count ?? 0) > 0
@@ -90,22 +90,22 @@ extension GADUtil {
     /// 限制
     fileprivate func add(_ status: GADLimit.GADSceneLimit.Status, scene: GADScene, position: GADPosition) {
         if isGADLimited(scene) {
-            NSLog("[AD] (\(position.rawValue)) (\(scene.rawValue)) 用戶超过限制。")
+            NSLog("[AD] (\(position.rawValue)) (\(scene.title)) 用戶超过限制。")
             return
         }
         let ret = limit?.add(scene, type: status) ?? 0
-        let con = config?.sceneConfig.filter({ $0.scene == scene.rawValue }).first
-        NSLog("[AD] (\(position.rawValue)) (\(scene.rawValue)) [LIMIT] \(status == .show ? "正在展示" : "正在点击"): \(ret) total: (\(con?.clickTimes ?? 0),\(con?.showTimes ?? 0))")
+        let con = config?.sceneConfig.filter({ $0.scene == scene.title }).first
+        NSLog("[AD] (\(position.rawValue)) (\(scene.title)) [LIMIT] \(status == .show ? "正在展示" : "正在点击"): \(ret) total: (\(con?.clickTimes ?? 0),\(con?.showTimes ?? 0))")
     }
     
     /// 加载
     @available(*, renamed: "load()")
-    public func load(_ position: GADPosition, p: GADScene, completion: ((Bool)->Void)? = nil) {
+     @objc public func load(_ position: GADPosition, p: GADScene, completion: ((Bool)->Void)? = nil) {
         let ads = ads.filter{
             $0.position.rawValue == position.rawValue
         }
         let ad = ads.first
-        if let scene = config?.sceneConfig.filter({$0.scene == p.rawValue}).first, scene.userGo {
+        if let scene = config?.sceneConfig.filter({$0.scene == p.title}).first, scene.userGo {
             if config?.isUserGo == false {
                 NSLog("[ad] (\(position.rawValue)) (\(p.rawValue)) ad must be user go. but now is false")
                 ad?.isLoadCompletion = true
@@ -141,8 +141,8 @@ extension GADUtil {
     
     /// 展示
     @available(*, renamed: "show()")
-    public func show(_ position: GADPosition, p: GADScene , from vc: UIViewController? = nil , completion: ((GADBaseModel?)->Void)? = nil) {
-        if let scene = config?.sceneConfig.filter({$0.scene == p.rawValue}).first, scene.userGo {
+    @objc public func show(_ position: GADPosition, p: GADScene , from vc: UIViewController? = nil , completion: ((GADBaseModel?)->Void)? = nil) {
+        if let scene = config?.sceneConfig.filter({$0.scene == p.title}).first, scene.userGo {
             if config?.isUserGo == false {
                 NSLog("[ad] (\(position.rawValue)) (\(p.rawValue)) ad must be user go. but now is \(scene.userGo)")
                 completion?(nil)
@@ -292,7 +292,9 @@ public struct GADConfig: Codable {
     var positionConfig: [GADPostionModel]
     var sceneConfig: [GADSceneModel]
     var isUserGo: Bool
+    var showGuide: Bool
     var reportPrice: Int
+    var recommand: [String]
     
     func isDefaul() -> Bool {
         reportPrice < 0
@@ -401,12 +403,62 @@ struct GADLimit: Codable {
 //}
 
 // 自定义广告位置枚举协议
-public enum GADPosition: String, CaseIterable, Codable {
+@objc public enum GADPosition: Int, CaseIterable, Codable {
     case open, native, interstital, banner
+    public var title: String {
+        switch self {
+        case .open:
+            return "open"
+        case .native:
+            return "native"
+        case .interstital:
+            return "interstital"
+        case .banner:
+            return "banner"
+        }
+    }
 }
 
-public enum GADScene: String, CaseIterable, Codable {
-    case  none, launOpen, launNative, selectLanNative, downloadInter, homeEnterInter, homeBanner, backHomeInter, ocrInter, resultInter, pharseInter, backPharse, chatBanner, chatNative, textBanner, ocrBanner, quotesBanner
+@objc public enum GADScene: Int, CaseIterable, Codable {
+    case  none, launOpen, selectionInter, selectLanNative, downloadInter, homeEnterInter, homeBanner, backHomeInter, ocrInter, resultInter, pharseInter, backPharse, chatBanner, chatNative, textBanner, ocrBanner, quotesBanner
+    public var title: String {
+        switch self {
+        case .none:
+            return "none"
+        case .launOpen:
+            return "launOpen"
+        case .selectionInter:
+            return "selectionInter"
+        case .selectLanNative:
+            return "selectLanNative"
+        case .downloadInter:
+            return "downloadInter"
+        case .homeEnterInter:
+            return "homeEnterInter"
+        case .homeBanner:
+            return "homeBanner"
+        case .backHomeInter:
+            return "backHomeInter"
+        case .ocrInter:
+            return "ocrInter"
+        case .resultInter:
+            return "resultInter"
+        case .pharseInter:
+            return "pharseInter"
+        case .backPharse:
+            return "backPharse"
+        case .chatBanner:
+            return "chatBanner"
+        case .chatNative:
+            return "chatNative"
+        case .textBanner:
+            return "textBanner"
+        case .ocrBanner:
+            return "ocrBanner"
+        case .quotesBanner:
+            return "quotesBanner"
+        }
+    }
 }
 
 class GADLoadModel: NSObject {
@@ -432,7 +484,7 @@ class GADLoadModel: NSObject {
         return false
     }
     // 当前广告位置有缓存
-    var isLoadedCached: Bool {
+     var isLoadedCached: Bool {
         let con = GADUtil.shared.getConfig.positionConfig.filter({$0.position == position}).first?.cached ?? 2
         return loadedArray.count >= con
     }
@@ -659,6 +711,10 @@ extension GADInterstitialModel: GADFullScreenContentDelegate {
     }
     
     func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        if AppManager.shared.isDismissFullAd {
+            AppManager.shared.isDismissFullAd.toggle()
+            return
+        }
         closeHandler?()
     }
     
@@ -717,6 +773,9 @@ extension GADOpenModel: GADFullScreenContentDelegate {
     }
     
     func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        if AppManager.shared.isDismissFullAd {
+            AppManager.shared.isDismissFullAd.toggle();
+        }
         closeHandler?()
     }
     

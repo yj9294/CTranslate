@@ -5,22 +5,22 @@
     "recommand": ["one-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","two-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","three-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","four-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","five-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage.","sex-Being deeply loved by someonegives you strength, while lovingsomeone deeply gives youcourage."],
     "positionConfig": [
         {
-            "position": "open",
+            "position": 0,
             "cached": 2,
             "pid": "ca-app-pub-3940256099942544/5575463023"
         },
         {
-            "position": "native",
+            "position": 1,
             "cached": 2,
             "pid": "ca-app-pub-3940256099942544/3986624511"
         },
         {
-            "position": "interstital",
+            "position": 2,
             "cached": 2,
             "pid": "ca-app-pub-3940256099942544/4411468910"
         },
         {
-            "position": "banner",
+            "position": 3,
             "cached": 2,
             "pid": "ca-app-pub-3940256099942544/8388050270"
         }

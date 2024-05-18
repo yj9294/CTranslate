@@ -77,7 +77,6 @@
 @property (nonatomic, assign) NSInteger chooseIndex;
 @property (nonatomic, assign) NSInteger oldChooseIndex;
 
-@property (nonatomic, strong, nullable) GADInterstitialAd *selectLangInterstitial;
 @property (nonatomic, strong, nullable) GADNativeAdView *nativeAdView;
 @property (nonatomic, strong, nullable) GADNativeAd *nativeAd;
 
@@ -99,6 +98,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneSelectionInter completion:nil];
     self.chooseIndex = -1;
     self.oldChooseIndex = -1;
     self.view.backgroundColor = [UIColor hexColor:@"#12263A"];
@@ -153,10 +153,6 @@
 - (void)okAction {
     if (self.chooseIndex >= 0) {
         [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"lan_i"}];
-//        if (self.selectModel) {
-//            self.selectModel(self.dataSource[self.chooseIndex]);
-//        }
-//        [self.navigationController popViewControllerAnimated:YES];
         [self displayAdvert];
     } else {
         [UIView ct_tipToast:@"no choice!"];
@@ -164,31 +160,10 @@
 }
 
 - (void)displayAdvert {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    CTAdvertLocationType type = CTAdvertLocationTypeSelectLang;
-    if ([manager isCanShowAdvertWithType:type]) {
-        if ((manager.selectLangInterstitial && [manager isCacheValidWithType:type]) || manager.substituteInterstitial) {
-            if (manager.isScreenAdShow) return;
-            manager.isScreenAdShow = YES;
-            if (manager.selectLangInterstitial && [manager isCacheValidWithType:type]) {
-                self.selectLangInterstitial = manager.selectLangInterstitial;
-                manager.selectLangInterstitial = nil;
-            } else {
-                self.selectLangInterstitial = manager.substituteInterstitial;
-                manager.substituteInterstitial = nil;
-                self.isSubstitute = YES;
-            }
-            
-            self.selectLangInterstitial.fullScreenContentDelegate = self;
-            [UIView ct_tipForeplayWithComplete:^{
-                [self.selectLangInterstitial presentFromRootViewController:self];
-            }];
-        } else {
-            [self jumpVCWithAnimated:YES];
-        }
-    } else {
-        [self jumpVCWithAnimated:YES];
-    }
+    __weak typeof(self) weakSelf = self;
+    [GADUtil.shared show:GADPositionInterstital p:GADSceneSelectionInter from:self completion:^(GADBaseModel * _Nullable model) {
+        [weakSelf jumpVCWithAnimated:YES];
+    }];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {
@@ -369,62 +344,4 @@
 - (void)nativeAdDidRecordClick:(nonnull GADNativeAd *)nativeAd {
     [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeSelectLangNative];
 }
-
-#pragma mark - GADFullScreenContentDelegate
-- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad {
-    GADInterstitialAd *advert = (GADInterstitialAd *)ad;
-    advert.paidEventHandler = ^(GADAdValue * _Nonnull value) {
-        [[CTPosterManager sharedInstance] paidAdWithValue:value];
-    };
-}
-
-//这里用将要消失
-- (void)adWillDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    self.selectLangInterstitial = nil;
-    if (self.isSubstitute) {
-        self.isSubstitute = NO;
-        [manager setupIsShow:NO type:CTAdvertLocationTypeSubstitute];
-    } else {
-        [manager setupIsShow:NO type:CTAdvertLocationTypeSelectLang];
-    }
-    [self jumpVCWithAnimated:NO];
-}
-
-//3 点击
-- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库点击次数
-    if (self.isSubstitute) {
-        [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeSubstitute];
-    } else {
-        [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeSelectLang];
-    }
-}
-
-//1 将要展示
-- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库展示次数
-    if (self.isSubstitute) {
-        [CTStatisticAnalysis saveEvent:@"backup_show" params:@{@"place": @"lan_i"}];
-        [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeSubstitute];
-    } else {
-        [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": @"lan_i"}];
-        [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeSelectLang];
-    }
-}
-
-- (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    if (self.isSubstitute) {
-        self.isSubstitute = NO;
-        [manager advertLogFailedWithType:CTAdvertLocationTypeSelectLang error:error.localizedDescription];
-    } else {
-        [manager advertLogFailedWithType:CTAdvertLocationTypeSelectLang error:error.localizedDescription];
-    }
-    self.selectLangInterstitial = nil;
-    [self jumpVCWithAnimated:YES];
-}
-
 @end

@@ -109,25 +109,48 @@
         self.timer = nil;
     }
     [self progressManager];
+    [self showLaunch];
+}
+
+- (void)showLaunch {
+    AppManager.shared.window.rootViewController = self;
 }
 
 - (void)showHome {
-    AppManager.shared.window.rootViewController = [[CTMainViewController alloc] init];
-}
-
-- (void)showAdvert {
-    [self showHome];
+    if ([AppManager.shared getNeedChooseVC]) {
+        CTChooseLanguageViewController *vc = [[CTChooseLanguageViewController alloc] init];
+        vc.isHiddenBackButton = YES;
+        vc.selectModel = ^(CTTranslateModel * _Nonnull model) {
+            [AppManager.shared updateNeedChooseVC];
+            AppManager.shared.window.rootViewController = [[CTMainViewController alloc] init];
+        };
+        AppManager.shared.window.rootViewController = vc;
+    } else {
+        AppManager.shared.window.rootViewController = [[CTMainViewController alloc] init];
+    }
 }
 
 - (void)progressManager {
     __weak typeof(self) weakSelf = self;
+    __block int duration = 15.0;
+    self.launchView.progressView.progress = 0.0;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01 repeats:YES block:^(NSTimer * _Nonnull timer) {
         if (weakSelf.launchView.progressView.progress >= 1.0) {
             [timer invalidate];
-            [weakSelf showHome];
+            [GADUtil.shared show:GADPositionOpen p:GADSceneLaunOpen from:weakSelf completion:^(GADBaseModel * _Nullable ret) {
+                if (weakSelf.launchView.progressView.progress >= 1.0) {
+                    [weakSelf showHome];
+                }
+            }];
         } else {
-            weakSelf.launchView.progressView.progress += (0.01 / 2.5);
+            weakSelf.launchView.progressView.progress += (0.01 / duration);
         }
+        
+        if (weakSelf.launchView.progressView.progress > 0.14 && [GADUtil.shared isDidLoaded:GADPositionOpen]) {
+            duration = 0.01;
+        }
+        
     }];
+    [GADUtil.shared load:GADPositionOpen p:GADSceneLaunOpen completion:nil];
 }
 @end
