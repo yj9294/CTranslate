@@ -90,12 +90,12 @@ extension GADUtil {
     /// 限制
     fileprivate func add(_ status: GADLimit.GADSceneLimit.Status, scene: GADScene, position: GADPosition) {
         if isGADLimited(scene) {
-            NSLog("[AD] (\(position.rawValue)) (\(scene.title)) 用戶超过限制。")
+            NSLog("[AD] (\(position.title)) (\(scene.title)) 用戶超过限制。")
             return
         }
         let ret = limit?.add(scene, type: status) ?? 0
         let con = config?.sceneConfig.filter({ $0.scene == scene.title }).first
-        NSLog("[AD] (\(position.rawValue)) (\(scene.title)) [LIMIT] \(status == .show ? "正在展示" : "正在点击"): \(ret) total: (\(con?.clickTimes ?? 0),\(con?.showTimes ?? 0))")
+        NSLog("[AD] (\(position.title)) (\(scene.title)) [LIMIT] \(status == .show ? "正在展示" : "正在点击"): \(ret) total: (\(con?.clickTimes ?? 0),\(con?.showTimes ?? 0))")
     }
     
     /// 加载
@@ -107,14 +107,14 @@ extension GADUtil {
         let ad = ads.first
         if let scene = config?.sceneConfig.filter({$0.scene == p.title}).first, scene.userGo {
             if config?.isUserGo == false {
-                NSLog("[ad] (\(position.rawValue)) (\(p.rawValue)) ad must be user go. but now is false")
+                NSLog("[ad] (\(position.title)) ((\(p.title)) ad must be user go. but now is false")
                 ad?.isLoadCompletion = true
                 completion?(false)
                 return
             }
         }
         if isGADLimited(p) {
-            NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) load limit")
+            NSLog("[AD] (\(position.title)) ((\(p.title)) load limit")
             ad?.isLoadCompletion = true
             completion?(false)
             return
@@ -144,7 +144,7 @@ extension GADUtil {
     @objc public func show(_ position: GADPosition, p: GADScene , from vc: UIViewController? = nil , completion: ((GADBaseModel?)->Void)? = nil) {
         if let scene = config?.sceneConfig.filter({$0.scene == p.title}).first, scene.userGo {
             if config?.isUserGo == false {
-                NSLog("[ad] (\(position.rawValue)) (\(p.rawValue)) ad must be user go. but now is \(scene.userGo)")
+                NSLog("[ad] (\(position.title)) ((\(p.title)) ad must be user go. but now is \(scene.userGo)")
                 completion?(nil)
                 return
             }
@@ -205,7 +205,7 @@ extension GADUtil {
             if let ad = loadAD?.loadedArray.first as? GADBaseModel, !isGADLimited(p) {
                 /// 预加载回来数据 当时已经有显示数据了
                 if loadAD?.isDisplay == true {
-                    NSLog("[ad] (\(position.rawValue)) (\(p.rawValue)) 广告正在展示, 当前缓存数量:\(loadAD?.loadedArray.count ?? 0), 当前正在加载数量:\(loadAD?.loadingArray.count ?? 0)")
+                    NSLog("[ad] (\(position.title)) ((\(p.title)) 广告正在展示, 当前缓存数量:\(loadAD?.loadedArray.count ?? 0), 当前正在加载数量:\(loadAD?.loadingArray.count ?? 0)")
                     return
                 }
                 if let ad = ad as? GADNativeModel {
@@ -245,7 +245,7 @@ extension GADUtil {
                 if loadAD?.isDisplay == true, !isGADLimited(p) {
                     return
                 }
-                NSLog("[ad] (\(position.rawValue)) (\(p.rawValue)) 当前无可用广告实例")
+                NSLog("[ad] (\(position.title)) ((\(p.title)) 当前无可用广告实例")
                 completion?(nil)
             }
         }
@@ -267,7 +267,7 @@ extension GADUtil {
     }
     
     /// 关闭正在显示的广告（原生，插屏）针对displayArray
-    public func disappear(_ position: GADPosition) {
+    @objc public func disappear(_ position: GADPosition) {
         ads.filter{
             $0.position.rawValue == position.rawValue
         }.first?.closeDisplay()
@@ -329,9 +329,9 @@ public class GADBaseModel: NSObject, Identifiable {
     /// 當前廣告model
     public var model: GADPostionModel?
     /// 廣告位置
-    public var position: GADPosition
+    @objc public var position: GADPosition
     
-    public var p: GADScene
+    @objc public var p: GADScene
     // 收入
     public var price: Double = 0.0
     // 收入货币
@@ -516,58 +516,58 @@ extension GADLoadModel {
     @available (*, renamed: "beginAddWaterFall()")
     func beginAddWaterFall(callback: ((_ isSuccess: Bool) -> Void)? = nil) {
         isLoadCompletion = false
-        NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 开始预加载 --------------------")
+        NSLog("[AD] (\(position.title)) ((\(p.title)) 开始预加载 --------------------")
         if isNeedPreloaded {
-            NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count)")
+            NSLog("[AD] (\(position.title)) ((\(p.title)) 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count)")
             if GADUtil.shared.isLoaded(.banner), position == .banner {
-                NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 已经有可取缓存。可进行展示")
+                NSLog("[AD] (\(position.title)) ((\(p.title)) 已经有可取缓存。可进行展示")
                 callback?(true)
             }
             if GADUtil.shared.isLoaded(.native), position == .native {
-                NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 已经有可取缓存。可进行展示")
+                NSLog("[AD] (\(position.title)) ((\(p.title)) 已经有可取缓存。可进行展示")
                 callback?(true)
             }
             
             let array: [GADPostionModel] = GADUtil.shared.getConfig.positionConfig.filter({$0.position == position})
             if !array.isEmpty {
-                NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 开始加载")
+                NSLog("[AD] (\(position.title)) ((\(p.title)) 开始加载")
                 prepareLoadAd(array: array) { [weak self] isSuccess in
                     guard let self = self else {return}
                     self.isLoadCompletion = true
                     if isSuccess {
-                        NSLog("[AD] (\(self.position.rawValue)) (\(self.p.rawValue)) 加载成功, 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count)")
+                        NSLog("[AD] (\(self.position.title)) (\(self.p.title)) 加载成功, 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count)")
                     } else {
-                        NSLog("[AD] (\(self.position.rawValue)) (\(self.p.rawValue)) 加载失败, 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count)")
+                        NSLog("[AD] (\(self.position.title)) (\(self.p.title)) 加载失败, 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count)")
                     }
                     callback?(isSuccess)
                 }
             } else {
-                NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) no configer.")
+                NSLog("[AD] (\(position.title)) ((\(p.title)) no configer.")
             }
         } else if isLoadedCached {
             isLoadCompletion = true
-            NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count) 不需要预加载。")
+            NSLog("[AD] (\(position.title)) ((\(p.title)) 当前缓存数量:\(loadedArray.count), 当前正在加载数量:\(loadingArray.count) 不需要预加载。")
             callback?(true)
         } else {
             isLoadCompletion = true
-            NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 当前缓存数量:\(loadedArray.count) 当前正在加载数量:\(loadingArray.count), 不需要预加载。")
+            NSLog("[AD] (\(position.title)) ((\(p.title)) 当前缓存数量:\(loadedArray.count) 当前正在加载数量:\(loadingArray.count), 不需要预加载。")
             callback?(false)
         }
     }
     
     func prepareLoadAd(array: [GADPostionModel], at index: Int = 0, callback: ((_ isSuccess: Bool) -> Void)?) {
         if  index >= array.count {
-            NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) prepare Load Ad Failed, no more avaliable config.")
+            NSLog("[AD] (\(position.title)) ((\(p.title)) prepare Load Ad Failed, no more avaliable config.")
             callback?(false)
             return
         }
         if GADUtil.shared.isGADLimited(p) {
-            NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 当前超限。")
+            NSLog("[AD] (\(position.title)) ((\(p.title)) 当前超限。")
             callback?(false)
             return
         }
         if !isNeedPreloaded {
-            NSLog("[AD] (\(position.rawValue)) (\(p.rawValue)) 当前不需要预加载")
+            NSLog("[AD] (\(position.title)) ((\(p.title)) 当前不需要预加载")
             callback?(false)
             return
         }
@@ -584,7 +584,7 @@ extension GADLoadModel {
             ad = GADBannerModel(model: array[index], position: position, p: p)
         }
         guard let ad = ad  else {
-            NSLog("[AD] (\(position.rawValue)) posion error.")
+            NSLog("[AD] (\(position.title)) posion error.")
             callback?(false)
             return
         }
@@ -603,7 +603,7 @@ extension GADLoadModel {
                 return
             }
             
-            NSLog("[AD] (\(self.position)) (\(self.p.rawValue)) Load Ad Failed: try reload at index: \(index + 1).")
+            NSLog("[AD] (\(self.position.title)) (\(self.p.title)) Load Ad Failed: try reload at index: \(index + 1).")
             self.prepareLoadAd(array: array, at: index + 1, callback: callback)
         }
         loadingArray.append(ad)
@@ -657,7 +657,7 @@ class GADFullScreenModel: GADBaseModel {
     var isClicked: Bool = false
         
     deinit {
-        NSLog("[Memory] (\(position.rawValue)) \(self) 💧💧💧.")
+        NSLog("[Memory] (\(position.title)) \(self) 💧💧💧.")
     }
 }
 
@@ -673,11 +673,11 @@ extension GADInterstitialModel: GADFullScreenContentDelegate {
         GADInterstitialAd.load(withAdUnitID: model?.pid ?? "", request: GADRequest()) { [weak self] ad, error in
             guard let self = self else { return }
             if let error = error {
-                NSLog("[AD] (\(self.position)) load ad FAILED for id \(self.model?.pid ?? "invalid id"), err = \(error.localizedDescription)")
+                NSLog("[AD] (\(self.position.title)) load ad FAILED for id \(self.model?.pid ?? "invalid id"), err = \(error.localizedDescription)")
                 self.loadedHandler?(false, error.localizedDescription)
                 return
             }
-            NSLog("[AD] (\(self.position)) load ad SUCCESSFUL for id \(self.model?.pid ?? "invalid id") ✅✅✅✅")
+            NSLog("[AD] (\(self.position.title)) load ad SUCCESSFUL for id \(self.model?.pid ?? "invalid id") ✅✅✅✅")
             self.ad = ad
             self.network = self.ad?.responseInfo.loadedAdNetworkResponseInfo?.adNetworkClassName ?? ""
             self.ad?.fullScreenContentDelegate = self
@@ -735,13 +735,13 @@ extension GADOpenModel: GADFullScreenContentDelegate {
         GADAppOpenAd.load(withAdUnitID: model?.pid ?? "", request: GADRequest()) { [weak self] ad, error in
             guard let self = self else { return }
             if let error = error {
-                NSLog("[AD] (\(self.position)) load ad FAILED for id \(self.model?.pid ?? "invalid id")")
+                NSLog("[AD] (\(self.position.title)) load ad FAILED for id \(self.model?.pid ?? "invalid id")")
                 self.loadedHandler?(false, error.localizedDescription)
                 return
             }
             self.ad = ad
             self.network = self.ad?.responseInfo.loadedAdNetworkResponseInfo?.adNetworkClassName ?? ""
-            NSLog("[AD] (\(self.position)) load ad SUCCESSFUL for id \(self.model?.pid ?? "invalid id") ✅✅✅✅")
+            NSLog("[AD] (\(self.position.title)) load ad SUCCESSFUL for id \(self.model?.pid ?? "invalid id") ✅✅✅✅")
             self.ad?.fullScreenContentDelegate = self
             self.loadedDate = Date()
             self.loadedHandler?(true, "")
@@ -788,10 +788,10 @@ public class GADNativeModel: GADBaseModel {
     /// 廣告加載器
     var loader: GADAdLoader?
     /// 原生廣告
-    public var nativeAd: GADNativeAd?
+    @objc public var nativeAd: GADNativeAd?
     
     deinit {
-        NSLog("[Memory] (\(position.rawValue)) \(self) 💧💧💧.")
+        NSLog("[Memory] (\(position.title)) \(self) 💧💧💧.")
     }
 }
 
@@ -812,14 +812,14 @@ extension GADNativeModel {
 
 extension GADNativeModel: GADAdLoaderDelegate {
     public func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: Error) {
-        NSLog("[AD] (\(position.rawValue)) load ad FAILED for id \(model?.pid ?? "invalid id") error:\(error.localizedDescription)")
+        NSLog("[AD] (\(position.title)) load ad FAILED for id \(model?.pid ?? "invalid id") error:\(error.localizedDescription)")
         loadedHandler?(false, error.localizedDescription)
     }
 }
 
 extension GADNativeModel: GADNativeAdLoaderDelegate {
     public func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADNativeAd) {
-        NSLog("[AD] (\(position.rawValue)) load ad SUCCESSFUL for id \(model?.pid ?? "invalid id") ✅✅✅✅")
+        NSLog("[AD] (\(position.title)) load ad SUCCESSFUL for id \(model?.pid ?? "invalid id") ✅✅✅✅")
         self.nativeAd = nativeAd
         self.network = self.nativeAd?.responseInfo.loadedAdNetworkResponseInfo?.adNetworkClassName ?? ""
         loadedDate = Date()
@@ -847,7 +847,7 @@ class GADBannerModel: GADBaseModel {
     private var isReceiveAD: Bool = false
     
     deinit {
-        NSLog("[Memory] (\(position.rawValue)) \(self) 💧💧💧.")
+        NSLog("[Memory] (\(position.title)) \(self) 💧💧💧.")
     }
 }
 
@@ -892,7 +892,7 @@ extension GADBannerModel: GADBannerViewDelegate, GADAdSizeDelegate {
         if bannerView.superview != nil {
             return
         }
-        NSLog("[AD] (\(position.rawValue)) load ad SUCCESSFUL for id \(model?.pid ?? "invalid id") ✅✅✅✅")
+        NSLog("[AD] (\(position.title)) load ad SUCCESSFUL for id \(model?.pid ?? "invalid id") ✅✅✅✅")
         self.bannerView = bannerView
         self.network = bannerView.responseInfo?.loadedAdNetworkResponseInfo?.adNetworkClassName ?? ""
         loadedDate = Date()
@@ -900,7 +900,7 @@ extension GADBannerModel: GADBannerViewDelegate, GADAdSizeDelegate {
     }
 
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        NSLog("[AD] (\(position.rawValue)) load ad FAILED for id \(model?.pid ?? "invalid id") error:\(error.localizedDescription)")
+        NSLog("[AD] (\(position.title)) load ad FAILED for id \(model?.pid ?? "invalid id") error:\(error.localizedDescription)")
         loadedHandler?(false, error.localizedDescription)
     }
 
