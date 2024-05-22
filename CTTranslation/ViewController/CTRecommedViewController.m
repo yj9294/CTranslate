@@ -11,7 +11,6 @@
 #import "UIView+CT.h"
 #import "CTRecommandInfoViewController.h"
 #import "CTFbHandle.h"
-#import "CTPosterManager.h"
 
 @interface CTRecommedViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
@@ -25,7 +24,6 @@
 
 - (void)didVC {
     [super didVC];
-    [[CTPosterManager sharedInstance] addReco:@"reco"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

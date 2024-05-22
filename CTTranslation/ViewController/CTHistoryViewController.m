@@ -11,7 +11,6 @@
 #import "UIView+CT.h"
 #import "CTHistoryPop.h"
 #import "CTDbHistoryHandle.h"
-#import "CTPosterManager.h"
 
 @interface CTHistoryViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 

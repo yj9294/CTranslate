@@ -9,7 +9,6 @@
 #import "CTNavigationView.h"
 #import "UIView+CT.h"
 #import "CTUserfulInfoViewController.h"
-#import "CTPosterManager.h"
 
 @interface CTUserfulCell : UITableViewCell
 
@@ -63,15 +62,13 @@
 
 @end
 
-@interface CTUserfulViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, GADNativeAdDelegate>
+@interface CTUserfulViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
 
 @property (nonatomic, strong) UIImageView *bgAdImageView;
-
 @property (nonatomic, strong, nullable) GADNativeAdView *nativeAdView;
-@property (nonatomic, strong, nullable) GADNativeAd *nativeAd;
 
 @property (nonatomic, assign) NSInteger selectIndex;
 
@@ -81,9 +78,6 @@
 
 - (void)didVC {
     [super didVC];
-    [[CTPosterManager sharedInstance] enterUseful];
-    [[CTPosterManager sharedInstance] addReco:@"usef"];
-    [self setupAdLoader];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -93,8 +87,12 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [[CTPosterManager sharedInstance] setupIsShow:NO type:CTAdvertLocationTypeTranslateNative];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [GADUtil.shared disappear:GADPositionNative];
 }
 
 - (void)viewDidLoad {
@@ -106,107 +104,120 @@
     [nav.leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     nav.textLabel.text = @"Useful Expressions";
     [self.view addSubview:nav];
-    BOOL isShowNativeAd = YES;
-    if (isShowNativeAd) {
-        self.bgAdImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"advert_small_bg"]];
-        self.bgAdImageView.userInteractionEnabled = YES;
-        [self.view addSubview:self.bgAdImageView];
-        [self.bgAdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-CTBottom());
-            make.left.mas_equalTo(15);
-            make.right.mas_equalTo(-15);
-            make.height.mas_equalTo(152);
-        }];
-    }
+    self.bgAdImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"advert_small_bg"]];
+    self.bgAdImageView.userInteractionEnabled = YES;
+    [self.view addSubview:self.bgAdImageView];
+    [self.bgAdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-CTBottom());
+        make.left.mas_equalTo(15);
+        make.right.mas_equalTo(-15);
+        make.height.mas_equalTo(152);
+    }];
+    
+    self.nativeAdView = [[NSBundle mainBundle] loadNibNamed:@"NativeAdSmallView" owner:nil options:nil].firstObject;
+    [self.bgAdImageView addSubview:self.nativeAdView];
+    [self.nativeAdView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.bgAdImageView);
+    }];
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(nav.mas_bottom).offset(0);
         make.left.right.mas_equalTo(0);
-        if (isShowNativeAd) {
-            make.bottom.mas_equalTo(-CTBottom() - 162);
-        } else {
-            make.bottom.mas_equalTo(0);
-        }
+        make.bottom.mas_equalTo(-CTBottom() - 162);
     }];
     
+    [self addADNotification];
+
     [GADUtil.shared load:GADPositionInterstital p:GADSceneBackHomeInter completion:nil];
     [GADUtil.shared load:GADPositionInterstital p:GADSceneUserfulInter completion:nil];
+    [GADUtil.shared disappear:GADPositionNative];
+    [GADUtil.shared load:GADPositionNative p:GADSceneUsefulNative completion:nil];
+}
+
+
+- (void)addADNotification {
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(nativeAdUpdate:) name:@"homeNativeUpdate" object:nil];
+}
+
+- (void)nativeAdUpdate:(NSNotification *)noti {
+    GADBaseModel *model = (GADBaseModel *)noti.object;
+    if ([model isKindOfClass:GADNativeModel.class] && model.p == GADSceneSettingsNative) {
+        GADNativeModel *nativeModel = (GADNativeModel *)model;
+        if (nativeModel.nativeAd) {
+            [self.bgAdImageView setHidden:false];
+            [self.nativeAdView setHidden:false];
+            [self addNativeViewWithNativeAd:nativeModel.nativeAd];
+            [self.bgAdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(-CTBottom());
+                make.left.mas_equalTo(15);
+                make.right.mas_equalTo(-15);
+                make.height.mas_equalTo(152);
+            }];
+        } else {
+            [self.bgAdImageView setHidden:true];
+            [self.nativeAdView setHidden:true];
+            [self.bgAdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(-CTBottom());
+                make.left.mas_equalTo(15);
+                make.right.mas_equalTo(-15);
+                make.height.mas_equalTo(9);
+            }];
+        }
+    } else {
+        [self.bgAdImageView setHidden:true];
+        [self.nativeAdView setHidden:true];
+        [self.bgAdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(-CTBottom());
+            make.left.mas_equalTo(15);
+            make.right.mas_equalTo(-15);
+            make.height.mas_equalTo(0);
+        }];
+    }
+}
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)backAction {
     [self displayBackAdvert];
 }
 
-- (void)setupAdLoader {
-    [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"use_n"}];
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    CTAdvertLocationType type = CTAdvertLocationTypeTranslateNative;
-    if ([manager isCanShowAdvertWithType:type]) {
-        __weak typeof(self) weakSelf = self;
-        [manager syncRequestNativeAdWithType:type complete:^(BOOL isSuccess) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (weakSelf == nil) return;
-                if (isSuccess) {
-                    GADNativeAd *nativeAd = [CTPosterManager sharedInstance].translateAd;
-                    [CTPosterManager sharedInstance].translateAd = nil;
-                    [weakSelf addNativeViewWithNativeAd:nativeAd];
-                }
-            });
-        }];
-    } else {
-        if (!self.bgAdImageView.isHidden) {
-            if ([manager isShowLimt:type]) {
-                self.bgAdImageView.hidden = YES;
-            }
-        }
-    }
-}
-
 - (void)addNativeViewWithNativeAd:(GADNativeAd *)nativeAd {
-    if (self.nativeAdView) {
-        [self.nativeAdView removeFromSuperview];
-        self.nativeAdView = nil;
-    }
     
-    nativeAd.delegate = self;
-    self.nativeAd = nativeAd;
-    self.nativeAd.paidEventHandler = ^(GADAdValue * _Nonnull value) {
-        [[CTPosterManager sharedInstance] paidAdWithValue:value];
-    };
-    GADNativeAdView *nativeAdView = [[NSBundle mainBundle] loadNibNamed:@"NativeAdSmallView" owner:nil options:nil].firstObject;
-    self.nativeAdView = nativeAdView;
+    self.nativeAdView.mediaView.mediaContent = nativeAd.mediaContent;
+    self.nativeAdView.mediaView.contentMode = UIViewContentModeScaleAspectFill;
+    ((UILabel *)(self.nativeAdView.headlineView)).text = nativeAd.headline;
     
-    nativeAdView.mediaView.mediaContent = nativeAd.mediaContent;
-    nativeAdView.mediaView.contentMode = UIViewContentModeScaleAspectFill;
-    ((UILabel *)(nativeAdView.headlineView)).text = nativeAd.headline;
+    ((UILabel *)self.nativeAdView.bodyView).text = nativeAd.body;
+    self.nativeAdView.bodyView.hidden = nativeAd.body ? NO : YES;
     
-    ((UILabel *)nativeAdView.bodyView).text = nativeAd.body;
-    nativeAdView.bodyView.hidden = nativeAd.body ? NO : YES;
+    [((UIButton *)self.nativeAdView.callToActionView) setTitle:nativeAd.callToAction forState:UIControlStateNormal];
+    self.nativeAdView.callToActionView.hidden = nativeAd.callToAction ? NO : YES;
     
-    [((UIButton *)nativeAdView.callToActionView) setTitle:nativeAd.callToAction forState:UIControlStateNormal];
-    nativeAdView.callToActionView.hidden = nativeAd.callToAction ? NO : YES;
-    
-    ((UIImageView *)nativeAdView.iconView).image = nativeAd.icon.image;
-    nativeAdView.iconView.hidden = nativeAd.icon ? NO : YES;
+    ((UIImageView *)self.nativeAdView.iconView).image = nativeAd.icon.image;
+    self.nativeAdView.iconView.hidden = nativeAd.icon ? NO : YES;
 
 //    ((UIImageView *)nativeAdView.starRatingView).image = [self imageForStars:nativeAd.starRating];
 //    nativeAdView.starRatingView.hidden = nativeAd.starRating ? NO : YES;
 
-    ((UILabel *)nativeAdView.storeView).text = nativeAd.store;
-    nativeAdView.storeView.hidden = nativeAd.store ? NO : YES;
+    ((UILabel *)self.nativeAdView.storeView).text = nativeAd.store;
+    self.nativeAdView.storeView.hidden = nativeAd.store ? NO : YES;
 
-    ((UILabel *)nativeAdView.priceView).text = nativeAd.price;
-    nativeAdView.priceView.hidden = nativeAd.price ? NO : YES;
+    ((UILabel *)self.nativeAdView.priceView).text = nativeAd.price;
+    self.nativeAdView.priceView.hidden = nativeAd.price ? NO : YES;
 
-    ((UILabel *)nativeAdView.advertiserView).text = nativeAd.advertiser;
-    nativeAdView.advertiserView.hidden = nativeAd.advertiser ? NO : YES;
+    ((UILabel *)self.nativeAdView.advertiserView).text = nativeAd.advertiser;
+    self.nativeAdView.advertiserView.hidden = nativeAd.advertiser ? NO : YES;
     
-    nativeAdView.callToActionView.userInteractionEnabled = NO;
-    nativeAdView.nativeAd = nativeAd;
+    self.nativeAdView.callToActionView.userInteractionEnabled = NO;
+    self.nativeAdView.nativeAd = nativeAd;
     
-    [self.bgAdImageView addSubview:nativeAdView];
-    [nativeAdView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.bgAdImageView addSubview:self.nativeAdView];
+    [self.nativeAdView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.mas_equalTo(0);
     }];
 }
@@ -300,21 +311,7 @@
     return 80;
 }
 
-#pragma mark - GADNativeAdDelegate
-
-//1、
-- (void)nativeAdDidRecordImpression:(nonnull GADNativeAd *)nativeAd {
-    [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": @"use_n"}];
-    [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeTranslateNative];
-}
-
-//点击
-- (void)nativeAdDidRecordClick:(nonnull GADNativeAd *)nativeAd {
-    [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeTranslateNative];
-}
-
 #pragma  mark - UINavigationControllerDelegate
-
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     [self displayBackAdvert];
     return  false;

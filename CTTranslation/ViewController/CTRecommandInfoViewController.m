@@ -11,7 +11,6 @@
 #import "UIView+CT.h"
 #import "UIButton+CTL.h"
 #import <Speech/Speech.h>
-#import "CTPosterManager.h"
 
 @interface CTRecommandInfoViewController () <AVSpeechSynthesizerDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) AVSpeechSynthesizer *synthesizer;
@@ -22,7 +21,6 @@
 
 - (void)didVC {
     [super didVC];
-    [[CTPosterManager sharedInstance] addReco:@"rein"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

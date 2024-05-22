@@ -18,7 +18,6 @@
 #import "CTTranslateManager.h"
 #import "CTDbHistoryHandle.h"
 #import "CTTextView.h"
-#import "CTPosterManager.h"
 
 @interface CTDialogueViewController () <AVSpeechSynthesizerDelegate, SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate> {
 //    NSUInteger playIndex;
@@ -51,7 +50,6 @@
 
 - (void)didVC {
     [super didVC];
-    [[CTPosterManager sharedInstance] addReco:@"dial"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
