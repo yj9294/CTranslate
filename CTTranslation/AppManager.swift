@@ -26,4 +26,31 @@ public class AppManager: NSObject {
     @objc func updateNeedChooseVC() {
         needChooseVC = false   
     }
+    
+    @UserDefault(key: "text.translate.guide")
+    var needTextGuide: Bool?
+    @objc var getNeedTextGuide: Bool {
+        defer {
+            needTextGuide = false
+        }
+        return needTextGuide ?? true
+    }
+    
+    @UserDefault(key: "voice.translate.guide")
+    var needVoiceGuide: Bool?
+    @objc var getNeedVoiceGuide: Bool {
+        defer {
+            needVoiceGuide = false
+        }
+        return needVoiceGuide ?? true
+    }
+    
+    @UserDefault(key: "text.camera.guide")
+    var needCameraGuide: Bool?
+    @objc var getNeedCameraGuide: Bool {
+        defer {
+            needCameraGuide = false
+        }
+        return needCameraGuide ?? true
+    }
 }

@@ -51,4 +51,21 @@
     [self addChildViewController:navigationController];
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([viewController isKindOfClass:CTBaseNavigationController.class]) {
+        UIViewController *root = [(CTBaseNavigationController *)viewController viewControllers].firstObject;
+        if ([root isKindOfClass:CTSettingViewController.class]) {
+            [GADUtil.shared disappear:GADPositionNative];
+            [GADUtil.shared load:GADPositionNative p:GADSceneSettingsNative completion:nil];
+        } else {
+            [GADUtil.shared disappear:GADPositionNative];
+        }
+    }
+    
+    return true;
+}
 @end

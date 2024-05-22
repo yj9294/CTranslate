@@ -20,7 +20,7 @@
 #import "CTTextView.h"
 #import "CTPosterManager.h"
 
-@interface CTDialogueViewController () <AVSpeechSynthesizerDelegate, SFSpeechRecognizerDelegate, GADFullScreenContentDelegate, UIGestureRecognizerDelegate> {
+@interface CTDialogueViewController () <AVSpeechSynthesizerDelegate, SFSpeechRecognizerDelegate, UIGestureRecognizerDelegate> {
 //    NSUInteger playIndex;
 }
 
@@ -45,8 +45,6 @@
 
 @property (nonatomic, assign) BOOL isRecognition;
 @property (nonatomic, assign) BOOL isLeft;
-
-@property (nonatomic, strong, nullable) GADInterstitialAd *backInterstitial;
 @end
 
 @implementation CTDialogueViewController
@@ -427,80 +425,22 @@
 }
 
 - (void)backAction {
-    [self displayAdvert];
+    [self displayBackAdvert];
 }
 
-- (void)displayAdvert {
-    [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"home_b"}];
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    CTAdvertLocationType type = CTAdvertLocationTypeBack;
-    if ([manager isCanShowAdvertWithType:type]) {
-        if ((manager.backInterstitial && [manager isCacheValidWithType:type]) || manager.substituteInterstitial) {
-            if (manager.isScreenAdShow) return;
-            manager.isScreenAdShow = YES;
-            if (manager.backInterstitial && [manager isCacheValidWithType:type]) {
-                self.backInterstitial = manager.backInterstitial;
-                manager.backInterstitial = nil;
-            } else {
-                self.backInterstitial = manager.substituteInterstitial;
-                manager.substituteInterstitial = nil;
-                self.isSubstitute = YES;
-            }
-            
-            self.backInterstitial.fullScreenContentDelegate = self;
-            [UIView ct_tipForeplayWithComplete:^{
-                [self.backInterstitial presentFromRootViewController:self];
-            }];
-        } else {
-            [self jumpVCWithAnimated:YES];
-        }
-    } else {
-        [self jumpVCWithAnimated:YES];
-    }
+- (void)displayBackAdvert {
+    __weak typeof(self) __weakself = self;
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneBackHomeInter completion:nil];
+    [GADUtil.shared show:GADPositionInterstital p:GADSceneBackHomeInter from:self completion:^(GADBaseModel * _Nullable model) {
+        [__weakself jumpVCWithAnimated:YES];
+    }];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {
-    [self.navigationController popViewControllerAnimated:animated];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:animated];
+    });
 }
-
-//- (void)playWithModel:(CTDialogueModel *)model index:(NSInteger)index {
-//    if (self.isRecognition) return;
-//    if (model.target.length == 0) return;
-//    if (model.isPlay) return;
-//    if ([self.synthesizer isSpeaking]) {
-//        [self.synthesizer pauseSpeakingAtBoundary:AVSpeechBoundaryImmediate];
-//        [self.synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
-//    }
-//    
-//    AVAudioSession *session = [AVAudioSession sharedInstance];
-//    NSError *error;
-//    [session setCategory:AVAudioSessionCategoryPlayback mode:AVAudioSessionModeDefault options:AVAudioSessionCategoryOptionDuckOthers error:&error];
-//    if (error) {
-//        NSLog(@"play voice error: %@", error.localizedDescription);
-//        return;
-//    }
-//    [session setActive:YES withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:&error];
-//    if (error) {
-//        NSLog(@"play voice error: %@", error.localizedDescription);
-//        return;
-//    }
-//    
-//    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:model.target];
-//    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:model.targetModel.identifier];
-//    utterance.rate = 0.5;
-//    [self.synthesizer speakUtterance:utterance];
-//
-//    playIndex = index;
-//    //更新cell
-//    model.isPlay = YES;
-//    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:playIndex]] withRowAnimation:UITableViewRowAnimationAutomatic];
-//}
-
-//- (void)stopPlayVoice {
-//    CTDialogueModel *model = self.dataSource[playIndex];
-//    model.isPlay = NO;
-//    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:playIndex]] withRowAnimation:UITableViewRowAnimationAutomatic];
-//}
 
 //TODO: getter
 - (CTChangeLangugeView *)changeView {
@@ -528,26 +468,6 @@
 }
 
 
-//- (UITableView *)tableView {
-//    if (!_tableView) {
-//        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-//        _tableView.backgroundColor = self.view.backgroundColor;
-//        [_tableView setDelegate:self];
-//        [_tableView setDataSource:self];
-//        [_tableView registerClass:[CTDialogueLeftCell class] forCellReuseIdentifier:@"CTDialogueLeftCell"];
-//        [_tableView registerClass:[CTDialogueRightCell class] forCellReuseIdentifier:@"CTDialogueRightCell"];
-//        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//        [_tableView setContentInset:UIEdgeInsetsMake(15, 0, CTSafeAreaBottom() + 100, 0)];
-//    }
-//    return _tableView;
-//}
-
-//- (NSMutableArray *)dataSource {
-//    if (!_dataSource) {
-//        _dataSource = [NSMutableArray arrayWithCapacity:10];
-//    }
-//    return _dataSource;
-//}
 
 - (AVSpeechSynthesizer *)synthesizer {
     if (!_synthesizer) {
@@ -555,47 +475,6 @@
     }
     return _synthesizer;
 }
-
-//TODO: UITableViewDelegate, UITableViewDataSource
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 1;
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return self.dataSource.count;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return UITableViewAutomaticDimension;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 67;
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    return nil;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return CGFLOAT_MIN;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 20;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    CTDialogueModel *model = self.dataSource[indexPath.section];
-//    CTDialogueCell *cell = [tableView dequeueReusableCellWithIdentifier:model.isLeft ? @"CTDialogueLeftCell": @"CTDialogueRightCell"];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.model = model;
-//    __weak typeof(self) weakSelf = self;
-//    cell.playVoice = ^(CTDialogueModel * _Nonnull model) {
-//        [weakSelf playWithModel:model index:indexPath.section];
-//    };
-//    return cell;
-//}
 
 //TODO: AVSpeechSynthesizerDelegate
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
@@ -626,72 +505,9 @@
 }
 
 #pragma  mark - UINavigationControllerDelegate
-
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    if ([manager isCanShowAdvertWithType:CTAdvertLocationTypeBack] && (manager.backInterstitial || manager.substituteInterstitial)) {
-        [self displayAdvert];
-        return NO;
-    } else {
-        return YES;
-    }
+    [self displayBackAdvert];
+    return NO;
 }
 
-
-#pragma mark - GADFullScreenContentDelegate
-- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad {
-    GADInterstitialAd *advert = (GADInterstitialAd *)ad;
-    advert.paidEventHandler = ^(GADAdValue * _Nonnull value) {
-        [[CTPosterManager sharedInstance] paidAdWithValue:value];
-    };
-}
-
-//这里用将要消失
-- (void)adWillDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    self.backInterstitial = nil;
-    if (self.isSubstitute) {
-        self.isSubstitute = NO;
-        [manager setupIsShow:NO type:CTAdvertLocationTypeSubstitute];
-    } else {
-        [manager setupIsShow:NO type:CTAdvertLocationTypeBack];
-    }
-    [self jumpVCWithAnimated:NO];
-}
-
-//3 点击
-- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库点击次数
-    if (self.isSubstitute) {
-        [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeSubstitute];
-    } else {
-        [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeBack];
-    }
-}
-
-//1 将要展示
-- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库展示次数
-    if (self.isSubstitute) {
-        [CTStatisticAnalysis saveEvent:@"backup_show" params:@{@"place": @"home_b"}];
-        [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeSubstitute];
-    } else {
-        [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": @"home_b"}];
-        [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeBack];
-    }
-}
-
-- (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    if (self.isSubstitute) {
-        self.isSubstitute = NO;
-        [manager advertLogFailedWithType:CTAdvertLocationTypeSubstitute error:error.localizedDescription];
-    } else {
-        [manager advertLogFailedWithType:CTAdvertLocationTypeBack error:error.localizedDescription];
-    }
-    self.backInterstitial = nil;
-    [self jumpVCWithAnimated:YES];
-}
 @end

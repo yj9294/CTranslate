@@ -13,10 +13,9 @@
 #import <Speech/Speech.h>
 #import "CTPosterManager.h"
 
-@interface CTRecommandInfoViewController () <AVSpeechSynthesizerDelegate, GADFullScreenContentDelegate, UIGestureRecognizerDelegate>
+@interface CTRecommandInfoViewController () <AVSpeechSynthesizerDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) AVSpeechSynthesizer *synthesizer;
 @property (nonatomic, strong) UIView *bgView;
-@property (nonatomic, strong, nullable) GADInterstitialAd *backInterstitial;
 @end
 
 @implementation CTRecommandInfoViewController
@@ -331,43 +330,24 @@
 
 - (void)backAction {
     if (self.isHomeEnter) {
-        [self displayAdvert];
+        [self displayBackAdvert];
     } else {
         [self jumpVCWithAnimated:YES];
     }
 }
 
-- (void)displayAdvert {
-    [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"home_b"}];
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    CTAdvertLocationType type = CTAdvertLocationTypeBack;
-    if ([manager isCanShowAdvertWithType:type]) {
-        if ((manager.backInterstitial && [manager isCacheValidWithType:type]) || manager.substituteInterstitial) {
-            if (manager.isScreenAdShow) return;
-            manager.isScreenAdShow = YES;
-            if (manager.backInterstitial && [manager isCacheValidWithType:type]) {
-                self.backInterstitial = manager.backInterstitial;
-                manager.backInterstitial = nil;
-            } else {
-                self.backInterstitial = manager.substituteInterstitial;
-                manager.substituteInterstitial = nil;
-                self.isSubstitute = YES;
-            }
-            
-            self.backInterstitial.fullScreenContentDelegate = self;
-            [UIView ct_tipForeplayWithComplete:^{
-                [self.backInterstitial presentFromRootViewController:self];
-            }];
-        } else {
-            [self jumpVCWithAnimated:YES];
-        }
-    } else {
-        [self jumpVCWithAnimated:YES];
-    }
+- (void)displayBackAdvert {
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneBackHomeInter completion:nil];
+    __weak typeof(self) __self = self;
+    [GADUtil.shared show:GADPositionInterstital p:GADSceneBackHomeInter from:self completion:^(GADBaseModel * _Nullable model) {
+        [__self jumpVCWithAnimated:YES];
+    }];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {
-    [self.navigationController popViewControllerAnimated:animated];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:animated];
+    });
 }
 
 - (AVSpeechSynthesizer *)synthesizer {
@@ -400,70 +380,8 @@
     if (!self.isHomeEnter) {
         return YES;
     }
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    if ([manager isCanShowAdvertWithType:CTAdvertLocationTypeBack] && (manager.backInterstitial || manager.substituteInterstitial)) {
-        [self displayAdvert];
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-#pragma mark - GADFullScreenContentDelegate
-- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad {
-    GADInterstitialAd *advert = (GADInterstitialAd *)ad;
-    advert.paidEventHandler = ^(GADAdValue * _Nonnull value) {
-        [[CTPosterManager sharedInstance] paidAdWithValue:value];
-    };
-}
-
-//这里用将要消失
-- (void)adWillDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    self.backInterstitial = nil;
-    if (self.isSubstitute) {
-        self.isSubstitute = NO;
-        [manager setupIsShow:NO type:CTAdvertLocationTypeSubstitute];
-    } else {
-        [manager setupIsShow:NO type:CTAdvertLocationTypeBack];
-    }
-    [self jumpVCWithAnimated:NO];
-}
-
-//3 点击
-- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库点击次数
-    if (self.isSubstitute) {
-        [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeSubstitute];
-    } else {
-        [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeBack];
-    }
-}
-
-//1 将要展示
-- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库展示次数
-    if (self.isSubstitute) {
-        [CTStatisticAnalysis saveEvent:@"backup_show" params:@{@"place": @"home_b"}];
-        [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeSubstitute];
-    } else {
-        [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": @"home_b"}];
-        [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeBack];
-    }
-}
-
-- (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    if (self.isSubstitute) {
-        self.isSubstitute = NO;
-        [manager advertLogFailedWithType:CTAdvertLocationTypeSubstitute error:error.localizedDescription];
-    } else {
-        [manager advertLogFailedWithType:CTAdvertLocationTypeBack error:error.localizedDescription];
-    }
-    self.backInterstitial = nil;
-    [self jumpVCWithAnimated:YES];
+    [self displayBackAdvert];
+    return NO;
 }
 
 @end

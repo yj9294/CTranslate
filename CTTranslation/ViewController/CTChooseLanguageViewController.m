@@ -95,7 +95,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(nativeAdUpdate:) name:@"homeNativeUpdate" object:nil];
-    [GADUtil.shared load:GADPositionInterstital p:GADSceneSelectionInter completion:nil];
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneSelectLanInter completion:nil];
+    [GADUtil.shared disappear:GADPositionNative];
     [GADUtil.shared load:GADPositionNative p:GADSceneSelectLanNative completion:nil];
     
     self.chooseIndex = -1;
@@ -158,9 +159,10 @@
 
 - (void)displayAdvert {
     __weak typeof(self) weakSelf = self;
-    [GADUtil.shared show:GADPositionInterstital p:GADSceneSelectionInter from:self completion:^(GADBaseModel * _Nullable model) {
+    [GADUtil.shared show:GADPositionInterstital p:GADSceneSelectLanInter from:self completion:^(GADBaseModel * _Nullable model) {
         [weakSelf jumpVCWithAnimated:YES];
     }];
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneSelectLanInter completion:nil];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {

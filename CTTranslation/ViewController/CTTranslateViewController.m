@@ -20,13 +20,11 @@
 #import "CTTextPop.h"
 #import "CTVoicePop.h"
 #import "CTCameraPop.h"
-#import "CTPosterManager.h"
-#import "CTFbHandle.h"
 
 #import <AVFoundation/AVFoundation.h>
 
 
-@interface CTTranslateViewController () <AVSpeechSynthesizerDelegate, GADFullScreenContentDelegate, UIGestureRecognizerDelegate, GADNativeAdDelegate>
+@interface CTTranslateViewController () <AVSpeechSynthesizerDelegate, UIGestureRecognizerDelegate, GADNativeAdDelegate>
 
 @property (nonatomic, strong) CTChangeLangugeView *changeView;
 @property (nonatomic, strong) CTTextView *sourceView;
@@ -53,43 +51,17 @@
 @property (nonatomic, strong) NSString *sourceText;
 @property (nonatomic, strong) NSString *targetText;
 
-@property (nonatomic, strong, nullable) GADInterstitialAd *backInterstitial;
-@property (nonatomic, strong, nullable) GADInterstitialAd *translateInterstitial;
 @property (nonatomic, strong, nullable) GADNativeAdView *nativeAdView;
-@property (nonatomic, strong, nullable) GADNativeAd *nativeAd;
-
-@property (nonatomic, strong) GADBannerView *bannerView;
-
 @end
 
 @implementation CTTranslateViewController
 
 - (void)didVC {
     [super didVC];
-    if (self.translateType == CTTranslateTypeText) {
-        [[CTPosterManager sharedInstance] enterText];
-        [[CTPosterManager sharedInstance] addReco:@"text"];
-    } else if (self.translateType == CTTranslateTypeVoice) {
-        [[CTPosterManager sharedInstance] enterVoice];
-        [[CTPosterManager sharedInstance] addReco:@"voic"];
-    } else if (self.translateType == CTTranslateTypeCamera) {
-        [[CTPosterManager sharedInstance] enterCamera];
-        [[CTPosterManager sharedInstance] addReco:@"came"];
-    }
-    if (!self.isPop) {
-        [self setupAd];
-    }
-}
-
-- (void)setupAd {
-    [self setupAdLoader];
-    [self setupAdBanner];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [[CTPosterManager sharedInstance] setupIsShow:NO type:CTAdvertLocationTypeTranslateNative];
-    [[CTPosterManager sharedInstance] setupIsShow:NO type:CTAdvertLocationTypeTranslateBanner];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 
@@ -106,10 +78,17 @@
         [self.synthesizer pauseSpeakingAtBoundary:AVSpeechBoundaryImmediate];
         [self.synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
     }
+    [GADUtil.shared disappear:GADPositionNative];
+    [GADUtil.shared disappear:GADPositionBanner];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addADNotification];
     
     [self guidMask];
     self.view.backgroundColor = [UIColor hexColor:@"#12263A"];
@@ -127,43 +106,41 @@
     nav.textLabel.text = navTitle;
     [self.view addSubview:nav];
     
-    //判断是否能显示banner广告
-    BOOL isShowBanner = [[CTPosterManager sharedInstance] isCanShowAdvertWithType:CTAdvertLocationTypeTranslateBanner];
-    BOOL isShowNative = [[CTPosterManager sharedInstance] isCanShowAdvertWithType:CTAdvertLocationTypeTranslateNative];
     CGFloat nativeHeight = 0;
     CGFloat bannerHeight = 0;
     CGFloat contentHeight = CTScreenHeight() - CTNavHeight() - 15;
-    if (isShowBanner) {
-        bannerHeight = 80;
-        contentHeight -= 90;
-        self.bannerBgView = [[UIView alloc] init];
-        self.bannerBgView.layer.cornerRadius = 15;
-        self.bannerBgView.userInteractionEnabled = YES;
-        self.bannerBgView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.15];
-        [self.view addSubview:self.bannerBgView];
-        [self.bannerBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(nav.mas_bottom).offset(15);
-            make.left.mas_equalTo(15);
-            make.right.mas_equalTo(-15);
-            make.height.mas_equalTo(bannerHeight);
-        }];
-    }
+    bannerHeight = 80;
+    contentHeight -= 90;
+    self.bannerBgView = [[UIView alloc] init];
+    self.bannerBgView.layer.cornerRadius = 15;
+    self.bannerBgView.userInteractionEnabled = YES;
+    self.bannerBgView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.15];
+    [self.view addSubview:self.bannerBgView];
+    [self.bannerBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(nav.mas_bottom).offset(15);
+        make.left.mas_equalTo(15);
+        make.right.mas_equalTo(-15);
+        make.height.mas_equalTo(bannerHeight);
+    }];
     
-    if (isShowNative) {
-        nativeHeight = 152;
-        contentHeight = contentHeight - CTBottom() - nativeHeight - 10;
-        self.bgAdImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"advert_small_bg"]];
-        self.bgAdImageView.userInteractionEnabled = YES;
-        [self.view addSubview:self.bgAdImageView];
-        [self.bgAdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(-CTBottom());
-            make.left.mas_equalTo(15);
-            make.right.mas_equalTo(-15);
-            make.height.mas_equalTo(nativeHeight);
-        }];
-    } else {
-        contentHeight = contentHeight - CTSafeAreaBottom() - 10;
-    }
+    nativeHeight = 152;
+    contentHeight = contentHeight - CTBottom() - nativeHeight - 10;
+    self.bgAdImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"advert_small_bg"]];
+    self.bgAdImageView.userInteractionEnabled = YES;
+    [self.view addSubview:self.bgAdImageView];
+    [self.bgAdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-CTBottom());
+        make.left.mas_equalTo(15);
+        make.right.mas_equalTo(-15);
+        make.height.mas_equalTo(nativeHeight);
+    }];
+    
+    self.nativeAdView = [[NSBundle mainBundle] loadNibNamed:@"NativeAdSmallView" owner:nil options:nil].firstObject;
+    [self.nativeAdView setHidden:YES];
+    [self.bgAdImageView addSubview:self.nativeAdView];
+    [self.nativeAdView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.bgAdImageView);
+    }];
 
     CGFloat textHeight = contentHeight - 60;
     if (self.translateType == CTTranslateTypeVoice) {
@@ -177,7 +154,7 @@
     
     UIView *bgView = [[UIView alloc] init];
     bgView.backgroundColor = self.view.backgroundColor;
-    BOOL isSmallScrren = CTScreenHeight() < 736 && isShowBanner && isShowNative;
+    BOOL isSmallScrren = CTScreenHeight() < 736;
     if (isSmallScrren) {
         UIScrollView *scrollView = [[UIScrollView alloc] init];
         scrollView.backgroundColor = self.view.backgroundColor;
@@ -206,11 +183,7 @@
     } else {
         [self.view addSubview:bgView];
         [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (isShowBanner) {
-                make.top.equalTo(nav.mas_bottom).offset(105);
-            } else {
-                make.top.equalTo(nav.mas_bottom).offset(15);
-            }
+            make.top.equalTo(nav.mas_bottom).offset(105);
             make.left.mas_equalTo(0);
             make.right.mas_equalTo(0);
             make.height.mas_equalTo(contentHeight);
@@ -354,60 +327,57 @@
     }
     
     [self configureSpeech];
+    
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneBackHomeInter completion:nil];
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneResultInter completion:nil];
+    [GADUtil.shared disappear:GADPositionNative];
+    [GADUtil.shared disappear:GADPositionBanner];
+    [GADUtil.shared load:GADPositionNative p:GADSceneTranslateNative completion:nil];
+    [GADUtil.shared load:GADPositionBanner p:GADSceneTranslateBanner completion:nil];
+}
+
+- (void)addADNotification {
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(nativeAdUpdate:) name:@"homeNativeUpdate" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(bannerAdUpdate:) name:@"banner.ad" object:nil];
+}
+
+- (void)dealloc
+{
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)guidMask {
-    NSInteger guid = [CTFirebase getGuid];
-    if (guid == 0) return;
+    if (![GADUtil.shared isGuideConfig]) {
+        return;
+    }
     if (self.translateType == CTTranslateTypeText) {
-        NSString *key = @"guid_text";
-        NSString *text = [[NSUserDefaults standardUserDefaults] stringForKey:key];
-        if (text.length == 0) {
-            [CTStatisticAnalysis saveEvent:@"text_guide" params:nil];
+        if ([AppManager.shared getNeedTextGuide]) {
             self.sourceView.text = @"Hello!";
             [self.sourceView didValueChanged];
             self.isPop = YES;
             CTTextPop *pop = [[CTTextPop alloc] init];
             [pop showWithComplete:^{
-                [CTStatisticAnalysis saveEvent:@"text_guide_c" params:nil];
-                [[NSUserDefaults standardUserDefaults] setObject:key forKey:key];
-                [[NSUserDefaults standardUserDefaults] synchronize];
                 [self translateAction];
-                [self setupAd];
             }];
         }
     } else if (self.translateType == CTTranslateTypeVoice) {
-        [CTStatisticAnalysis saveEvent:@"voice_guide" params:nil];
-        NSString *key = @"guid_voice";
-        NSString *text = [[NSUserDefaults standardUserDefaults] stringForKey:key];
-        if (text.length == 0) {
+        if ([AppManager.shared getNeedVoiceGuide]) {
             self.sourceView.text = @"Hello!";
             [self.sourceView didValueChanged];
             self.isPop = YES;
             CTVoicePop *pop = [[CTVoicePop alloc] init];
             [pop showWithComplete:^{
-                [CTStatisticAnalysis saveEvent:@"voice_guide_c" params:nil];
-                [[NSUserDefaults standardUserDefaults] setObject:key forKey:key];
-                [[NSUserDefaults standardUserDefaults] synchronize];
                 [self translateAction];
-                [self setupAd];
             }];
         }
     } else if (self.translateType == CTTranslateTypeCamera) {
-        [CTStatisticAnalysis saveEvent:@"ocr_guide" params:nil];
-        NSString *key = @"guid_camera";
-        NSString *text = [[NSUserDefaults standardUserDefaults] stringForKey:key];
-        if (text.length == 0) {
+        if ([AppManager.shared getNeedCameraGuide]) {
             self.sourceView.text = @"Everything will be ok in the end, if it's not ok, it's not the end.";
             [self.sourceView didValueChanged];
             self.isPop = YES;
             CTCameraPop *pop = [[CTCameraPop alloc] init];
             [pop showWithComplete:^{
-                [CTStatisticAnalysis saveEvent:@"ocr_guide_c" params:nil];
-                [[NSUserDefaults standardUserDefaults] setObject:key forKey:key];
-                [[NSUserDefaults standardUserDefaults] synchronize];
                 [self translateAction];
-                [self setupAd];
             }];
         }
     }
@@ -646,118 +616,101 @@
     }
 }
 
-- (void)setupAdBanner {
-    [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"banner"}];
-    if (![[CTPosterManager sharedInstance] isCanShowAdvertWithType:CTAdvertLocationTypeTranslateBanner]) { return; }
-    GADBannerView *bannerView = [[CTPosterManager sharedInstance] requestAdWithBannerType:CTAdvertLocationTypeTranslateBanner vc:self];
-    if (self.bannerView == nil) {
-        self.bannerView = bannerView;
-        [self.view addSubview:self.bannerView];
-        [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(0);
-            make.top.right.left.bottom.mas_equalTo(self.bannerBgView);
-        }];
+- (void)nativeAdUpdate:(NSNotification *)noti {
+    GADBaseModel *model = (GADBaseModel *)noti.object;
+    if ([model isKindOfClass:GADNativeModel.class] && model.p == GADSceneTranslateNative) {
+        GADNativeModel *nativeModel = (GADNativeModel *)model;
+        if (nativeModel.nativeAd) {
+            [self.bgAdImageView setHidden:false];
+            [self.nativeAdView setHidden:false];
+            [self addNativeViewWithNativeAd:nativeModel.nativeAd];
+            [self.bgAdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(-CTBottom());
+                make.left.mas_equalTo(15);
+                make.right.mas_equalTo(-15);
+                make.height.mas_equalTo(152);
+            }];
+        } else {
+            [self.bgAdImageView setHidden:true];
+            [self.nativeAdView setHidden:true];
+            [self.bgAdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.bottom.mas_equalTo(-CTBottom());
+                make.left.mas_equalTo(15);
+                make.right.mas_equalTo(-15);
+                make.height.mas_equalTo(0);
+            }];
+        }
     }
 }
 
-- (void)setupAdLoader {
-    [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"tvc_n"}];
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    CTAdvertLocationType type = CTAdvertLocationTypeTranslateNative;
-    if ([manager isCanShowAdvertWithType:type]) {
-        __weak typeof(self) weakSelf = self;
-        [manager syncRequestNativeAdWithType:type complete:^(BOOL isSuccess) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (weakSelf == nil) return;
-                if (isSuccess) {
-                    GADNativeAd *nativeAd = [CTPosterManager sharedInstance].translateAd;
-                    [CTPosterManager sharedInstance].translateAd = nil;
-                    [weakSelf addNativeViewWithNativeAd:nativeAd];
-                }
-            });
-        }];
+- (void)bannerAdUpdate:(NSNotification *)noti {
+    GADBaseModel *model = (GADBaseModel *)noti.object;
+    if ([model isKindOfClass:GADBannerModel.class] && model.p == GADSceneTranslateBanner) {
+        GADBannerModel *nativeModel = (GADBannerModel *)model;
+        if (nativeModel.bannerView) {
+            [self.bannerBgView setHidden:false];
+            [self.bannerBgView addSubview:nativeModel.bannerView];
+            [nativeModel.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.left.right.bottom.equalTo(self.bannerBgView);
+            }];
+            [self.bannerBgView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(15 + 44);
+                make.left.mas_equalTo(15);
+                make.right.mas_equalTo(-15);
+                make.height.mas_equalTo(80);
+            }];
+        } else {
+            [self.bannerBgView setHidden:true];
+            [self.bannerBgView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.view.mas_topMargin).offset(15 + 44);
+                make.left.mas_equalTo(15);
+                make.right.mas_equalTo(-15);
+                make.height.mas_equalTo(0);
+            }];
+        }
     }
 }
 
 - (void)addNativeViewWithNativeAd:(GADNativeAd *)nativeAd {
-    if (self.nativeAdView) {
-        [self.nativeAdView removeFromSuperview];
-        self.nativeAdView = nil;
-    }
+    self.nativeAdView.mediaView.mediaContent = nativeAd.mediaContent;
+    self.nativeAdView.mediaView.contentMode = UIViewContentModeScaleAspectFill;
+    ((UILabel *)(self.nativeAdView.headlineView)).text = nativeAd.headline;
     
-    nativeAd.delegate = self;
-    self.nativeAd = nativeAd;
-    self.nativeAd.paidEventHandler = ^(GADAdValue * _Nonnull value) {
-        [[CTPosterManager sharedInstance] paidAdWithValue:value];
-    };
-    GADNativeAdView *nativeAdView = [[NSBundle mainBundle] loadNibNamed:@"NativeAdSmallView" owner:nil options:nil].firstObject;
-    self.nativeAdView = nativeAdView;
+    ((UILabel *)self.nativeAdView.bodyView).text = nativeAd.body;
+    self.nativeAdView.bodyView.hidden = nativeAd.body ? NO : YES;
     
-    nativeAdView.mediaView.mediaContent = nativeAd.mediaContent;
-    nativeAdView.mediaView.contentMode = UIViewContentModeScaleAspectFill;
-    ((UILabel *)(nativeAdView.headlineView)).text = nativeAd.headline;
+    [((UIButton *)self.nativeAdView.callToActionView) setTitle:nativeAd.callToAction forState:UIControlStateNormal];
+    self.nativeAdView.callToActionView.hidden = nativeAd.callToAction ? NO : YES;
     
-    ((UILabel *)nativeAdView.bodyView).text = nativeAd.body;
-    nativeAdView.bodyView.hidden = nativeAd.body ? NO : YES;
-    
-    [((UIButton *)nativeAdView.callToActionView) setTitle:nativeAd.callToAction forState:UIControlStateNormal];
-    nativeAdView.callToActionView.hidden = nativeAd.callToAction ? NO : YES;
-    
-    ((UIImageView *)nativeAdView.iconView).image = nativeAd.icon.image;
-    nativeAdView.iconView.hidden = nativeAd.icon ? NO : YES;
+    ((UIImageView *)self.nativeAdView.iconView).image = nativeAd.icon.image;
+    self.nativeAdView.iconView.hidden = nativeAd.icon ? NO : YES;
 
 //    ((UIImageView *)nativeAdView.starRatingView).image = [self imageForStars:nativeAd.starRating];
 //    nativeAdView.starRatingView.hidden = nativeAd.starRating ? NO : YES;
 
-    ((UILabel *)nativeAdView.storeView).text = nativeAd.store;
-    nativeAdView.storeView.hidden = nativeAd.store ? NO : YES;
+    ((UILabel *)self.nativeAdView.storeView).text = nativeAd.store;
+    self.nativeAdView.storeView.hidden = nativeAd.store ? NO : YES;
 
-    ((UILabel *)nativeAdView.priceView).text = nativeAd.price;
-    nativeAdView.priceView.hidden = nativeAd.price ? NO : YES;
+    ((UILabel *)self.nativeAdView.priceView).text = nativeAd.price;
+    self.nativeAdView.priceView.hidden = nativeAd.price ? NO : YES;
 
-    ((UILabel *)nativeAdView.advertiserView).text = nativeAd.advertiser;
-    nativeAdView.advertiserView.hidden = nativeAd.advertiser ? NO : YES;
+    ((UILabel *)self.nativeAdView.advertiserView).text = nativeAd.advertiser;
+    self.nativeAdView.advertiserView.hidden = nativeAd.advertiser ? NO : YES;
     
-    nativeAdView.callToActionView.userInteractionEnabled = NO;
-    nativeAdView.nativeAd = nativeAd;
-    
-    [self.bgAdImageView addSubview:nativeAdView];
-    [nativeAdView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.mas_equalTo(0);
-    }];
+    self.nativeAdView.callToActionView.userInteractionEnabled = NO;
+    self.nativeAdView.nativeAd = nativeAd;
 }
 
 - (void)backAction {
-    [self displayAdvert];
+    [self displayBackAdvert];
 }
 
 - (void)displayTranslateAdvert {
-    [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"trans_i"}];
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    CTAdvertLocationType type = CTAdvertLocationTypeTranslate;
-    if ([manager isCanShowAdvertWithType:type]) {
-        if ((manager.translateInterstitial && [manager isCacheValidWithType:type]) || manager.substituteInterstitial) {
-            if (manager.isScreenAdShow) return;
-            manager.isScreenAdShow = YES;
-            if (manager.translateInterstitial && [manager isCacheValidWithType:type]) {
-                self.translateInterstitial = manager.translateInterstitial;
-                manager.translateInterstitial = nil;
-            } else {
-                self.translateInterstitial = manager.substituteInterstitial;
-                manager.substituteInterstitial = nil;
-                self.isSubstitute = YES;
-            }
-            
-            self.translateInterstitial.fullScreenContentDelegate = self;
-            [UIView ct_tipForeplayWithComplete:^{
-                [self.translateInterstitial presentFromRootViewController:self];
-            }];
-        } else {
-            [self translateResult];
-        }
-    } else {
-        [self translateResult];
-    }
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneResultInter completion:nil];
+    __weak  typeof(self) __self = self;
+    [GADUtil.shared show:GADPositionInterstital p:GADSceneResultInter from:self completion:^(GADBaseModel * _Nullable model) {
+        [__self translateResult];
+    }];
 }
 
 - (void)translateResult {
@@ -771,37 +724,18 @@
     self.targetText = @"";
 }
 
-- (void)displayAdvert {
-    [CTStatisticAnalysis saveEvent:@"gag_chungjung" params:@{@"place": @"home_b"}];
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    CTAdvertLocationType type = CTAdvertLocationTypeBack;
-    if ([manager isCanShowAdvertWithType:type]) {
-        if ((manager.backInterstitial && [manager isCacheValidWithType:type]) || manager.substituteInterstitial) {
-            if (manager.isScreenAdShow) return;
-            manager.isScreenAdShow = YES;
-            if (manager.backInterstitial && [manager isCacheValidWithType:type]) {
-                self.backInterstitial = manager.backInterstitial;
-                manager.backInterstitial = nil;
-            } else {
-                self.backInterstitial = manager.substituteInterstitial;
-                manager.substituteInterstitial = nil;
-                self.isSubstitute = YES;
-            }
-            
-            self.backInterstitial.fullScreenContentDelegate = self;
-            [UIView ct_tipForeplayWithComplete:^{
-                [self.backInterstitial presentFromRootViewController:self];
-            }];
-        } else {
-            [self jumpVCWithAnimated:YES];
-        }
-    } else {
-        [self jumpVCWithAnimated:YES];
-    }
+- (void)displayBackAdvert {
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneBackHomeInter completion:nil];
+    __weak  typeof(self) __self = self;
+    [GADUtil.shared show:GADPositionInterstital p:GADSceneBackHomeInter from:self completion:^(GADBaseModel * _Nullable model) {
+        [__self jumpVCWithAnimated:YES];
+    }];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {
-    [self.navigationController popViewControllerAnimated:animated];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:animated];
+    });
 }
 
 //TODO: getter
@@ -862,128 +796,9 @@
     }
 }
 
-#pragma mark - GADNativeAdDelegate
-
-//1、
-- (void)nativeAdDidRecordImpression:(nonnull GADNativeAd *)nativeAd {
-    [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": @"tvc_n"}];
-    [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeTranslateNative];
-}
-
-//点击
-- (void)nativeAdDidRecordClick:(nonnull GADNativeAd *)nativeAd {
-    [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeTranslateNative];
-}
-
 #pragma  mark - UINavigationControllerDelegate
-
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    if ([manager isCanShowAdvertWithType:CTAdvertLocationTypeBack] && (manager.backInterstitial || manager.substituteInterstitial)) {
-        [self displayAdvert];
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-#pragma mark - GADFullScreenContentDelegate
-- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad {
-    GADInterstitialAd *advert = (GADInterstitialAd *)ad;
-    advert.paidEventHandler = ^(GADAdValue * _Nonnull value) {
-        [[CTPosterManager sharedInstance] paidAdWithValue:value];
-    };
-}
-
-//这里用将要消失
-- (void)adWillDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    if (ad == self.backInterstitial) {
-        self.backInterstitial = nil;
-        if (self.isSubstitute) {
-            self.isSubstitute = NO;
-            [manager setupIsShow:NO type:CTAdvertLocationTypeSubstitute];
-        } else {
-            [manager setupIsShow:NO type:CTAdvertLocationTypeBack];
-        }
-        [self jumpVCWithAnimated:NO];
-    } else if (ad == self.translateInterstitial) {
-        self.translateInterstitial = nil;
-        if (self.isSubstitute) {
-            self.isSubstitute = NO;
-            [manager setupIsShow:NO type:CTAdvertLocationTypeSubstitute];
-        } else {
-            [manager setupIsShow:NO type:CTAdvertLocationTypeTranslate];
-        }
-        [self translateResult];
-        [[CTPosterManager sharedInstance] requestScreenAdWithType:CTAdvertLocationTypeTranslate];
-    }
-}
-
-//3 点击
-- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库点击次数
-    if (ad == self.backInterstitial) {
-        if (self.isSubstitute) {
-            [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeSubstitute];
-        } else {
-            [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeBack];
-        }
-    } else if (ad == self.translateInterstitial) {
-        if (self.isSubstitute) {
-            [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeSubstitute];
-        } else {
-            [[CTPosterManager sharedInstance] setupCckWithType:CTAdvertLocationTypeTranslate];
-        }
-    }
-}
-
-//1 将要展示
-- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    //保存数据库展示次数
-    if (ad == self.backInterstitial) {
-        if (self.isSubstitute) {
-            [CTStatisticAnalysis saveEvent:@"backup_show" params:@{@"place": @"home_b"}];
-            [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeSubstitute];
-        } else {
-            [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": @"home_b"}];
-            [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeBack];
-        }
-    } else if (ad == self.translateInterstitial) {
-        if (self.isSubstitute) {
-            [CTStatisticAnalysis saveEvent:@"backup_show" params:@{@"place": @"trans_i"}];
-            [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeSubstitute];
-        } else {
-            [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": @"trans_i"}];
-            [[CTPosterManager sharedInstance] setupCswWithType:CTAdvertLocationTypeTranslate];
-        }
-        self.vcIsShowAding = YES;
-    }
-}
-
-- (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
-    CTPosterManager *manager = [CTPosterManager sharedInstance];
-    manager.isScreenAdShow = NO;
-    if (ad == self.backInterstitial) {
-        if (self.isSubstitute) {
-            self.isSubstitute = NO;
-            [manager advertLogFailedWithType:CTAdvertLocationTypeSubstitute error:error.localizedDescription];
-        } else {
-            [manager advertLogFailedWithType:CTAdvertLocationTypeBack error:error.localizedDescription];
-        }
-        self.backInterstitial = nil;
-        [self jumpVCWithAnimated:YES];
-    } else if (ad == self.translateInterstitial) {
-        if (self.isSubstitute) {
-            self.isSubstitute = NO;
-            [manager advertLogFailedWithType:CTAdvertLocationTypeSubstitute error:error.localizedDescription];
-        } else {
-            [manager advertLogFailedWithType:CTAdvertLocationTypeTranslate error:error.localizedDescription];
-        }
-        self.translateInterstitial = nil;
-        [self translateResult];;
-        [[CTPosterManager sharedInstance] requestScreenAdWithType:CTAdvertLocationTypeTranslate];
-    }
+    [self displayBackAdvert];
+    return NO;
 }
 @end

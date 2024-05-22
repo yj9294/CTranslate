@@ -29,8 +29,13 @@ public class GADUtil: NSObject {
         self.config = config
     }
     
-    public var getConfig: GADConfig {
+     public var getConfig: GADConfig {
         config ?? .init(positionConfig: [], sceneConfig: [], isUserGo: false, showGuide: false, reportPrice: -1, recommand: [])
+    }
+    
+    // 是否配置了引导
+    @objc public var isGuideConfig: Bool {
+        getConfig.showGuide
     }
     
     // 本地记录 限制次数
@@ -197,7 +202,9 @@ extension GADUtil {
                     ad.present(from: vc)
                     return
                 }
-                ad.present(from: vc)
+                UIView.ct_tipForeplay {
+                    ad.present(from: vc)
+                }
             } else {
                 completion?(nil)
             }
@@ -420,43 +427,35 @@ struct GADLimit: Codable {
 }
 
 @objc public enum GADScene: Int, CaseIterable, Codable {
-    case  none, launOpen, selectionInter, selectLanNative, downloadInter, homeEnterInter, homeBanner, backHomeInter, ocrInter, resultInter, pharseInter, backPharse, chatBanner, chatNative, textBanner, ocrBanner, quotesBanner
+    case  none, launOpen, selectLanNative, selectLanInter, homeEnterInter, backHomeInter, userfulInter, resultInter, recommendInter, translateBanner, translateNative, settingsNative, usefulNative
     public var title: String {
         switch self {
         case .none:
             return "none"
         case .launOpen:
             return "launOpen"
-        case .selectionInter:
-            return "selectionInter"
         case .selectLanNative:
             return "selectLanNative"
-        case .downloadInter:
-            return "downloadInter"
+        case .selectLanInter:
+            return "selectLanInter"
         case .homeEnterInter:
             return "homeEnterInter"
-        case .homeBanner:
-            return "homeBanner"
         case .backHomeInter:
             return "backHomeInter"
-        case .ocrInter:
-            return "ocrInter"
+        case .userfulInter:
+            return "userfulInter"
         case .resultInter:
             return "resultInter"
-        case .pharseInter:
-            return "pharseInter"
-        case .backPharse:
-            return "backPharse"
-        case .chatBanner:
-            return "chatBanner"
-        case .chatNative:
-            return "chatNative"
-        case .textBanner:
-            return "textBanner"
-        case .ocrBanner:
-            return "ocrBanner"
-        case .quotesBanner:
-            return "quotesBanner"
+        case .recommendInter:
+            return "recommendInter"
+        case .translateBanner:
+            return "translateBanner"
+        case .translateNative:
+            return "translateNative"
+        case .settingsNative:
+            return "settingsNative"
+        case .usefulNative:
+            return "usefulNative"
         }
     }
 }
@@ -842,7 +841,7 @@ extension GADNativeModel: GADNativeAdDelegate {
 
 class GADBannerModel: GADBaseModel {
     /// 原生廣告
-    public var bannerView: GADBannerView?
+    @objc public var bannerView: GADBannerView?
     
     private var isReceiveAD: Bool = false
     
@@ -863,7 +862,7 @@ extension GADBannerModel {
             bannerView = GADBannerView(adSize: adaptiveSize)
             bannerView?.backgroundColor = .white
             bannerView?.layer.masksToBounds = true
-            bannerView?.rootViewController = AppManager.shared.bannerVC
+            bannerView?.rootViewController = AppManager.shared.window?.rootViewController
         }
         bannerView?.adUnitID = model?.pid
         bannerView?.delegate = self
@@ -877,7 +876,7 @@ extension GADBannerModel {
        // Create an extra parameter that aligns the bottom of the expanded ad to
        // the bottom of the bannerView.
         let extras = GADExtras()
-        extras.additionalParameters = ["collapsible" : "bottom"]
+        extras.additionalParameters = ["collapsible" : "top"]
         request.register(extras)
         bannerView?.load(request)
     }
@@ -889,9 +888,6 @@ extension GADBannerModel: GADBannerViewDelegate, GADAdSizeDelegate {
     }
     
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        if bannerView.superview != nil {
-            return
-        }
         NSLog("[AD] (\(position.title)) load ad SUCCESSFUL for id \(model?.pid ?? "invalid id") ✅✅✅✅")
         self.bannerView = bannerView
         self.network = bannerView.responseInfo?.loadedAdNetworkResponseInfo?.adNetworkClassName ?? ""

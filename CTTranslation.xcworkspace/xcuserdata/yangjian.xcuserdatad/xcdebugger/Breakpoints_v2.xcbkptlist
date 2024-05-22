@@ -67,5 +67,68 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03F829A7-3C83-4A26-B93D-2A592AE3C659"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CTTranslation/ViewController/CTChooseLanguageViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "-nativeAdUpdate:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "03F829A7-3C83-4A26-B93D-2A592AE3C659 - 8a36e56dba5c31dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CTChooseLanguageViewController nativeAdUpdate:]"
+                  moduleName = "CTTranslation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangjian/Documents/CoTransalte/CTTranslation/ViewController/CTChooseLanguageViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "504">
+               </Location>
+               <Location
+                  uuid = "03F829A7-3C83-4A26-B93D-2A592AE3C659 - 9160f2473dc144b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[CTChooseLanguageViewController nativeAdUpdate:]_block_invoke_2"
+                  moduleName = "CTTranslation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangjian/Documents/CoTransalte/CTTranslation/ViewController/CTChooseLanguageViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "03F829A7-3C83-4A26-B93D-2A592AE3C659 - 8a36e56dba5c31dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CTChooseLanguageViewController nativeAdUpdate:]"
+                  moduleName = "CTTranslation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yangjian/Documents/CoTransalte/CTTranslation/ViewController/CTChooseLanguageViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "456">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
