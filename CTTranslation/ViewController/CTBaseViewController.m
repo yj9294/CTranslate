@@ -6,7 +6,6 @@
 //
 
 #import "CTBaseViewController.h"
-#import "CTPosterManager.h"
 
 
 typedef NS_ENUM(NSUInteger, CTViewControllerStatus) {
@@ -64,7 +63,6 @@ typedef NS_ENUM(NSUInteger, CTViewControllerStatus) {
 }
 
 - (void)didVC {
-    [[CTPosterManager sharedInstance] enterSubstitute];
 }
 
 - (void)viewDidLoad {

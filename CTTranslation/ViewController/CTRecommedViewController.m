@@ -10,7 +10,6 @@
 #import "CTHomeTableViewCell.h"
 #import "UIView+CT.h"
 #import "CTRecommandInfoViewController.h"
-#import "CTFbHandle.h"
 
 @interface CTRecommedViewController () <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
@@ -67,6 +66,7 @@
     [GADUtil.shared show:GADPositionInterstital p:GADSceneRecommendInter from:self completion:^(GADBaseModel * _Nullable model) {
         [__self jumpUserInfovcWithAnimated: YES];
     }];
+    [GADUtil.shared logScene:GADSceneRecommendInter];
 }
 
 - (void)jumpUserInfovcWithAnimated:(BOOL)animated {
@@ -83,6 +83,7 @@
     [GADUtil.shared show:GADPositionInterstital p:GADSceneBackHomeInter from:self completion:^(GADBaseModel * _Nullable model) {
         [__self jumpVCWithAnimated:YES];
     }];
+    [GADUtil.shared logScene:GADSceneBackHomeInter];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {
@@ -105,7 +106,7 @@
 }
 - (NSMutableArray *)dataSource {
     if (!_dataSource) {
-        NSArray *array = [[CTFbHandle shared] getRecommendList];
+        NSArray *array = [GADUtil.shared recommandArray];
         _dataSource = [NSMutableArray arrayWithArray:array];
     }
     return _dataSource;

@@ -6,13 +6,19 @@
 //
 
 #import "SceneDelegate.h"
-#import "CTPosterManager.h"
 #import "CTLaunchViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "UIView+CT.h"
 #import "NSObject+CT.h"
 #import "CTTanslatePrivacyPop.h"
 #import "CTTranslateManager.h"
+#import "CTStatisticAnalysis.h"
+#import <AppLovinSDK/AppLovinSDK.h>
+#import <VungleAdsSDK/VungleAdsSDK.h>
+#import <MTGSDK/MTGSDK.h>
+#import <UnityAds/UnityAds.h>
+#import <FBAudienceNetwork/FBAdSettings.h>
+#import <FBAudienceNetwork/FBAdSettings.h>
 @import AppTrackingTransparency;
 @import FirebaseCore;
 @import IQKeyboardManager;
@@ -147,6 +153,58 @@
         _launchVC = [[CTLaunchViewController alloc] init];
     }
     return _launchVC;
+}
+
+- (void)addGADNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gadShow:) name:@"ad.impression" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gadClick:) name:@"ad.click" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gadPaid:) name:@"ad.paid" object:nil];
+}
+
+- (void)gadShow:(NSNotification *)noti {
+    GADBaseModel *model = (GADBaseModel *)noti.object;
+    [CTStatisticAnalysis saveEvent:@"gag_show" params:@{@"place": [model getSceneName]}];
+}
+
+- (void)gadClick:(NSNotification *)noti {
+    GADBaseModel *model = (GADBaseModel *)noti.object;
+    [CTStatisticAnalysis saveEvent:@"gag_click" params:@{@"place": [model getSceneName]}];
+}
+
+- (void)gadPaid: (NSNotification *)noti {
+    GADBaseModel *model = (GADBaseModel *)noti.object;
+    [GADUtil.shared addPriceWithPrice:model.price currency:model.currency];
+}
+
+- (void)configGAD {
+    
+    //AppLovin
+    [ALPrivacySettings setHasUserConsent:YES];
+    [ALPrivacySettings setDoNotSell:YES];
+    
+    ironSource
+    [IronSource setConsent:YES];
+    [IronSource setMetaDataWithKey:@"do_not_sell" value:@"YES"];
+    
+    Liftoff
+    [VunglePrivacySettings setGDPRStatus:YES];
+    [VunglePrivacySettings setGDPRMessageVersion:@"v1.0.0"];
+    [VunglePrivacySettings setCCPAStatus:YES];
+    
+    
+    Mintegral
+    [[MTGSDK sharedInstance] setConsentStatus:YES];
+    [[MTGSDK sharedInstance] setDoNotTrackStatus:NO];
+    
+    Pangle 不需要设置
+    
+    Unity
+    UADSMetaData *gdprMetaData = [[UADSMetaData alloc] init];
+    [gdprMetaData set:@"gdpr.consent" value:@YES];
+    [gdprMetaData commit];
+    UADSMetaData *ccpaMetaData = [[UADSMetaData alloc] init];
+    [ccpaMetaData set:@"privacy.consent" value:@YES];
+    [ccpaMetaData commit];
 }
 
 @end

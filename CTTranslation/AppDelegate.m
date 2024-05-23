@@ -6,12 +6,10 @@
 //
 
 #import "AppDelegate.h"
-#import "CTFbHandle.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FirebaseCore/FirebaseCore.h>
 #import "CTTools.h"
 #import "CTPoolManager.h"
-#import "CTFbHandle.h"
 @interface AppDelegate ()
 
 @end

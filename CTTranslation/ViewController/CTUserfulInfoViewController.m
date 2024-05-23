@@ -9,7 +9,6 @@
 #import "CTNavigationView.h"
 #import "UIView+CT.h"
 #import "CTTranslateViewController.h"
-#import "CTPosterManager.h"
 
 @interface CTUserfulInfoCell : UITableViewCell
 
@@ -65,7 +64,6 @@
 
 - (void)didVC {
     [super didVC];
-    [[CTPosterManager sharedInstance] addReco:@"usin"];
 }
 
 - (void)viewDidLoad {

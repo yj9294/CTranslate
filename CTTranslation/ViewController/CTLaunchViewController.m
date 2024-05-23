@@ -14,7 +14,6 @@
 #import "UIView+CT.h"
 #import "CTLaunchViewController.h"
 #import "CTDbAdvertHandle.h"
-#import "CTFbHandle.h"
 #import "NSObject+CT.h"
 #import "CTTanslatePrivacyPop.h"
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
@@ -152,5 +151,6 @@
         
     }];
     [GADUtil.shared load:GADPositionOpen p:GADSceneLaunOpen completion:nil];
+    [GADUtil.shared logScene:GADSceneLaunOpen];
 }
 @end

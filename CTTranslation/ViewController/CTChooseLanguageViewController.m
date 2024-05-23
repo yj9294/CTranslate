@@ -94,10 +94,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(nativeAdUpdate:) name:@"homeNativeUpdate" object:nil];
-    [GADUtil.shared load:GADPositionInterstital p:GADSceneSelectLanInter completion:nil];
-    [GADUtil.shared disappear:GADPositionNative];
-    [GADUtil.shared load:GADPositionNative p:GADSceneSelectLanNative completion:nil];
     
     self.chooseIndex = -1;
     self.oldChooseIndex = -1;
@@ -146,6 +142,14 @@
     [self.nativeAdView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.equalTo(self.bgAdImageView);
     }];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(nativeAdUpdate:) name:@"homeNativeUpdate" object:nil];
+    [GADUtil.shared logScene:GADSceneSelectLanInter];
+    [GADUtil.shared logScene:GADSceneSelectLanNative];
+    [GADUtil.shared load:GADPositionInterstital p:GADSceneSelectLanInter completion:nil];
+    [GADUtil.shared disappear:GADPositionNative];
+    [GADUtil.shared load:GADPositionNative p:GADSceneSelectLanNative completion:nil];
+    
 }
 
 - (void)okAction {

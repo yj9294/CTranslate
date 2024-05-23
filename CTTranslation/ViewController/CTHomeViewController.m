@@ -15,7 +15,6 @@
 #import "CTHomeHeaderView.h"
 #import "CTHomeTableViewCell.h"
 #import "UIView+CT.h"
-#import "CTFbHandle.h"
 
 @interface CTHomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -45,8 +44,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *model = [CTFirebase getAppMode];
-    [CTStatisticAnalysis saveEvent:@"home_mode" params:@{@"mode": model}];
     self.view.backgroundColor = [UIColor hexColor:@"#12263A"];
     UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_title"]];
     self.titleImageView = titleImageView;
@@ -84,6 +81,7 @@
     }];
     
     [GADUtil.shared load:GADPositionInterstital p:GADSceneHomeEnterInter completion:nil];
+    [GADUtil.shared logScene:GADSceneHomeEnterInter];
 }
 
 - (void)historyActoin {
@@ -202,7 +200,7 @@
 
 - (NSMutableArray *)dataSource {
     if (!_dataSource) {
-        NSArray *array = [[CTFbHandle shared] getRecommendList];
+        NSArray *array = [GADUtil.shared recommandArray];
         _dataSource = [NSMutableArray arrayWithArray:array];
     }
     return _dataSource;

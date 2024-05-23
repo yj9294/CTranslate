@@ -9,7 +9,6 @@
 #import "CTNavigationView.h"
 #import "CTTextView.h"
 #import "UIView+CT.h"
-#import "CTPosterManager.h"
 
 @interface CTFeedbacksViewController ()
 
@@ -21,7 +20,6 @@
 
 - (void)didVC {
     [super didVC];
-    [[CTPosterManager sharedInstance] addReco:@"feed"];
 }
 
 - (void)viewDidLoad {

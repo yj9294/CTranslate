@@ -334,6 +334,9 @@
     [GADUtil.shared disappear:GADPositionBanner];
     [GADUtil.shared load:GADPositionNative p:GADSceneTranslateNative completion:nil];
     [GADUtil.shared load:GADPositionBanner p:GADSceneTranslateBanner completion:nil];
+    
+    [GADUtil.shared logScene:GADSceneTranslateBanner];
+    [GADUtil.shared logScene:GADSceneTranslateNative];
 }
 
 - (void)addADNotification {
@@ -711,6 +714,7 @@
     [GADUtil.shared show:GADPositionInterstital p:GADSceneResultInter from:self completion:^(GADBaseModel * _Nullable model) {
         [__self translateResult];
     }];
+    [GADUtil.shared logScene:GADSceneResultInter];
 }
 
 - (void)translateResult {
@@ -730,6 +734,7 @@
     [GADUtil.shared show:GADPositionInterstital p:GADSceneBackHomeInter from:self completion:^(GADBaseModel * _Nullable model) {
         [__self jumpVCWithAnimated:YES];
     }];
+    [GADUtil.shared logScene:GADSceneBackHomeInter];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {

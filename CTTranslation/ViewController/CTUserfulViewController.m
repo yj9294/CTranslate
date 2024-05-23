@@ -133,6 +133,8 @@
     [GADUtil.shared load:GADPositionInterstital p:GADSceneUserfulInter completion:nil];
     [GADUtil.shared disappear:GADPositionNative];
     [GADUtil.shared load:GADPositionNative p:GADSceneUsefulNative completion:nil];
+    
+    [GADUtil.shared logScene:GADSceneUsefulNative];
 }
 
 
@@ -228,6 +230,7 @@
     [GADUtil.shared show:GADPositionInterstital p:GADSceneUserfulInter from:self completion:^(GADBaseModel * _Nullable mode) {
         [__self jumpUserInfovcWithAnimated:YES];
     }];
+    [GADUtil.shared logScene:GADSceneUserfulInter];
 }
 
 - (void)jumpUserInfovcWithAnimated:(BOOL)animated {
@@ -244,6 +247,7 @@
     [GADUtil.shared show:GADPositionInterstital p:GADSceneBackHomeInter from:self completion:^(GADBaseModel * _Nullable model) {
         [__self jumpVCWithAnimated:YES];
     }];
+    [GADUtil.shared logScene:GADSceneBackHomeInter];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {

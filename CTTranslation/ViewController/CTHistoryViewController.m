@@ -107,6 +107,7 @@
     [GADUtil.shared show:GADPositionInterstital p:GADSceneBackHomeInter from:self completion:^(GADBaseModel * _Nullable model) {
         [__weakself jumpVCWithAnimated:YES];
     }];
+    [GADUtil.shared logScene:GADSceneBackHomeInter];
 }
 
 - (void)jumpVCWithAnimated:(BOOL)animated {

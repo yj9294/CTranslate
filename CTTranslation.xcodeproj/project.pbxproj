@@ -37,8 +37,6 @@
 		BA503AB02B95AC5000D81AED /* LottieTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA503AAF2B95AC5000D81AED /* LottieTools.swift */; };
 		BA503AB32B95AC9100D81AED /* CTLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503AB12B95AC9100D81AED /* CTLaunchViewController.m */; };
 		BA503AB62B95AC9C00D81AED /* CTPop.m in Sources */ = {isa = PBXBuildFile; fileRef = BA503AB42B95AC9C00D81AED /* CTPop.m */; };
-		BA5BF79F2B9EDA7C00A57C2A /* CTFbHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7972B9EDA7C00A57C2A /* CTFbHandle.m */; };
-		BA5BF7A02B9EDA7C00A57C2A /* CTPosterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7982B9EDA7C00A57C2A /* CTPosterManager.m */; };
 		BA5BF7A12B9EDA7C00A57C2A /* CTAdInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF79A2B9EDA7C00A57C2A /* CTAdInfoModel.m */; };
 		BA5BF7A22B9EDA7C00A57C2A /* CTPosterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF79B2B9EDA7C00A57C2A /* CTPosterModel.m */; };
 		BA5BF7A32B9EDA7C00A57C2A /* CTStatisticAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF79C2B9EDA7C00A57C2A /* CTStatisticAnalysis.m */; };
@@ -46,7 +44,6 @@
 		BA5BF7A92B9EDAA300A57C2A /* CTPoolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7A52B9EDAA200A57C2A /* CTPoolManager.m */; };
 		BA5BF7AC2B9EDC3000A57C2A /* CTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7AA2B9EDC2F00A57C2A /* CTNavigationView.m */; };
 		BA5BF7AF2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7AE2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m */; };
-		BA5BF7B22B9EDC7700A57C2A /* SVLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B12B9EDC7700A57C2A /* SVLaunchManager.m */; };
 		BA5BF7B52B9EDCB700A57C2A /* CTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B32B9EDCB600A57C2A /* CTBaseViewController.m */; };
 		BA5BF7BA2B9EDCF100A57C2A /* UIView+CT.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B62B9EDCF100A57C2A /* UIView+CT.m */; };
 		BA5BF7BB2B9EDCF100A57C2A /* UIButton+CTL.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5BF7B72B9EDCF100A57C2A /* UIButton+CTL.m */; };
@@ -88,6 +85,7 @@
 		C72B5C002BF79A1A00F6A121 /* GADUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B5BFF2BF79A1A00F6A121 /* GADUtil.swift */; };
 		C72B5C022BF7AB7900F6A121 /* RemoteUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B5C012BF7AB7900F6A121 /* RemoteUtil.swift */; };
 		C72B5C042BF7ABAA00F6A121 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72B5C032BF7ABAA00F6A121 /* AppManager.swift */; };
+		C79D0A9E2BFF6C5D00CFE201 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79D0A9D2BFF6C5C00CFE201 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,17 +150,13 @@
 		BA503AB42B95AC9C00D81AED /* CTPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPop.m; sourceTree = "<group>"; };
 		BA503AB52B95AC9C00D81AED /* CTPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPop.h; sourceTree = "<group>"; };
 		BA503AB72B95AE9E00D81AED /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		BA5BF7942B9EDA7C00A57C2A /* CTPosterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPosterManager.h; sourceTree = "<group>"; };
 		BA5BF7952B9EDA7C00A57C2A /* CTStatisticAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStatisticAnalysis.h; sourceTree = "<group>"; };
 		BA5BF7962B9EDA7C00A57C2A /* SVAdAllType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAdAllType.h; sourceTree = "<group>"; };
-		BA5BF7972B9EDA7C00A57C2A /* CTFbHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFbHandle.m; sourceTree = "<group>"; };
-		BA5BF7982B9EDA7C00A57C2A /* CTPosterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPosterManager.m; sourceTree = "<group>"; };
 		BA5BF7992B9EDA7C00A57C2A /* CTAdInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAdInfoModel.h; sourceTree = "<group>"; };
 		BA5BF79A2B9EDA7C00A57C2A /* CTAdInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAdInfoModel.m; sourceTree = "<group>"; };
 		BA5BF79B2B9EDA7C00A57C2A /* CTPosterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPosterModel.m; sourceTree = "<group>"; };
 		BA5BF79C2B9EDA7C00A57C2A /* CTStatisticAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStatisticAnalysis.m; sourceTree = "<group>"; };
 		BA5BF79D2B9EDA7C00A57C2A /* CTPosterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPosterModel.h; sourceTree = "<group>"; };
-		BA5BF79E2B9EDA7C00A57C2A /* CTFbHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFbHandle.h; sourceTree = "<group>"; };
 		BA5BF7A42B9EDAA200A57C2A /* CTDbAdvertHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDbAdvertHandle.m; sourceTree = "<group>"; };
 		BA5BF7A52B9EDAA200A57C2A /* CTPoolManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPoolManager.m; sourceTree = "<group>"; };
 		BA5BF7A62B9EDAA200A57C2A /* CTDbAdvertHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDbAdvertHandle.h; sourceTree = "<group>"; };
@@ -171,8 +165,6 @@
 		BA5BF7AB2B9EDC3000A57C2A /* CTNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNavigationView.h; sourceTree = "<group>"; };
 		BA5BF7AD2B9EDC4000A57C2A /* CTTanslatePrivacyPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTanslatePrivacyPop.h; sourceTree = "<group>"; };
 		BA5BF7AE2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTanslatePrivacyPop.m; sourceTree = "<group>"; };
-		BA5BF7B02B9EDC7700A57C2A /* SVLaunchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVLaunchManager.h; sourceTree = "<group>"; };
-		BA5BF7B12B9EDC7700A57C2A /* SVLaunchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLaunchManager.m; sourceTree = "<group>"; };
 		BA5BF7B32B9EDCB600A57C2A /* CTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBaseViewController.m; sourceTree = "<group>"; };
 		BA5BF7B42B9EDCB700A57C2A /* CTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBaseViewController.h; sourceTree = "<group>"; };
 		BA5BF7B62B9EDCF100A57C2A /* UIView+CT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CT.m"; sourceTree = "<group>"; };
@@ -241,6 +233,7 @@
 		C72B5BFF2BF79A1A00F6A121 /* GADUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GADUtil.swift; sourceTree = "<group>"; };
 		C72B5C012BF7AB7900F6A121 /* RemoteUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteUtil.swift; sourceTree = "<group>"; };
 		C72B5C032BF7ABAA00F6A121 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		C79D0A9D2BFF6C5C00CFE201 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74B02ADF015B07E498524C3D /* Pods_CTTranslation.framework in Frameworks */,
+				C79D0A9E2BFF6C5D00CFE201 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +261,7 @@
 		96DFF1AE06D5E3A54C65A36A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C79D0A9D2BFF6C5C00CFE201 /* AdSupport.framework */,
 				8036C8157BA6672CC09F5AAD /* Pods_CTTranslation.framework */,
 			);
 			name = Frameworks;
@@ -299,8 +294,6 @@
 				BA503A412B95A29E00D81AED /* AppDelegate.m */,
 				BA503A432B95A29E00D81AED /* SceneDelegate.h */,
 				BA503A442B95A29E00D81AED /* SceneDelegate.m */,
-				BA5BF7B02B9EDC7700A57C2A /* SVLaunchManager.h */,
-				BA5BF7B12B9EDC7700A57C2A /* SVLaunchManager.m */,
 				C72B5C032BF7ABAA00F6A121 /* AppManager.swift */,
 				BA503A5F2B95A58900D81AED /* DebugPlugin */,
 				BA503A5E2B95A56800D81AED /* Model */,
@@ -333,10 +326,6 @@
 				BA5BF7962B9EDA7C00A57C2A /* SVAdAllType.h */,
 				BA5BF7992B9EDA7C00A57C2A /* CTAdInfoModel.h */,
 				BA5BF79A2B9EDA7C00A57C2A /* CTAdInfoModel.m */,
-				BA5BF79E2B9EDA7C00A57C2A /* CTFbHandle.h */,
-				BA5BF7972B9EDA7C00A57C2A /* CTFbHandle.m */,
-				BA5BF7942B9EDA7C00A57C2A /* CTPosterManager.h */,
-				BA5BF7982B9EDA7C00A57C2A /* CTPosterManager.m */,
 				BA5BF79D2B9EDA7C00A57C2A /* CTPosterModel.h */,
 				BA5BF79B2B9EDA7C00A57C2A /* CTPosterModel.m */,
 				BA5BF7952B9EDA7C00A57C2A /* CTStatisticAnalysis.h */,
@@ -678,7 +667,6 @@
 				BA5BF7DC2B9F16F500A57C2A /* CTRecommedViewController.m in Sources */,
 				BABC6DC82BA2D3E600DD9D48 /* CTTextView.m in Sources */,
 				BA5BF7C42B9EE0ED00A57C2A /* CTMainViewController.m in Sources */,
-				BA5BF79F2B9EDA7C00A57C2A /* CTFbHandle.m in Sources */,
 				BA503A762B95A58900D81AED /* PluginEntry.m in Sources */,
 				BAA64D362BAC469A00D8150D /* CTTextPop.m in Sources */,
 				BA5BF7D62B9F145300A57C2A /* CTHistoryViewController.m in Sources */,
@@ -703,10 +691,8 @@
 				BA5BF7BE2B9EDD0E00A57C2A /* CTTextField.m in Sources */,
 				BA503A422B95A29E00D81AED /* AppDelegate.m in Sources */,
 				BA5BF7AF2B9EDC4000A57C2A /* CTTanslatePrivacyPop.m in Sources */,
-				BA5BF7B22B9EDC7700A57C2A /* SVLaunchManager.m in Sources */,
 				BA503A532B95A2A000D81AED /* main.m in Sources */,
 				BAB0B1222B9800CE00FAB4EE /* CTTranslateModel.m in Sources */,
-				BA5BF7A02B9EDA7C00A57C2A /* CTPosterManager.m in Sources */,
 				BA5BF7A12B9EDA7C00A57C2A /* CTAdInfoModel.m in Sources */,
 				BA5BF7D02B9EFF7E00A57C2A /* CTHomeTableViewCell.m in Sources */,
 				BAA64D3C2BAC46CB00D8150D /* CTCameraPop.m in Sources */,

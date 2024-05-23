@@ -10,7 +10,6 @@
 #import <WebKit/WKWebViewConfiguration.h>
 #import "CTNavigationView.h"
 #import "UIView+CT.h"
-#import "CTPosterManager.h"
 
 @interface CTWebVC ()
 @property (nonatomic, strong) CTNavigationView *navView;
@@ -22,7 +21,6 @@
 
 - (void)didVC {
     [super didVC];
-    [[CTPosterManager sharedInstance] addReco:@"wepo"];
 }
 
 - (id)initWithUrl:(NSString *)url {

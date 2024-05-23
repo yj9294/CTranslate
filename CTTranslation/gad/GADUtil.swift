@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FBSDKCoreKit
 import GoogleMobileAds
 
 public class GADUtil: NSObject {
@@ -30,12 +31,17 @@ public class GADUtil: NSObject {
     }
     
      public var getConfig: GADConfig {
-        config ?? .init(positionConfig: [], sceneConfig: [], isUserGo: false, showGuide: false, reportPrice: -1, recommand: [])
+         config ?? .init(positionConfig: [], sceneConfig: [], isUserGo: false, showGuide: false, reportPrice: -1.0, recommand: [])
     }
     
     // 是否配置了引导
     @objc public var isGuideConfig: Bool {
         getConfig.showGuide
+    }
+    
+    // 获取recommand
+    @objc public var recommandArray: [String] {
+        config?.recommand ?? []
     }
     
     // 本地记录 限制次数
@@ -57,6 +63,29 @@ public class GADUtil: NSObject {
     /// 广告位加载模型
     let ads:[GADLoadModel] = GADPosition.allCases.map { p in
         GADLoadModel(position: p, p: .none)
+    }
+    
+    // 场景打点
+    @objc func logScene(_ scene: GADScene) {
+        CTStatisticAnalysis.saveEvent("gag_chungjung", params: ["place": scene.title])
+    }
+    
+    @UserDefault(key: "paid.price")
+    private var price: Double?
+    var getPrice: Double {
+        price ?? 0.0
+    }
+    // 价值回传
+    @objc func addPrice(price: Double, currency: String) {
+        if getPrice == 0 {
+            self.price = price
+        } else {
+            self.price = price + getPrice
+        }
+        let configPrice = config?.reportPrice ?? -1
+        if getPrice > (configPrice / 1000.0) {
+            AppEvents.shared.logEvent(.initializeSDK, parameters: [AppEvents.ParameterName(rawValue: "match_user"): 1])
+        }
     }
 }
 
@@ -300,7 +329,7 @@ public struct GADConfig: Codable {
     var sceneConfig: [GADSceneModel]
     var isUserGo: Bool
     var showGuide: Bool
-    var reportPrice: Int
+    var reportPrice: Double
     var recommand: [String]
     
     func isDefaul() -> Bool {
@@ -340,9 +369,9 @@ public class GADBaseModel: NSObject, Identifiable {
     
     @objc public var p: GADScene
     // 收入
-    public var price: Double = 0.0
+    @objc public var price: Double = 0.0
     // 收入货币
-    public var currency: String = "USD"
+    @objc public var currency: String = "USD"
     // 广告网络
     public var network: String = ""
     // precision type form adValue
@@ -353,6 +382,10 @@ public class GADBaseModel: NSObject, Identifiable {
         self.position = position
         self.p = p
         super.init()
+    }
+    
+    @objc func getSceneName() -> String {
+        return p.title
     }
 }
 
